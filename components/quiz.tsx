@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import formOptions from "@/content/form.json";
 import { TrackLink } from "@/components/track-link";
 import { readUtm, submitLead } from "@/components/submit-lead";
-import { buttonClass } from "@/lib/styles";
 
 type Contacts = {
   phoneDisplay: string;
@@ -14,6 +13,8 @@ type Contacts = {
   telegram: string;
 };
 
+const times = ["Пн · Пт · Вс", "Вт · Чт", "Выходные", "Подберём вместе"];
+
 export function Quiz({ contacts, thankYou }: { contacts: Contacts; thankYou: string }) {
   const pathname = usePathname();
   const renderedAt = useRef(0);
@@ -21,8 +22,9 @@ export function Quiz({ contacts, thankYou }: { contacts: Contacts; thankYou: str
     renderedAt.current = Date.now();
   }, []);
   const [step, setStep] = useState(0);
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(formOptions.quizAges[0]?.label ?? "");
   const [direction, setDirection] = useState("");
+  const [time, setTime] = useState("");
   const [parentName, setParentName] = useState("");
   const [phone, setPhone] = useState("");
   const [messenger, setMessenger] = useState("call");
@@ -54,6 +56,7 @@ export function Quiz({ contacts, thankYou }: { contacts: Contacts; thankYou: str
           utm: readUtm(),
           fax,
           renderedAt: renderedAt.current,
+          preferredTime: time,
         },
         "quiz_submit",
       );
@@ -65,15 +68,19 @@ export function Quiz({ contacts, thankYou }: { contacts: Contacts; thankYou: str
     }
   }
 
+  const progress = [25, 50, 75, 100][step] ?? 25;
+  const titles = ["Сколько лет ребёнку?", "Какое направление ближе?", "Когда удобно заниматься?", "Как с вами связаться?"];
+
   if (done) {
     return (
-      <div className="rounded-3xl bg-card p-5 text-ink">
-        <h3 className="font-display text-2xl">{thankYou}</h3>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <TrackLink href={contacts.whatsapp} goal="whatsapp_click" className={buttonClass()} target="_blank" rel="noopener noreferrer">
+      <div>
+        <div className="q">{thankYou}</div>
+        <p className="lead">Администратор подберёт группу и перезвонит.</p>
+        <div className="qnav">
+          <TrackLink href={contacts.whatsapp} goal="whatsapp_click" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
             WhatsApp
           </TrackLink>
-          <TrackLink href={contacts.telegram} goal="telegram_click" className={buttonClass("ghost")} target="_blank" rel="noopener noreferrer">
+          <TrackLink href={contacts.telegram} goal="telegram_click" className="btn btn-red" target="_blank" rel="noopener noreferrer">
             Telegram
           </TrackLink>
         </div>
@@ -82,100 +89,119 @@ export function Quiz({ contacts, thankYou }: { contacts: Contacts; thankYou: str
   }
 
   return (
-    <div className="rounded-3xl bg-card p-5 text-ink">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cinnabar">Шаг {step + 1} из 3</p>
+    <div>
+      <div className="prog">
+        <span>Шаг {step + 1} из 4</span>
+        <span>{progress}%</span>
+      </div>
+      <div className="bar">
+        <i style={{ width: `${progress}%` }} />
+      </div>
+      <div className="q">{titles[step]}</div>
       {step === 0 && (
-        <div>
-          <h3 className="mt-2 font-display text-2xl">Сколько лет ребёнку?</h3>
-          <div className="mt-4 grid gap-2">
-            {formOptions.quizAges.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={age === item.label}
-                className={`min-h-11 rounded-2xl border px-4 text-left ${age === item.label ? "border-ink bg-ink text-paper" : "border-line"}`}
-                onClick={() => {
-                  setAge(item.label);
-                  setStep(1);
-                }}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+        <div className="opts">
+          {formOptions.quizAges.map((item) => (
+            <button key={item.id} type="button" className={age === item.label ? "opt sel" : "opt"} aria-pressed={age === item.label} onClick={() => setAge(item.label)}>
+              <i />
+              {item.label}
+            </button>
+          ))}
         </div>
       )}
       {step === 1 && (
-        <div>
-          <h3 className="mt-2 font-display text-2xl">Какое направление ближе?</h3>
-          <div className="mt-4 grid gap-2">
-            {formOptions.directions.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={direction === item.id}
-                className={`min-h-11 rounded-2xl border px-4 text-left ${direction === item.id ? "border-ink bg-ink text-paper" : "border-line"}`}
-                onClick={() => {
-                  setDirection(item.id);
-                  setStep(2);
-                }}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-          <button type="button" className="mt-4 text-sm underline-offset-2 hover:underline" onClick={() => setStep(0)}>
-            Назад
-          </button>
+        <div className="opts">
+          {formOptions.directions.map((item) => (
+            <button key={item.id} type="button" className={direction === item.id ? "opt sel" : "opt"} aria-pressed={direction === item.id} onClick={() => setDirection(item.id)}>
+              <i />
+              {item.label}
+            </button>
+          ))}
         </div>
       )}
       {step === 2 && (
-        <form onSubmit={onSubmit} noValidate className="relative">
-          <h3 className="mt-2 font-display text-2xl">Куда перезвонить?</h3>
-          <p className="mt-2 text-sm text-ink-soft">
-            {age}, {formOptions.directions.find((item) => item.id === direction)?.label}. Администратор подтвердит группу.
-          </p>
+        <div className="opts">
+          {times.map((item) => (
+            <button key={item} type="button" className={time === item ? "opt sel" : "opt"} aria-pressed={time === item} onClick={() => setTime(item)}>
+              <i />
+              {item}
+            </button>
+          ))}
+        </div>
+      )}
+      {step === 3 && (
+        <form onSubmit={onSubmit} noValidate className="quiz-fields">
           <div className="hp" aria-hidden="true">
             <label>
               Факс
               <input value={fax} onChange={(event) => setFax(event.target.value)} tabIndex={-1} autoComplete="off" />
             </label>
           </div>
-          <div className="mt-4 grid gap-3">
-            <label className="grid gap-1 text-sm font-medium">
-              Имя родителя
-              <input value={parentName} onChange={(event) => setParentName(event.target.value)} autoComplete="name" className="min-h-11 rounded-2xl border border-line bg-white px-3 text-base font-normal" />
-            </label>
-            <label className="grid gap-1 text-sm font-medium">
-              Телефон
-              <input value={phone} onChange={(event) => setPhone(event.target.value)} autoComplete="tel" inputMode="tel" className="min-h-11 rounded-2xl border border-line bg-white px-3 text-base font-normal" />
-            </label>
-            <fieldset>
-              <legend className="text-sm font-medium">Как связаться</legend>
-              <div className="mt-2 grid grid-cols-3 gap-2">
-                {formOptions.messengers.map((item) => (
-                  <label key={item.id} className={`flex min-h-11 items-center justify-center rounded-2xl border text-sm ${messenger === item.id ? "border-ink bg-ink text-paper" : "border-line"}`}>
-                    <input type="radio" name="quiz-messenger" value={item.id} checked={messenger === item.id} onChange={() => setMessenger(item.id)} className="sr-only" />
-                    {item.label}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-            <label className="flex items-start gap-3 text-sm">
-              <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} className="mt-1 h-4 w-4" />
-              <span>
-                Даю <a href="/consent" className="underline underline-offset-2">согласие</a> и ознакомился с <a href="/privacy" className="underline underline-offset-2">политикой</a>.
-              </span>
-            </label>
-            {error && <p role="alert" className="text-sm text-cinnabar">{error}</p>}
-            <button type="submit" className={buttonClass()} disabled={pending}>
-              {pending ? "Отправляем…" : "Подобрать группу"}
-            </button>
-            <button type="button" className="text-sm underline-offset-2 hover:underline" onClick={() => setStep(1)}>
+          <label>
+            <span className="hp">Имя родителя</span>
+            <input value={parentName} onChange={(event) => setParentName(event.target.value)} autoComplete="name" placeholder="Имя родителя" aria-label="Имя родителя" />
+          </label>
+          <label>
+            <span className="hp">Телефон</span>
+            <input value={phone} onChange={(event) => setPhone(event.target.value)} autoComplete="tel" inputMode="tel" placeholder="Телефон" aria-label="Телефон" />
+          </label>
+          <div className="mess">
+            {formOptions.messengers.map((item) => (
+              <button key={item.id} type="button" className={messenger === item.id ? "opt sel" : "opt"} aria-pressed={messenger === item.id} onClick={() => setMessenger(item.id)}>
+                <i />
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <label className="consent">
+            <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} />
+            <span>
+              Даю <a className="ul" href="/consent">согласие</a> и ознакомился с <a className="ul" href="/privacy">политикой</a>.
+            </span>
+          </label>
+          {error && (
+            <p role="alert" className="q-error">
+              {error}
+            </p>
+          )}
+          <div className="qnav">
+            <button type="button" className="btn btn-ghost" onClick={() => setStep(2)}>
               Назад
+            </button>
+            <button type="submit" className="btn btn-red" disabled={pending}>
+              {pending ? "Отправляем…" : "Подобрать группу"}
             </button>
           </div>
         </form>
+      )}
+      {step < 3 && (
+        <div className="qnav">
+          <button type="button" className="btn btn-ghost" style={step === 0 ? { opacity: 0.4 } : undefined} disabled={step === 0} onClick={() => setStep((value) => Math.max(0, value - 1))}>
+            Назад
+          </button>
+          <button
+            type="button"
+            className="btn btn-red"
+            onClick={() => {
+              if (step === 1 && !direction) {
+                setError("Выберите направление.");
+                return;
+              }
+              if (step === 2 && !time) {
+                setError("Выберите удобное время.");
+                return;
+              }
+              setError("");
+              setStep((value) => value + 1);
+            }}
+          >
+            Далее →
+          </button>
+        </div>
+      )}
+      {step < 3 && error && (
+        <p role="alert" className="q-error" style={{ marginTop: 12 }}>
+          {error}
+        </p>
       )}
     </div>
   );

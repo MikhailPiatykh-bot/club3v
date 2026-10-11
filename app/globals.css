@@ -1,20 +1,27 @@
 @import "tailwindcss";
+@import "./club-fonts.css";
+@import "./club.css";
+
+:root {
+  --font-manrope: "Manrope", sans-serif;
+  --font-unbounded: "Unbounded", sans-serif;
+}
 
 @theme inline {
   --font-sans: var(--font-manrope), "Manrope", sans-serif;
   --font-display: var(--font-unbounded), "Unbounded", sans-serif;
-  --color-ink: #1c1412;
-  --color-ink-soft: #4a403a;
-  --color-paper: #f3eee6;
-  --color-paper-2: #e7dfd2;
-  --color-card: #fffdf9;
-  --color-line: #e0d5c6;
-  --color-cinnabar: #922820;
-  --color-cinnabar-deep: #6e1c17;
-  --color-pine: #1b4336;
-  --color-gold: #6d4e16;
-  --color-gold-soft: #f4e7cf;
-  --color-cream: #f7f1e7;
+  --color-ink: #141414;
+  --color-ink-soft: #6b645c;
+  --color-paper: #fbf7f2;
+  --color-paper-2: #f4ede4;
+  --color-card: #ffffff;
+  --color-line: #e9e1d6;
+  --color-cinnabar: #e82430;
+  --color-cinnabar-deep: #781616;
+  --color-pine: #141414;
+  --color-gold: #c9a24a;
+  --color-gold-soft: #f3e7c9;
+  --color-cream: #fbf7f2;
 }
 
 html {
@@ -28,12 +35,18 @@ html {
 }
 
 body {
+  background: #fbf7f2;
+  color: #141414;
+  font-family: Manrope, Inter, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 760px) {
   body {
-    padding-bottom: 4.25rem;
+    font-size: 16px;
   }
 }
 
@@ -46,8 +59,8 @@ body.scroll-lock .mobile-dock {
 }
 
 ::selection {
-  background: #f4e7cf;
-  color: #1c1412;
+  background: #f3e7c9;
+  color: #141414;
 }
 
 .skip-link {

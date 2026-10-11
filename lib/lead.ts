@@ -16,6 +16,7 @@ export type CleanLead = {
   placement: string;
   page: string;
   utm: Record<string, string>;
+  preferredTime: string | null;
 };
 
 export type LeadRules = {
@@ -134,6 +135,8 @@ export function validateLead(
     }
   }
 
+  const preferredTime = cleanText(data.preferredTime, 80) || null;
+
   return {
     ok: true,
     spam: false,
@@ -147,6 +150,7 @@ export function validateLead(
       placement,
       page,
       utm,
+      preferredTime,
     },
   };
 }
@@ -166,6 +170,7 @@ export function leadText(
     `Имя: ${lead.parentName}`,
     `Телефон: ${lead.phone}`,
     `Связь: ${messengerLabel[lead.messenger]}`,
+    lead.preferredTime ? `Удобное время: ${lead.preferredTime}` : "",
     "Дети:",
     kids,
     `Тренер: ${labels.coach(lead.coachId)}`,

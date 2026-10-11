@@ -3,22 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PhoneIcon, TelegramIcon, WhatsappIcon } from "@/components/icons";
-import { Logo } from "@/components/logo";
-import { SignupButton } from "@/components/signup-button";
+import { BrandLockup } from "@/components/brand-lockup";
+import { TgIcon, WaIcon } from "@/components/mock-icons";
 import { TrackLink } from "@/components/track-link";
-import { buttonClass } from "@/lib/styles";
-
-type NavItem = { href: string; label: string };
 
 export function SiteHeader({
-  nav,
   phoneDisplay,
   phoneTel,
   whatsapp,
   telegram,
 }: {
-  nav: NavItem[];
   phoneDisplay: string;
   phoneTel: string;
   whatsapp: string;
@@ -27,72 +21,66 @@ export function SiteHeader({
   const pathname = usePathname();
   const [menuPath, setMenuPath] = useState<string | null>(null);
   const open = menuPath === pathname;
+  const home = pathname === "/";
+  const links = [
+    { href: home ? "#dir" : "/#dir", label: "Направления" },
+    { href: home ? "#coach" : "/#coach", label: "Тренеры" },
+    { href: home ? "#price" : "/#price", label: "Цены" },
+    { href: "/schedule", label: "Расписание", current: pathname === "/schedule" },
+    { href: home ? "#cont" : "/#cont", label: "Контакты" },
+  ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/95 backdrop-blur">
-      <div className="mx-auto flex min-h-16 w-full max-w-6xl items-center gap-3 px-4">
-        <Logo />
-        <nav aria-label="Разделы" className="ml-4 hidden items-center gap-4 lg:flex">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
-              className={`text-sm ${pathname === item.href ? "font-semibold text-ink" : "text-ink-soft hover:text-ink"}`}
-            >
+    <header className="site-header">
+      <div className="wrap hdr">
+        <BrandLockup />
+        <nav className="menu" aria-label="Разделы">
+          {links.map((item) => (
+            <Link key={item.label} href={item.href} className={item.current ? "cur" : undefined} aria-current={item.current ? "page" : undefined}>
               {item.label}
             </Link>
           ))}
         </nav>
-        <div className="ml-auto flex items-center gap-1 sm:gap-2">
-          <TrackLink
-            href={`tel:${phoneTel}`}
-            goal="phone_click"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full px-2 text-sm font-semibold"
-            aria-label={`Позвонить ${phoneDisplay}`}
-          >
-            <PhoneIcon />
-            <span className="hidden xl:inline">{phoneDisplay}</span>
+        <div className="hdr-right">
+          <TrackLink href={`tel:${phoneTel}`} goal="phone_click" className="phone">
+            {phoneDisplay}
           </TrackLink>
-          <TrackLink href={whatsapp} goal="whatsapp_click" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full" aria-label="WhatsApp">
-            <WhatsappIcon />
+          <TrackLink href={telegram} goal="telegram_click" target="_blank" rel="noopener noreferrer" className="ico ico-tg" aria-label="Telegram">
+            <TgIcon />
           </TrackLink>
-          <TrackLink href={telegram} goal="telegram_click" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full" aria-label="Telegram">
-            <TelegramIcon />
+          <TrackLink href={whatsapp} goal="whatsapp_click" target="_blank" rel="noopener noreferrer" className="ico ico-wa" aria-label="WhatsApp">
+            <WaIcon />
           </TrackLink>
-          <SignupButton placement="header" className={`${buttonClass()} max-sm:hidden!`}>
+          <Link className="btn btn-red" href={home ? "#quiz" : "/#quiz"}>
             Записаться
-          </SignupButton>
+          </Link>
           <button
             type="button"
-            className="inline-flex min-h-11 items-center rounded-full px-3 text-sm font-semibold lg:hidden"
+            className="burger"
+            aria-label={open ? "Закрыть меню" : "Меню"}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setMenuPath(open ? null : pathname)}
           >
-            {open ? "Закрыть" : "Меню"}
+            <i />
+            <i />
+            <i />
           </button>
         </div>
       </div>
-      {open && (
-        <nav id="mobile-nav" aria-label="Разделы" className="border-t border-line bg-paper lg:hidden">
-          <div className="mx-auto grid w-full max-w-6xl gap-1 px-4 py-3">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className="rounded-2xl px-3 py-3 text-base hover:bg-card"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <SignupButton placement="menu" className={`${buttonClass()} mt-2`}>
-              Записаться
-            </SignupButton>
-          </div>
-        </nav>
-      )}
+      <div id="mobile-nav" className={open ? "menu-panel open" : "menu-panel"}>
+        {links.map((item) => (
+          <Link key={item.label} href={item.href} aria-current={item.current ? "page" : undefined} onClick={() => setMenuPath(null)}>
+            {item.label}
+          </Link>
+        ))}
+        <Link href="/events" onClick={() => setMenuPath(null)}>
+          События
+        </Link>
+        <Link className="btn btn-red" href={home ? "#quiz" : "/#quiz"} onClick={() => setMenuPath(null)}>
+          Записаться
+        </Link>
+      </div>
     </header>
   );
 }

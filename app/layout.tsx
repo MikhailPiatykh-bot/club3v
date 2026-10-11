@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Unbounded } from "next/font/google";
 import { JsonLd } from "@/components/json-ld";
 import { LeadProvider } from "@/components/lead-provider";
 import { Metrika } from "@/components/metrika";
@@ -10,20 +9,6 @@ import { UtmCapture } from "@/components/utm-capture";
 import { site, siteUrl } from "@/lib/content";
 import { businessJsonLd } from "@/lib/schema";
 import "./globals.css";
-
-const sans = Manrope({
-  subsets: ["cyrillic", "latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-manrope",
-  display: "swap",
-});
-
-const display = Unbounded({
-  subsets: ["cyrillic", "latin"],
-  weight: ["500", "700"],
-  variable: "--font-unbounded",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -45,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1c1412",
+  themeColor: "#FBF7F2",
   width: "device-width",
   initialScale: 1,
 };
@@ -59,13 +44,13 @@ const contacts = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${sans.variable} ${display.variable}`}>
-      <body className="bg-paper font-sans text-ink antialiased">
+    <html lang="ru">
+      <body>
         <a href="#content" className="skip-link">
           К содержанию
         </a>
         <LeadProvider contacts={contacts} thankYou={site.thankYou}>
-          <SiteHeader nav={site.nav} {...contacts} />
+          <SiteHeader {...contacts} />
           <main id="content">{children}</main>
           <SiteFooter />
           <MobileDock whatsapp={site.whatsapp} telegram={site.telegram} />

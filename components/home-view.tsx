@@ -1,319 +1,515 @@
 import Link from "next/link";
-import { CoachCard } from "@/components/coach-card";
-import { DraftMark } from "@/components/draft-mark";
-import { FaqList } from "@/components/faq-list";
-import { GroupCards } from "@/components/group-cards";
-import { Hero } from "@/components/hero";
-import { JsonLd } from "@/components/json-ld";
-import { MapEmbed } from "@/components/map-embed";
-import { PhotoSlot } from "@/components/photo-slot";
-import { PriceCards } from "@/components/price-cards";
+import { HomeFaq, HomeMap, HomeSchedule, HomeVideos } from "@/components/home-islands";
+import { CamIcon, ImgIcon, TgIcon, WaIcon } from "@/components/mock-icons";
 import { Quiz } from "@/components/quiz";
-import { ScheduleList } from "@/components/schedule-list";
 import { SignupButton } from "@/components/signup-button";
 import { TrackLink } from "@/components/track-link";
-import { VideoGrid } from "@/components/video-grid";
-import {
-  belts,
-  coaches,
-  coachesDoc,
-  events,
-  faq,
-  reviews,
-  scheduleDoc,
-  site,
-  stats,
-  videos,
-  videosDoc,
-} from "@/lib/content";
-import { scheduleRows } from "@/lib/schedule-rows";
-import { faqJsonLd, founderJsonLd } from "@/lib/schema";
-import { buttonClass } from "@/lib/styles";
+import { coaches, prices, site, videos } from "@/lib/content";
+import { formatRub } from "@/lib/money";
 
-const contacts = {
-  phoneDisplay: site.phoneDisplay,
-  phoneTel: site.phoneTel,
-  whatsapp: site.whatsapp,
-  telegram: site.telegram,
-};
+const steps = [
+  { age: "3–4", unit: "года", text: "Самые младшие. Первое знакомство с тренировками." },
+  { age: "5–6", unit: "лет", text: "Дошкольники. Основы техники направления." },
+  { age: "7–10", unit: "лет", text: "Младшие школьники. Регулярные тренировки и старты." },
+  { age: "11+", unit: "лет", text: "Старшая группа. Соревнования, лагерь, сборы в Китае." },
+];
+
+const path = [
+  { n: "1", title: "Соревнования", text: "Участие в стартах.", todo: "Уровни — от клуба" },
+  { n: "2", title: "Пояса", text: "Аттестации.", todo: "Система поясов — от клуба" },
+  { n: "3", title: "Лагерь", text: "Лагерь клуба.", todo: "Даты, место — от клуба" },
+  { n: "4", title: "Сборы в Китае", text: "Тренировочные сборы в Китае.", todo: "Детали — от клуба" },
+];
+
+const coachCards = [
+  { title: "Имя тренера", line: "Направление: ушу", coach: coaches[0] },
+  { title: "Имя тренера", line: "Направление: акробатика", coach: coaches[1] },
+  { title: "Имя тренера", line: "Направление: —", coach: undefined },
+];
 
 export function HomeView() {
-  const path = events.filter((item) => item.id !== "attestation");
-
   return (
-    <>
-      <JsonLd data={faqJsonLd(faq)} />
-      <JsonLd data={founderJsonLd()} />
-      <Hero />
-
-      <section id="why" className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-        <h2 className="max-w-2xl font-display text-3xl leading-tight md:text-4xl">{site.why.title}</h2>
-        <ul className="mt-6 grid gap-3 md:grid-cols-2">
-          {site.why.cards.map((card) => (
-            <li key={card.problem} className="rounded-3xl border border-line bg-card p-5">
-              <h3 className="font-display text-xl">{card.problem}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{card.help}</p>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-5 max-w-3xl text-ink-soft">{site.why.summary}</p>
-      </section>
-
-      <section id="directions" className="mx-auto w-full max-w-6xl px-4 pb-12 md:pb-16">
-        <h2 className="font-display text-3xl md:text-4xl">Два направления</h2>
-        <div className="mt-6 grid gap-3 md:grid-cols-2">
-        <Link href="/wushu" className="flex min-h-64 flex-col justify-between rounded-3xl bg-pine p-6 text-white">
-          <div>
-            <p className="text-xs uppercase tracking-[0.16em] text-white/70">с 3 лет</p>
-            <h3 className="mt-3 font-display text-4xl">Ушу</h3>
-            <p className="mt-3 max-w-sm text-white/85">Традиционное и оздоровительное. Координация, осанка и своя возрастная группа.</p>
-          </div>
-          <span className="mt-6 text-sm font-semibold">Группы и расписание</span>
-        </Link>
-        <Link href="/acrobatics" className="flex min-h-64 flex-col justify-between rounded-3xl bg-cinnabar p-6 text-white">
-          <div>
-            <p className="text-xs uppercase tracking-[0.16em] text-white/70">с 3 лет</p>
-            <h3 className="mt-3 font-display text-4xl">Акробатика</h3>
-            <p className="mt-3 max-w-sm text-white/85">Сила, гибкость и координация. Элемент появляется, когда группа к нему готова.</p>
-          </div>
-          <span className="mt-6 text-sm font-semibold">Группы и расписание</span>
-        </Link>
-        </div>
-      </section>
-
-      <section id="groups" className="bg-paper-2 py-12 md:py-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <h2 className="font-display text-3xl md:text-4xl">Возрастные группы</h2>
-          <div className="mt-6">
-            <GroupCards />
-          </div>
-        </div>
-      </section>
-
-      <section id="progress" className="bg-ink py-12 text-paper md:py-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="font-display text-3xl md:text-4xl">Видимый прогресс</h2>
-            {belts.draft && <DraftMark />}
-          </div>
-          <p className="mt-3 max-w-2xl text-paper/75">{belts.note}</p>
-          <div className="mt-8 grid gap-8 md:grid-cols-2">
-            <BeltColumn title="Ушу" steps={belts.wushu} />
-            <BeltColumn title="Акробатика" steps={belts.acrobatics} />
-          </div>
-        </div>
-      </section>
-
-      <section id="founder" className="mx-auto grid w-full max-w-6xl items-center gap-6 px-4 py-12 md:grid-cols-[16rem_1fr] md:py-16">
-        <PhotoSlot
-          src={site.founder.photo}
-          alt={site.founder.photoAlt}
-          width={site.founder.width}
-          height={site.founder.height}
-          label="Фото основателя"
-          className="rounded-3xl"
-        />
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cinnabar">{site.founder.role}</p>
-          <h2 className="mt-2 font-display text-3xl md:text-4xl">{site.founder.name}</h2>
-          {site.founder.quote ? (
-            <blockquote className="mt-4 text-lg">{site.founder.quote}</blockquote>
-          ) : (
-            <p className="mt-4 text-ink-soft">Цитату добавит клуб.</p>
-          )}
-          {site.founder.regalia.length > 0 ? (
-            <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-ink-soft">
-              {site.founder.regalia.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-4 text-sm text-ink-soft">Регалии добавит клуб.</p>
-          )}
-        </div>
-      </section>
-
-      <section id="coaches" className="bg-paper-2 py-12 md:py-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="font-display text-3xl md:text-4xl">Тренеры</h2>
-            {coachesDoc.draft && <DraftMark />}
-          </div>
-          <div className="mt-6 grid gap-3 md:grid-cols-2">
-            {coaches.map((coach) => (
-              <CoachCard key={coach.id} coach={coach} />
-            ))}
-          </div>
-          <Link href="/coaches" className="mt-4 inline-flex text-sm font-semibold underline-offset-2 hover:underline">
-            Все тренеры
-          </Link>
-        </div>
-      </section>
-
-      <section id="stats" className="bg-pine py-12 text-white md:py-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <h2 className="font-display text-3xl md:text-4xl">Клуб в цифрах</h2>
-          <ul className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {stats.map((item) => (
-              <li key={item.label} className="rounded-3xl bg-white/10 p-4">
-                <p className="font-display text-2xl md:text-3xl">{item.value}</p>
-                <p className="mt-2 text-sm text-white/80">{item.label}</p>
+    <div className="home">
+      <section className="hero">
+        <div className="wrap hero-grid">
+          <div className="hero-text">
+            <div className="draft">Макет · черновик</div>
+            <div className="kicker">Детский спортивный клуб · Москва, СЗАО</div>
+            <h1>
+              Ушу и&nbsp;акробатика для детей <em>с&nbsp;3&nbsp;лет</em> в&nbsp;СЗАО
+            </h1>
+            <ul className="bul">
+              <li>
+                <i>✓</i>Группы по возрасту — для детей с 3 лет
               </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section id="prices" className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="font-display text-3xl md:text-4xl">Цены</h2>
-          <Link href="/prices" className="text-sm font-semibold underline-offset-2 hover:underline">
-            Подробнее
-          </Link>
-        </div>
-        <div className="mt-6">
-          <PriceCards />
-        </div>
-      </section>
-
-      <section id="schedule" className="bg-paper-2 py-12 md:py-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="font-display text-3xl md:text-4xl">Расписание</h2>
-            {scheduleDoc.draft && <DraftMark />}
-          </div>
-          <p className="mt-3 max-w-2xl text-sm text-ink-soft">{scheduleDoc.note}</p>
-          <div className="mt-5">
-            <ScheduleList rows={scheduleRows()} />
-          </div>
-          <Link href="/schedule" className="mt-4 inline-flex text-sm font-semibold underline-offset-2 hover:underline">
-            Всё расписание
-          </Link>
-        </div>
-      </section>
-
-      <section id="path" className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-        <h2 className="font-display text-3xl md:text-4xl">Путь ребёнка</h2>
-        <p className="mt-3 max-w-2xl text-ink-soft">Соревнования, летний лагерь и сборы в Китае. Участие по желанию, даты клуб публикует отдельно.</p>
-        <ul className="mt-6 grid gap-3 md:grid-cols-3">
-          {path.map((item) => (
-            <li key={item.id}>
-              <Link href={`/events#${item.id}`} className="block h-full rounded-3xl border border-line bg-card p-5 hover:border-ink/30">
-                <h3 className="font-display text-2xl">{item.title}</h3>
-                <p className="mt-2 text-sm text-ink-soft">{item.text}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section id="video" className="bg-paper-2 py-12 md:py-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="font-display text-3xl md:text-4xl">Видео</h2>
-            {videosDoc.draft && <DraftMark />}
-          </div>
-          <div className="mt-6">
-            <VideoGrid items={videos} />
-          </div>
-        </div>
-      </section>
-
-      <section id="reviews" className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-        <h2 className="font-display text-3xl md:text-4xl">Отзывы родителей</h2>
-        <TrackLink href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center rounded-full bg-gold-soft px-4 text-sm font-semibold text-gold">
-          Яндекс Карты · {site.reviewsCountLabel} отзывов
-        </TrackLink>
-        <ul className="mt-6 grid gap-3 md:grid-cols-2">
-          {reviews.map((review) => (
-            <li key={review.name} className="rounded-3xl border border-line bg-card p-5">
-              <blockquote className="text-sm leading-relaxed">{review.text}</blockquote>
-              <p className="mt-3 text-sm font-semibold">{review.name}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section id="trust" className="bg-paper-2 py-12 md:py-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <h2 className="font-display text-3xl md:text-4xl">Доверие</h2>
-          <ul className="mt-6 grid gap-3 md:grid-cols-3">
-            <li className="rounded-3xl bg-card p-5">
-              <h3 className="font-display text-xl">Яндекс Карты</h3>
-              <p className="mt-2 text-sm text-ink-soft">{site.reviewsCountLabel} отзывов. Ссылку на карточку организации можно заменить в контенте.</p>
-            </li>
-            <li className="rounded-3xl bg-card p-5">
-              <h3 className="font-display text-xl">Свои старты</h3>
-              <p className="mt-2 text-sm text-ink-soft">Соревнования, аттестации, летний лагерь и сборы в Китае.</p>
-            </li>
-            <li className="rounded-3xl bg-card p-5">
-              <DraftMark />
-              <h3 className="mt-3 font-display text-xl">Награды и членство</h3>
-              <p className="mt-2 text-sm text-ink-soft">Федерацию, награды и отметку «Хорошее место» добавим, когда клуб пришлёт подтверждение.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="quiz" className="bg-pine py-12 text-white md:py-16">
-        <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 md:grid-cols-2 md:items-start">
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl">Подберём группу</h2>
-            <p className="mt-3 max-w-md text-white/80">Возраст, направление, имя и телефон. Администратор подтвердит группу и перезвонит.</p>
-          </div>
-          <Quiz contacts={contacts} thankYou={site.thankYou} />
-        </div>
-      </section>
-
-      <section id="faq" className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-        <h2 className="font-display text-3xl md:text-4xl">Вопросы родителей</h2>
-        <div className="mt-6">
-          <FaqList items={faq} />
-        </div>
-      </section>
-
-      <section id="contacts" className="bg-paper-2 py-12 md:py-16">
-        <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 md:grid-cols-2">
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl">Контакты</h2>
-            <p className="mt-3 text-ink-soft">{site.address.full}</p>
-            <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="mt-3 inline-flex text-lg font-semibold">
-              {site.phoneDisplay}
-            </TrackLink>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <TrackLink href={site.whatsapp} goal="whatsapp_click" target="_blank" rel="noopener noreferrer" className={buttonClass("ghost")}>
-                WhatsApp
-              </TrackLink>
-              <TrackLink href={site.telegram} goal="telegram_click" target="_blank" rel="noopener noreferrer" className={buttonClass("ghost")}>
-                Telegram
+              <li>
+                <i>✓</i>Соревнования, лагерь и сборы в Китае
+              </li>
+              <li>
+                <i>✓</i>Один адрес: пр-т Маршала Жукова, 51
+              </li>
+            </ul>
+            <div className="cta-row">
+              <a className="btn btn-red" href="#quiz">
+                Записаться на пробное
+              </a>
+              <TrackLink href={site.whatsapp} goal="whatsapp_click" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+                <span style={{ color: "#25D366", display: "inline-flex" }}>
+                  <WaIcon />
+                </span>
+                Написать в WhatsApp
               </TrackLink>
             </div>
-            <SignupButton placement="contacts" className={`${buttonClass()} mt-4`}>
-              Записаться
-            </SignupButton>
+            <div className="chips">
+              <span className="lbl">Группы:</span>
+              <span className="chip">3–4 года</span>
+              <span className="chip">5–6 лет</span>
+              <span className="chip">7–10 лет</span>
+              <span className="chip">11+ лет</span>
+            </div>
           </div>
-          <MapEmbed widgetUrl={site.mapWidgetUrl} mapsUrl={site.mapsUrl} />
+          <div className="hero-photo">
+            <div className="ph">
+              <CamIcon />
+              Фото: дети на тренировке
+              <small>главное фото клуба, горизонтальное / вертикальное</small>
+            </div>
+            <div className="float f1">
+              <div className="ya">Я</div>
+              <div>
+                <b>~70 отзывов</b>
+                <span>на Яндекс Картах</span>
+              </div>
+            </div>
+            <div className="float f2">
+              <div>
+                <b>9 000 ₽/мес</b>
+                <span>абонемент</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-    </>
-  );
-}
 
-function BeltColumn({ title, steps }: { title: string; steps: { id: string; name: string; result: string }[] }) {
-  return (
-    <div>
-      <h3 className="font-display text-2xl">{title}</h3>
-      <ol className="mt-4 space-y-3">
-        {steps.map((step, index) => (
-          <li key={step.id} className="grid grid-cols-[2.5rem_1fr] gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-full border border-white/30 text-sm">{index + 1}</span>
+      <section id="dir">
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Направления</div>
+              <h2>
+                Два направления —<br className="dbr" /> один клуб
+              </h2>
+            </div>
+            <p>Оба направления — для детей с 3 лет, группы формируются по возрасту.</p>
+          </div>
+          <div className="dir-grid">
+            <div className="dir wushu">
+              <div className="num">01</div>
+              <h3>
+                Детское ушу
+                <small>традиционное и оздоровительное</small>
+              </h3>
+              <div className="ph">
+                <CamIcon />
+                Фото: занятие по ушу
+              </div>
+              <p>
+                <span className="todo">Описание направления — текст от клуба</span>
+              </p>
+              <div className="row">
+                <div className="tags">
+                  <span>С 3 лет</span>
+                  <span>Группы по возрасту</span>
+                  <span>Соревнования</span>
+                </div>
+                <Link className="btn btn-white" href="/wushu">
+                  Подробнее
+                </Link>
+              </div>
+            </div>
+            <div className="dir acro">
+              <div className="num">02</div>
+              <h3>
+                Спортивная акробатика
+                <small>для детей с 3 лет</small>
+              </h3>
+              <div className="ph">
+                <CamIcon />
+                Фото: занятие по акробатике
+              </div>
+              <p>
+                <span className="todo">Описание направления — текст от клуба</span>
+              </p>
+              <div className="row">
+                <div className="tags">
+                  <span>С 3 лет</span>
+                  <span>Группы по возрасту</span>
+                  <span>Соревнования</span>
+                </div>
+                <Link className="btn btn-dark" href="/acrobatics">
+                  Подробнее
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ages">
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Возрастные группы</div>
+              <h2>Растём шаг за шагом</h2>
+            </div>
+            <p>Ребёнок занимается со сверстниками и переходит в следующую группу по мере взросления.</p>
+          </div>
+          <div className="ladder">
+            {steps.map((step) => (
+              <div key={step.age} className="step">
+                <div className="age">
+                  {step.age}
+                  <small>{step.unit}</small>
+                </div>
+                <p>{step.text}</p>
+                <div className="meta">
+                  <span>Ушу</span>
+                  <span>Акробатика</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Клуб в цифрах</div>
+              <h2>CLUB3V в цифрах</h2>
+            </div>
+          </div>
+          <div className="figs">
+            <div className="fig">
+              <b>X</b>
+              <span>лет работы клуба</span>
+            </div>
+            <div className="fig">
+              <b>X</b>
+              <span>учеников занимается</span>
+            </div>
+            <div className="fig">
+              <b>X</b>
+              <span>наград на соревнованиях</span>
+            </div>
+            <div className="fig real">
+              <b>~70</b>
+              <span>отзывов на Яндекс Картах</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="coach">
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Тренеры</div>
+              <h2>Тренерский состав</h2>
+            </div>
+            <p>
+              <span className="todo">Короткий текст о тренерах — от клуба</span>
+            </p>
+          </div>
+          <div className="coaches">
+            {coachCards.map((card) => (
+              <div key={card.line} className="coach">
+                <div className="ph">
+                  <CamIcon />
+                  Фото тренера
+                </div>
+                <div>
+                  <h3>{card.coach?.placeholder === false ? card.coach.name : card.title}</h3>
+                  <p>{card.line}</p>
+                  <div className="tags">
+                    <span>Стаж: X лет</span>
+                    <span>Регалии: —</span>
+                  </div>
+                  <SignupButton placement="coach" coachId={card.coach?.id} coachName={card.coach?.name} className="btn btn-dark coach-signup">
+                    Записаться к тренеру
+                  </SignupButton>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="price">
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Стоимость</div>
+              <h2>Цены на занятия</h2>
+            </div>
+            <p>Начните с пробного занятия, затем выберите удобный формат.</p>
+          </div>
+          <div className="prices">
+            <div className="price">
+              <div className="t">{prices.trial.title}</div>
+              <div className="v">— ₽</div>
+              <ul>
+                <li>Знакомство с тренером и группой</li>
+                <li>Длительность: X мин</li>
+              </ul>
+              <a className="btn btn-ghost" href="#quiz">
+                Записаться
+              </a>
+            </div>
+            <div className="price">
+              <div className="t">{prices.dropIn.title}</div>
+              <div className="v">— ₽</div>
+              <ul>
+                <li>Одно занятие в группе</li>
+                <li>Длительность: X мин</li>
+              </ul>
+              <a className="btn btn-ghost" href="#quiz">
+                Записаться
+              </a>
+            </div>
+            <div className="price hl">
+              <span className="badge">Выгодно</span>
+              <div className="t">{prices.subscriptionCard.title}</div>
+              <div className="v">
+                {formatRub(prices.subscription).replace("\u00a0₽", "")} ₽<small> / мес</small>
+              </div>
+              <ul>
+                <li>Занятий в месяц: X</li>
+                <li>Длительность: X мин</li>
+              </ul>
+              <div className="disc">
+                <b>−{prices.largeFamilyDiscountPercent}%</b>
+                Многодетным — скидка {prices.largeFamilyDiscountPercent}%
+              </div>
+              <a className="btn btn-red" href="#quiz">
+                Оформить абонемент
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sched">
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Расписание</div>
+              <h2>Расписание групп</h2>
+            </div>
+            <p>пр-т Маршала Жукова, 51</p>
+          </div>
+          <HomeSchedule />
+          <div className="sched-note">
             <span>
-              <span className="block font-semibold">{step.name}</span>
-              <span className="mt-1 block text-sm text-paper/70">{step.result}</span>
+              Расписание уточняйте у администратора.{" "}
+              <Link href="/schedule" className="ul">
+                Сетка на неделю
+              </Link>
             </span>
-          </li>
-        ))}
-      </ol>
+            <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="btn btn-dark">
+              Уточнить по телефону
+            </TrackLink>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="path">
+            <div className="kicker">Путь спортсмена</div>
+            <h2>Путь ребёнка в клубе</h2>
+            <div className="steps">
+              {path.map((item) => (
+                <div key={item.n} className="ps">
+                  <div className="n">{item.n}</div>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>
+                      {item.text} <span className="todo">{item.todo}</span>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Видео</div>
+              <h2>Как проходят тренировки</h2>
+            </div>
+            <p>Короткие вертикальные видео из зала и с соревнований.</p>
+          </div>
+          <HomeVideos items={videos.map((item) => ({ id: item.id, title: item.title, src: item.src }))} />
+        </div>
+      </section>
+
+      <section id="rev">
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Отзывы</div>
+              <h2>Что говорят родители</h2>
+            </div>
+          </div>
+          <div className="rev-grid">
+            <div className="rev-side">
+              <b>~70</b>
+              <p>отзывов о клубе на Яндекс Картах</p>
+              <a className="btn btn-white" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+                Читать на Яндекс Картах
+              </a>
+              <a className="btn btn-ghost" style={{ color: "#fff", borderColor: "rgba(255,255,255,.6)", marginTop: -6 }} href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+                Оставить отзыв
+              </a>
+            </div>
+            <div className="widget">
+              <div className="top">
+                <div className="ya">Я</div>
+                <div>
+                  <b>Виджет отзывов Яндекс Карт • ~70 отзывов</b>
+                  <span>Встраивается кодом с Яндекс Карт, данные подтягиваются автоматически</span>
+                </div>
+              </div>
+              <div className="wl">
+                <div>Место для отзыва из Яндекс Карт</div>
+                <div>Место для отзыва из Яндекс Карт</div>
+                <div>Место для отзыва из Яндекс Карт</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Доверие</div>
+              <h2>Федерации и награды</h2>
+            </div>
+            <p>
+              <span className="todo">Список федераций и наград — от клуба</span>
+            </p>
+          </div>
+          <div className="logos">
+            <div className="ph">
+              <ImgIcon />
+              Логотип федерации
+            </div>
+            <div className="ph">
+              <ImgIcon />
+              Логотип федерации
+            </div>
+            <div className="ph">
+              <ImgIcon />
+              Награда / диплом
+            </div>
+            <div className="ph">
+              <ImgIcon />
+              Награда / диплом
+            </div>
+            <div className="ph">
+              <ImgIcon />
+              Логотип партнёра
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz">
+        <div className="wrap">
+          <div className="quiz">
+            <div>
+              <div className="kicker">Запись</div>
+              <h2>Подберём группу</h2>
+              <p className="lead">Ответьте на 4 коротких вопроса — администратор подберёт группу и время пробного занятия.</p>
+              <div className="chips">
+                <span className="chip">Возраст</span>
+                <span className="chip">Направление</span>
+                <span className="chip">Время</span>
+                <span className="chip">Контакты</span>
+              </div>
+            </div>
+            <Quiz contacts={{ phoneDisplay: site.phoneDisplay, phoneTel: site.phoneTel, whatsapp: site.whatsapp, telegram: site.telegram }} thankYou={site.thankYou} />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap faq-grid">
+          <div>
+            <div className="kicker">Вопросы</div>
+            <h2>Частые вопросы</h2>
+          </div>
+          <HomeFaq />
+        </div>
+      </section>
+
+      <section id="cont">
+        <div className="wrap">
+          <div className="sec-head">
+            <div>
+              <div className="kicker">Контакты</div>
+              <h2>Ждём на тренировке</h2>
+            </div>
+          </div>
+          <div className="contacts">
+            <HomeMap widgetUrl={site.mapWidgetUrl} />
+            <div className="ccard">
+              <div>
+                <div className="lbl">Адрес</div>
+                <div className="val">
+                  Москва, СЗАО,
+                  <br />
+                  пр-т Маршала Жукова, 51
+                </div>
+              </div>
+              <div>
+                <div className="lbl">Телефон</div>
+                <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="val big">
+                  {site.phoneDisplay}
+                </TrackLink>
+              </div>
+              <div>
+                <div className="lbl">Мессенджеры</div>
+                <div className="msg">
+                  <TrackLink href={site.whatsapp} goal="whatsapp_click" target="_blank" rel="noopener noreferrer">
+                    <span className="ico ico-wa">
+                      <WaIcon />
+                    </span>
+                    WhatsApp
+                  </TrackLink>
+                  <TrackLink href={site.telegram} goal="telegram_click" target="_blank" rel="noopener noreferrer">
+                    <span className="ico ico-tg">
+                      <TgIcon />
+                    </span>
+                    Telegram
+                  </TrackLink>
+                </div>
+              </div>
+              <a className="btn btn-red" href="#quiz">
+                Записаться на пробное
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

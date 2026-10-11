@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Breadcrumbs } from "@/components/breadcrumbs";
-import { CtaBand } from "@/components/cta-band";
-import { ScheduleBoard } from "@/components/schedule-board";
-import { scheduleDoc, site } from "@/lib/content";
-import { scheduleRows } from "@/lib/schedule-rows";
+import { Suspense } from "react";
+import { JsonLd } from "@/components/json-ld";
+import { ScheduleWeek } from "@/components/schedule-week";
+import { breadcrumbJsonLd } from "@/lib/schema";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -14,20 +13,11 @@ export const metadata: Metadata = pageMeta({
 
 export default function SchedulePage() {
   return (
-    <>
-      <header className="border-b border-line bg-card">
-        <div className="mx-auto w-full max-w-6xl px-4 py-10 md:py-14">
-          <Breadcrumbs items={[{ name: "Главная", path: "/" }, { name: "Расписание", path: "/schedule" }]} />
-          <h1 className="mt-4 font-display text-4xl leading-tight">Расписание</h1>
-          <p className="mt-4 max-w-2xl text-lg text-ink-soft">
-            Один зал: {site.address.full}. Фильтр по направлению и возрасту.
-          </p>
-        </div>
-      </header>
-      <section className="mx-auto w-full max-w-6xl px-4 py-10">
-        <ScheduleBoard rows={scheduleRows()} note={scheduleDoc.draft ? scheduleDoc.note : undefined} />
-      </section>
-      <CtaBand placement="schedule" />
-    </>
+    <div className="sp">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Главная", path: "/" }, { name: "Расписание", path: "/schedule" }])} />
+      <Suspense fallback={<section className="s-hero"><div className="wrap">Загрузка расписания…</div></section>}>
+        <ScheduleWeek />
+      </Suspense>
+    </div>
   );
 }
