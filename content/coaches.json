@@ -1,0 +1,30 @@
+{
+  "_comment": "Замените карточки на людей: имя, регалии, фото из public/, группы, дни и время. Не выдумывайте звания.",
+  "draft": true,
+  "items": [
+    {
+      "id": "wushu-coach",
+      "placeholder": true,
+      "name": "Тренер по ушу",
+      "title": "Фото и регалии добавит клуб",
+      "photo": null,
+      "width": 800,
+      "height": 1000,
+      "groupIds": ["wushu-3-4", "wushu-5-6", "wushu-7-plus"],
+      "days": "уточняется",
+      "time": "уточняется"
+    },
+    {
+      "id": "acro-coach",
+      "placeholder": true,
+      "name": "Тренер по акробатике",
+      "title": "Фото и регалии добавит клуб",
+      "photo": null,
+      "width": 800,
+      "height": 1000,
+      "groupIds": ["acro-3-4", "acro-5-6", "acro-7-plus"],
+      "days": "уточняется",
+      "time": "уточняется"
+    }
+  ]
+}

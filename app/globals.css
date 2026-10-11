@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-manrope), "Manrope", sans-serif;
+  --font-display: var(--font-unbounded), "Unbounded", sans-serif;
+  --color-ink: #1c1412;
+  --color-ink-soft: #4a403a;
+  --color-paper: #f3eee6;
+  --color-paper-2: #e7dfd2;
+  --color-card: #fffdf9;
+  --color-line: #e0d5c6;
+  --color-cinnabar: #922820;
+  --color-cinnabar-deep: #6e1c17;
+  --color-pine: #1b4336;
+  --color-gold: #6d4e16;
+  --color-gold-soft: #f4e7cf;
+  --color-cream: #f7f1e7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.25rem;
+  }
+}
+
+body.scroll-lock {
+  overflow: hidden;
+}
+
+body.scroll-lock .mobile-dock {
+  visibility: hidden;
+}
+
+::selection {
+  background: #f4e7cf;
+  color: #1c1412;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  border-radius: 999px;
+  background: #fffdf9;
+  padding: 0.5rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+dialog {
+  margin: auto;
+  width: min(100vw - 1.5rem, 36rem);
+  max-width: calc(100vw - 1.5rem);
+  max-height: calc(100dvh - 1.5rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+@media (max-width: 639px) {
+  dialog[open] {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(28 20 18 / 0.64);
+}
+
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
