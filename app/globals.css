@@ -35,6 +35,7 @@ html {
 }
 
 body {
+  position: relative;
   background: #fbf7f2;
   color: #141414;
   font-family: Manrope, Inter, sans-serif;
