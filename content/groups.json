@@ -1,0 +1,67 @@
+{
+  "_comment": "Единственный источник возрастов. duration и size оставьте null, пока клуб не подтвердит цифры.",
+  "draft": true,
+  "note": "Границы групп клуб ещё подтверждает. На всех страницах указаны одни и те же возрасты.",
+  "items": [
+    {
+      "id": "wushu-3-4",
+      "direction": "wushu",
+      "name": "Младшая",
+      "ages": "3–4 года",
+      "ageMin": 3,
+      "ageMax": 4,
+      "duration": null,
+      "size": null
+    },
+    {
+      "id": "wushu-5-6",
+      "direction": "wushu",
+      "name": "Средняя младшая",
+      "ages": "5–6 лет",
+      "ageMin": 5,
+      "ageMax": 6,
+      "duration": null,
+      "size": null
+    },
+    {
+      "id": "wushu-7-plus",
+      "direction": "wushu",
+      "name": "Старшая",
+      "ages": "7 лет и старше",
+      "ageMin": 7,
+      "ageMax": null,
+      "duration": null,
+      "size": null
+    },
+    {
+      "id": "acro-3-4",
+      "direction": "acrobatics",
+      "name": "Младшая",
+      "ages": "3–4 года",
+      "ageMin": 3,
+      "ageMax": 4,
+      "duration": null,
+      "size": null
+    },
+    {
+      "id": "acro-5-6",
+      "direction": "acrobatics",
+      "name": "Средняя младшая",
+      "ages": "5–6 лет",
+      "ageMin": 5,
+      "ageMax": 6,
+      "duration": null,
+      "size": null
+    },
+    {
+      "id": "acro-7-plus",
+      "direction": "acrobatics",
+      "name": "Старшая",
+      "ages": "7 лет и старше",
+      "ageMin": 7,
+      "ageMax": null,
+      "duration": null,
+      "size": null
+    }
+  ]
+}

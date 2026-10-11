@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "./club-fonts.css";
+@import "./club.css";
+
+:root {
+  --font-manrope: "Manrope", sans-serif;
+  --font-unbounded: "Unbounded", sans-serif;
+}
+
+@theme inline {
+  --font-sans: var(--font-manrope), "Manrope", sans-serif;
+  --font-display: var(--font-unbounded), "Unbounded", sans-serif;
+  --color-ink: #141414;
+  --color-ink-soft: #6b645c;
+  --color-paper: #fbf7f2;
+  --color-paper-2: #f4ede4;
+  --color-card: #ffffff;
+  --color-line: #e9e1d6;
+  --color-cinnabar: #e82430;
+  --color-cinnabar-deep: #781616;
+  --color-pine: #141414;
+  --color-gold: #c9a24a;
+  --color-gold-soft: #f3e7c9;
+  --color-cream: #fbf7f2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  position: relative;
+  background: #fbf7f2;
+  color: #141414;
+  font-family: Manrope, Inter, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+body.scroll-lock {
+  overflow: hidden;
+}
+
+body.scroll-lock .mobile-dock {
+  visibility: hidden;
+}
+
+::selection {
+  background: #f3e7c9;
+  color: #141414;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  border-radius: 999px;
+  background: #fffdf9;
+  padding: 0.5rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+dialog {
+  margin: auto;
+  width: min(100vw - 1.5rem, 36rem);
+  max-width: calc(100vw - 1.5rem);
+  max-height: calc(100dvh - 1.5rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+@media (max-width: 639px) {
+  dialog[open] {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(28 20 18 / 0.64);
+}
+
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
