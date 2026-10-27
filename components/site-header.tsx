@@ -12,7 +12,7 @@ function MenuLinks({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <>
       <div className="nav-item relative">
-        <button type="button" className="min-h-11 font-extrabold" aria-haspopup="true">
+        <button type="button" className="min-h-11 whitespace-nowrap font-extrabold" aria-haspopup="true">
           Направления
         </button>
         <div className="nav-drop max-md:static max-md:mt-2 max-md:block max-md:shadow-none">
@@ -31,17 +31,17 @@ function MenuLinks({ onNavigate }: { onNavigate?: () => void }) {
           ))}
         </div>
       </div>
-      <Link href="/schedule" className="min-h-11 font-extrabold leading-[44px]" onClick={onNavigate}>
+      <Link href="/schedule" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
         Расписание
       </Link>
-      <Link href="/prices" className="min-h-11 font-extrabold leading-[44px]" onClick={onNavigate}>
+      <Link href="/prices" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
         Цены
       </Link>
-      <Link href="/coaches" className="min-h-11 font-extrabold leading-[44px]" onClick={onNavigate}>
+      <Link href="/coaches" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
         Тренеры
       </Link>
       <div className="nav-item relative">
-        <button type="button" className="min-h-11 font-extrabold" aria-haspopup="true">
+        <button type="button" className="min-h-11 whitespace-nowrap font-extrabold" aria-haspopup="true">
           Мероприятия
         </button>
         <div className="nav-drop max-md:static max-md:mt-2 max-md:block max-md:shadow-none">
@@ -52,10 +52,10 @@ function MenuLinks({ onNavigate }: { onNavigate?: () => void }) {
           ))}
         </div>
       </div>
-      <Link href="/champions" className="min-h-11 font-extrabold leading-[44px]" onClick={onNavigate}>
+      <Link href="/champions" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
         Зал славы
       </Link>
-      <Link href="/contacts" className="min-h-11 font-extrabold leading-[44px]" onClick={onNavigate}>
+      <Link href="/contacts" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
         Контакты
       </Link>
     </>
@@ -67,22 +67,22 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b-[3px] border-ink bg-white">
-      <div className="mx-auto flex h-[84px] max-w-wrap items-center gap-4 px-10 max-md:h-16 max-md:px-[18px]">
+      <div className="mx-auto flex h-[76px] max-w-wrap items-center gap-3 px-4 max-md:h-16 max-md:px-[18px] xl:px-8">
         <BrandLockup />
-        <nav aria-label="Основное меню" className="ml-4 hidden items-center gap-4 text-[14.5px] lg:flex">
+        <nav aria-label="Основное меню" className="ml-2 hidden items-center gap-3 text-[13px] min-[1240px]:flex xl:gap-4 xl:text-[14px]">
           <MenuLinks />
         </nav>
-        <div className="ml-auto hidden items-center gap-3 lg:flex">
-          <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="font-display text-[15.5px] font-black">
+        <div className="ml-auto hidden shrink-0 items-center gap-2 min-[1240px]:flex">
+          <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="hidden whitespace-nowrap font-display text-sm font-black min-[1420px]:inline">
             {site.phoneDisplay}
           </TrackLink>
-          <MessengerLinks />
-          <MessengerLinks channel />
-          <SignupButton placement="header" className="inline-flex h-[46px] items-center rounded-btn border-[2.5px] border-ink bg-orange px-4 text-[15px] font-black text-ink shadow-btn-main">
+          <MessengerLinks compact />
+          <MessengerLinks channel compact />
+          <SignupButton placement="header" className="inline-flex h-11 items-center whitespace-nowrap rounded-btn border-[2.5px] border-ink bg-orange px-3.5 text-sm font-black text-ink shadow-btn-main">
             Записаться
           </SignupButton>
         </div>
-        <div className="ml-auto flex items-center gap-2 lg:hidden">
+        <div className="ml-auto flex items-center gap-2 min-[1240px]:hidden">
           <MessengerLinks />
           <button
             type="button"
@@ -96,7 +96,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open ? (
-        <nav aria-label="Мобильное меню" className="grid gap-2 border-t-[3px] border-ink bg-white px-[18px] py-4 text-[16px] lg:hidden">
+        <nav aria-label="Мобильное меню" className="grid max-h-[calc(100dvh-4rem-5.5rem)] gap-2 overflow-y-auto border-t-[3px] border-ink bg-white px-[18px] py-4 text-[16px] min-[1240px]:hidden">
           <MenuLinks onNavigate={() => setOpen(false)} />
           <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="font-display text-lg font-black" onClick={() => setOpen(false)}>
             {site.phoneDisplay}

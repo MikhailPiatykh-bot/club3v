@@ -180,7 +180,7 @@ dialog::backdrop {
   display: grid;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1240px) {
   .nav-drop {
     position: absolute;
     top: calc(100% + 8px);

@@ -51,17 +51,18 @@ export function HomeView() {
       <section className="relative overflow-hidden bg-cream">
         <div className="pointer-events-none absolute -left-20 bottom-0 h-[420px] w-[420px] rounded-full bg-[#FFE17A] max-md:hidden" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-16 -top-10 h-[360px] w-[360px] rounded-full bg-blue-pale max-md:hidden" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-wrap items-center gap-8 px-10 py-16 max-md:px-[18px] max-md:py-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
+        <div className="relative mx-auto grid max-w-wrap items-center gap-8 px-6 py-16 max-md:px-[18px] max-md:py-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:px-10">
+          <div className="min-w-0">
             <p className="inline-flex rounded-pill bg-pink px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white">{site.hero.kicker}</p>
-            <h1 className="mt-4 max-w-3xl font-display text-h1 font-black text-ink">
+            <h1 className="mt-4 max-w-full font-display text-h1 font-black text-ink">
               Ушу и акробатика для детей <span className="marker text-pink">с 3 лет в СЗАО</span>
             </h1>
             <p className="mt-4 max-w-xl text-[19px] font-bold max-md:text-base">{site.hero.subtitle}</p>
             <Link href="/adults" className="mt-3 inline-flex min-h-11 items-center font-extrabold text-blue underline">
-              {site.hero.adults} →
+              {site.hero.adults}
+              {"\u00A0→"}
             </Link>
-            <div className="mt-5 inline-flex max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
+            <div className="mt-5 flex w-fit max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
               <span>
                 <b>
@@ -75,7 +76,7 @@ export function HomeView() {
             <div className="stripes grid min-h-64 rotate-3 place-items-center rounded-photo border-4 border-ink p-6 text-center font-black text-white shadow-photo max-md:min-h-[170px] max-md:rotate-0 max-md:rounded-[26px] max-md:shadow-card">
               {site.hero.mediaAlt}
             </div>
-            <article className="relative z-10 -mt-10 rounded-offer border-[3px] border-ink bg-white p-6 shadow-offer max-md:mt-4 lg:-ml-12 lg:max-w-[430px]">
+            <article className="relative z-10 -mt-10 rounded-offer border-[3px] border-ink bg-white p-6 shadow-offer max-md:mt-4 xl:-ml-8 xl:max-w-[430px]">
               <p className="text-[11.5px] font-extrabold uppercase tracking-[0.14em] text-pink">{offer.eyebrow}</p>
               <h2 className="mt-2 font-display text-[38px] font-black leading-none max-md:text-[30px]">{offer.title}</h2>
               <p className="mt-3 text-base text-ink-2">{offer.text}</p>
