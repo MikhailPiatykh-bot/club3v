@@ -13,6 +13,7 @@ import {
   belts,
   championsDoc,
   faq,
+  camps,
   coaches,
   comparison,
   directions,
@@ -416,7 +417,12 @@ export function HomeView() {
               Записаться на сборы
             </SignupButton>
           </article>
-          <article className="rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
+          <article className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
+            {camps.photos[0] ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={camps.photos[0].src} alt={camps.photos[0].alt} width={1200} height={900} className="aspect-[16/9] w-full border-b-[3px] border-ink object-cover" />
+            ) : null}
+            <div className="p-5">
             <h3 className="font-display text-2xl font-black">Детские спортивные лагеря</h3>
             <p className="mt-2">Набор откроется, когда клуб назовёт смены.</p>
             <Link href="/camps" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
@@ -425,6 +431,7 @@ export function HomeView() {
             <SignupButton kind="camp" audience="child" placement="camp" className="mt-3 inline-flex h-12 items-center rounded-btn border-[2.5px] border-ink bg-orange px-4 font-black text-ink shadow-btn-main">
               Записаться в лагерь
             </SignupButton>
+            </div>
           </article>
         </div>
       </section>

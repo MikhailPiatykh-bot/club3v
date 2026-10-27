@@ -16,16 +16,43 @@ export default function CampsPage() {
       <header className="border-b-[3px] border-ink bg-white">
         <div className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
           <Breadcrumbs items={[{ name: "Главная", path: "/" }, { name: "Лагеря", path: "/camps" }]} />
-          <h1 className="mt-4 font-display text-h1 font-black">{camps.title}</h1>
-          <p className="mt-4 max-w-2xl">
-            {camps.name}. Возраст {camps.ages}. {camps.place}.
-          </p>
-          <p className="mt-3 font-extrabold">{camps.shifts.length ? null : "Набор откроется"}</p>
-          <SignupButton kind="camp" audience="child" placement="camp" className="mt-6 inline-flex h-14 items-center rounded-btn border-[2.5px] border-ink bg-orange px-5 font-black text-ink shadow-btn-main">
-            Записаться в лагерь
-          </SignupButton>
+          <div className="mt-6 grid items-center gap-8 lg:grid-cols-[1fr_1.05fr]">
+            <div>
+              <h1 className="font-display text-h1 font-black">{camps.title}</h1>
+              <p className="mt-4 max-w-2xl">
+                {camps.name}. Возраст {camps.ages}. {camps.place}.
+              </p>
+              <p className="mt-3 font-extrabold">{camps.shifts.length ? null : "Набор откроется"}</p>
+              <SignupButton kind="camp" audience="child" placement="camp" className="mt-6 inline-flex h-14 items-center rounded-btn border-[2.5px] border-ink bg-orange px-5 font-black text-ink shadow-btn-main">
+                Записаться в лагерь
+              </SignupButton>
+            </div>
+            {camps.photos[0] ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={camps.photos[0].src}
+                alt={camps.photos[0].alt}
+                width={1200}
+                height={900}
+                className="aspect-[4/3] w-full rounded-photo border-4 border-ink object-cover shadow-photo"
+              />
+            ) : null}
+          </div>
         </div>
       </header>
+      {camps.photos.length > 1 ? (
+        <section className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
+          <h2 className="font-display text-3xl font-black">Фото прошлых смен</h2>
+          <ul className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
+            {camps.photos.slice(1).map((photo) => (
+              <li key={photo.src} className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card-sm">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={photo.src} alt={photo.alt} width={1200} height={900} className="aspect-[4/3] w-full object-cover" />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
       <section className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
         <h2 className="font-display text-3xl font-black">Почему мы</h2>
         <ul className="mt-4 grid gap-3 md:grid-cols-3">
