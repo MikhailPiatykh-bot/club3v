@@ -454,6 +454,14 @@ export function HomeView() {
           <a href={reviewsDoc.yandex.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center font-black text-blue underline">
             Все отзывы на Яндекс Картах
           </a>
+          <div className="mt-10 max-w-3xl">
+            <h2 className="font-display text-3xl font-black">Наши каналы</h2>
+            <p className="mt-2">Новости клуба, расписание турниров, фото и видео с тренировок.</p>
+            {site.channels.telegram || site.channels.max ? <MessengerLinks channel className="mt-4" /> : <p className="mt-3"><span className="ph">Ссылки на Telegram-канал и канал в MAX клуб ещё пришлёт. Карточки скрыты, пока ссылок нет.</span></p>}
+            <a href={site.channels.vk} className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline" target="_blank" rel="noopener noreferrer">
+              ВКонтакте
+            </a>
+          </div>
         </div>
       </section>
 
@@ -470,15 +478,6 @@ export function HomeView() {
         <div className="mt-6">
           <FaqList items={faq} />
         </div>
-      </section>
-
-      <section className="mx-auto max-w-wrap px-10 pb-16 max-md:px-[18px]">
-        <h2 className="font-display text-3xl font-black">Наши каналы</h2>
-        <p className="mt-2">Новости клуба, расписание турниров, фото и видео с тренировок.</p>
-        {site.channels.telegram || site.channels.max ? <MessengerLinks channel className="mt-4" /> : <p className="mt-3"><span className="ph">Ссылки на Telegram-канал и канал в MAX клуб ещё пришлёт. Карточки скрыты, пока ссылок нет.</span></p>}
-        <a href={site.channels.vk} className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline" target="_blank" rel="noopener noreferrer">
-          ВКонтакте
-        </a>
       </section>
 
       <section className="bg-blue-mist px-10 py-16 max-md:px-[18px]">
