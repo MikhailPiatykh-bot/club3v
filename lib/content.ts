@@ -96,6 +96,7 @@ export type ChampionCard = {
   photo: string | null;
   featured: boolean;
   consent: boolean;
+  detail: string | null;
 };
 
 export const championsDoc = {

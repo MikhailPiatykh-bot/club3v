@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChampionCards } from "@/components/champion-cards";
 import { FaqList } from "@/components/faq-list";
 import { HomeSchedule } from "@/components/home-schedule";
 import { MapEmbed } from "@/components/map-embed";
@@ -278,7 +279,9 @@ export function HomeView() {
             </h2>
             <p className="text-[#D6D8F5]">{championsDoc.note}</p>
           </div>
-          {featured.length ? null : (
+          {featured.length ? (
+            <ChampionCards items={featured} />
+          ) : (
             <p className="mt-6">
               <span className="ph">Карточки появятся, когда будут согласия на имя и фото.</span>
             </p>
