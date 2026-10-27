@@ -12,6 +12,8 @@ export function SignupButton({
   coachName,
   placement,
   goal,
+  kind,
+  audience,
 }: {
   children: ReactNode;
   className?: string;
@@ -20,6 +22,8 @@ export function SignupButton({
   coachName?: string;
   placement: string;
   goal?: string;
+  kind?: "enroll" | "waitlist" | "camp" | "china" | "rent" | "coach";
+  audience?: "child" | "adult";
 }) {
   const { openLead } = useLead();
 
@@ -29,7 +33,7 @@ export function SignupButton({
       className={className}
       onClick={() => {
         if (goal) reachGoal(goal);
-        openLead({ direction, coachId, coachName, placement });
+        openLead({ direction, coachId, coachName, placement, kind, audience });
       }}
     >
       {children}

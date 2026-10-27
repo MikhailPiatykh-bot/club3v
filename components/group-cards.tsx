@@ -1,7 +1,7 @@
 import { DraftMark } from "@/components/draft-mark";
-import { directionLabel, groupDetails, groupsDoc, groupsFor, type DirectionId } from "@/lib/content";
+import { directionLabel, groupDetails, groupsDoc, groupsFor } from "@/lib/content";
 
-export function GroupCards({ direction }: { direction?: DirectionId }) {
+export function GroupCards({ direction }: { direction?: string }) {
   const items = direction ? groupsFor(direction) : groupsDoc.items;
 
   return (

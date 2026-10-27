@@ -1,4 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import "@fontsource/rubik/cyrillic-800.css";
+import "@fontsource/rubik/latin-800.css";
+import "@fontsource/rubik/cyrillic-900.css";
+import "@fontsource/rubik/latin-900.css";
+import "@fontsource/nunito/cyrillic-600.css";
+import "@fontsource/nunito/latin-600.css";
+import "@fontsource/nunito/cyrillic-700.css";
+import "@fontsource/nunito/latin-700.css";
+import "@fontsource/nunito/cyrillic-800.css";
+import "@fontsource/nunito/latin-800.css";
+import "@fontsource/nunito/cyrillic-900.css";
+import "@fontsource/nunito/latin-900.css";
+import { ContactRail } from "@/components/contact-rail";
+import { CookieNote } from "@/components/cookie-note";
 import { JsonLd } from "@/components/json-ld";
 import { LeadProvider } from "@/components/lead-provider";
 import { Metrika } from "@/components/metrika";
@@ -17,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s — Veni Vidi Vici",
   },
   description:
-    "Детский клуб Veni Vidi Vici: традиционное и оздоровительное ушу и спортивная акробатика с 3 лет. Хорошёво-Мнёвники, пр-т Маршала Жукова, 51. Абонемент 9 000 ₽.",
+    "Ушу, акробатика и брейкданс для детей и айкидо, ушу для взрослых в Москве, СЗАО. Клуб Veni Vidi Vici, пр-т Маршала Жукова, 51. Абонемент 9 000 ₽.",
   applicationName: "Veni Vidi Vici",
   openGraph: {
     siteName: "Veni Vidi Vici",
@@ -30,7 +44,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FBF7F2",
+  themeColor: "#FFF3C9",
   width: "device-width",
   initialScale: 1,
 };
@@ -50,10 +64,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           К содержанию
         </a>
         <LeadProvider contacts={contacts} thankYou={site.thankYou}>
-          <SiteHeader {...contacts} />
+          <SiteHeader />
           <main id="content">{children}</main>
           <SiteFooter />
-          <MobileDock whatsapp={site.whatsapp} telegram={site.telegram} />
+          <MobileDock />
+          <ContactRail />
+          <CookieNote />
         </LeadProvider>
         <JsonLd data={businessJsonLd()} />
         <Metrika />

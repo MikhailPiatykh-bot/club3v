@@ -18,12 +18,18 @@ function filesIn(dir: string): string[] {
   });
 }
 
-test("ages stay the same for both directions", () => {
+test("age columns and schedule groups stay explicit", () => {
+  const columns = readJson("../content/age-groups.json");
+  assert.deepEqual(
+    columns.items.map((item: { ages: string }) => item.ages),
+    ["3+", "6–10", "10–14", "15+"],
+  );
   const groups = readJson("../content/groups.json");
   const ages = (direction: string) =>
     groups.items.filter((item: { direction: string }) => item.direction === direction).map((item: { ages: string }) => item.ages);
-  assert.deepEqual(ages("wushu"), ages("acrobatics"));
-  assert.deepEqual(ages("wushu"), ["3–4 года", "5–6 лет", "7 лет и старше"]);
+  assert.deepEqual(ages("wushu"), ["6–10", "10–14", "15+"]);
+  assert.deepEqual(ages("acrobatics"), ["6–9", "10–13", "14–16"]);
+  assert.deepEqual(ages("group-3plus"), ["3+"]);
 });
 
 test("schedule and coaches point at real groups", () => {
@@ -51,15 +57,21 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(site.hero.h1, "Ушу и акробатика для детей с 3 лет в СЗАО");
   assert.ok(faq.items.length >= 8);
   assert.ok(videos.items.length >= 4 && videos.items.length <= 6);
-  assert.ok(reviews.items.length >= 4 && reviews.items.every((item: { name: string }) => item.name));
+  assert.equal(reviews.yandex.countLabel, "около 70");
+  assert.ok(reviews.yandex.items.every((item: { name: string; date: string; url: string }) => item.name && item.date && item.url));
   assert.equal(districts.items.filter((item: { published: boolean }) => item.published).length, 0);
   const directions = readJson("../content/directions.json");
   assert.match(directions.wushu.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
   assert.match(directions.acrobatics.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
+  assert.match(directions.breakdance.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
+  assert.match(directions.group3.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
+  const sections = readJson("../content/sections.json");
+  assert.equal(sections.items.find((item: { id: string }) => item.id === "ages").label, "03 / ВОЗРАСТ");
+  assert.equal(sections.items.find((item: { id: string }) => item.id === "start").label, "09 / СТАРТ");
 });
 
 test("public copy does not revive closed halls, other sports or old prices", () => {
-  const forbidden = ["вершинин", "каратэ", "карате", "железняк", "айкидо", "капоэйр", "брейкданс", "бесплатн", "3300", "4200", "4400", "5500"];
+  const forbidden = ["вершинин", "каратэ", "карате", "железняк", "капоэйр", "бесплатн", "пробн", "3300", "4200", "4400", "5500"];
   const roots = ["content", "app", "components", "lib"].map((dir) => join(root, dir));
   const hits: string[] = [];
   for (const dir of roots) {

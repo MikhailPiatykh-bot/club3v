@@ -1,5 +1,7 @@
-export type Messenger = "whatsapp" | "telegram" | "call";
+export type Messenger = "whatsapp" | "telegram" | "max" | "call";
 export type LeadSource = "form" | "quiz";
+export type LeadKind = "enroll" | "waitlist" | "camp" | "china" | "rent" | "coach";
+export type Audience = "child" | "adult";
 
 export type ChildInput = {
   age: string;
@@ -10,6 +12,9 @@ export type CleanLead = {
   parentName: string;
   phone: string;
   messenger: Messenger;
+  audience: Audience;
+  kind: LeadKind;
+  direction: string | null;
   children: ChildInput[];
   coachId: string | null;
   source: LeadSource;
@@ -17,6 +22,8 @@ export type CleanLead = {
   page: string;
   utm: Record<string, string>;
   preferredTime: string | null;
+  comment: string | null;
+  details: Record<string, string>;
 };
 
 export type LeadRules = {
@@ -25,6 +32,8 @@ export type LeadRules = {
   messengers: readonly string[];
   coachIds: readonly string[];
 };
+
+const kinds = new Set<LeadKind>(["enroll", "waitlist", "camp", "china", "rent", "coach"]);
 
 const placements = new Set([
   "header",
@@ -39,6 +48,11 @@ const placements = new Set([
   "schedule",
   "events",
   "footer",
+  "china",
+  "camp",
+  "rent",
+  "champions",
+  "channels",
   "other",
 ]);
 
@@ -47,7 +61,17 @@ const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm
 const messengerLabel: Record<Messenger, string> = {
   whatsapp: "WhatsApp",
   telegram: "Telegram",
+  max: "MAX",
   call: "Звонок",
+};
+
+const kindLabel: Record<LeadKind, string> = {
+  enroll: "запись",
+  waitlist: "лист ожидания",
+  camp: "лагерь",
+  china: "сборы в Китае",
+  rent: "аренда",
+  coach: "запись к тренеру",
 };
 
 function cleanText(value: unknown, max: number) {
@@ -69,6 +93,12 @@ export function normalizePhone(input: string) {
   return null;
 }
 
+function needsChildren(kind: LeadKind, audience: Audience) {
+  if (kind === "rent" || kind === "waitlist" || kind === "china") return false;
+  if (audience === "adult") return false;
+  return true;
+}
+
 export function validateLead(
   input: unknown,
   rules: LeadRules,
@@ -84,9 +114,13 @@ export function validateLead(
     if (delta >= 0 && delta < 1200) return { ok: true, spam: true };
   }
 
+  const kindRaw = cleanText(data.kind, 20);
+  const kind: LeadKind = kinds.has(kindRaw as LeadKind) ? (kindRaw as LeadKind) : "enroll";
+  const audience: Audience = cleanText(data.audience, 20) === "adult" || kind === "waitlist" ? "adult" : "child";
+
   const parentName = cleanText(data.parentName, 80);
   if (!/^[\p{L}\s.'-]{2,80}$/u.test(parentName)) {
-    return { ok: false, error: "Напишите имя родителя." };
+    return { ok: false, error: audience === "adult" || kind === "rent" ? "Напишите имя." : "Напишите имя родителя." };
   }
 
   const phone = normalizePhone(cleanText(data.phone, 40));
@@ -101,19 +135,25 @@ export function validateLead(
     return { ok: false, error: "Нужно согласие на обработку персональных данных." };
   }
 
-  if (!Array.isArray(data.children) || data.children.length < 1 || data.children.length > 4) {
-    return { ok: false, error: "Добавьте хотя бы одного ребёнка." };
-  }
-
+  const directionRaw = cleanText(data.direction, 40);
+  const direction = directionRaw && rules.directions.includes(directionRaw) ? directionRaw : null;
   const children: ChildInput[] = [];
-  for (const child of data.children) {
-    const row = asRecord(child);
-    if (!row) return { ok: false, error: "Проверьте данные ребёнка." };
-    const age = cleanText(row.age, 40);
-    const direction = cleanText(row.direction, 20);
-    if (!rules.ages.includes(age)) return { ok: false, error: "Выберите возраст ребёнка." };
-    if (!rules.directions.includes(direction)) return { ok: false, error: "Выберите направление." };
-    children.push({ age, direction });
+
+  if (needsChildren(kind, audience)) {
+    if (!Array.isArray(data.children) || data.children.length < 1 || data.children.length > 4) {
+      return { ok: false, error: "Добавьте хотя бы одного ребёнка." };
+    }
+    for (const child of data.children) {
+      const row = asRecord(child);
+      if (!row) return { ok: false, error: "Проверьте данные ребёнка." };
+      const age = cleanText(row.age, 40);
+      const childDirection = cleanText(row.direction, 40);
+      if (!rules.ages.includes(age)) return { ok: false, error: "Выберите возраст ребёнка." };
+      if (!rules.directions.includes(childDirection)) return { ok: false, error: "Выберите направление." };
+      children.push({ age, direction: childDirection });
+    }
+  } else if (kind === "enroll" || kind === "coach" || kind === "waitlist") {
+    if (!direction) return { ok: false, error: "Выберите направление." };
   }
 
   const coachRaw = cleanText(data.coachId, 80);
@@ -124,7 +164,7 @@ export function validateLead(
   const placementRaw = cleanText(data.placement, 40);
   const placement = placements.has(placementRaw) ? placementRaw : "other";
   let page = cleanText(data.page, 200);
-  if (!page || !/^\/[a-z0-9\-/_]*$/i.test(page)) page = "/";
+  if (!page || !/^\/[a-z0-9\-/_#]*$/i.test(page)) page = "/";
 
   const utm: Record<string, string> = {};
   const utmRaw = asRecord(data.utm);
@@ -136,6 +176,16 @@ export function validateLead(
   }
 
   const preferredTime = cleanText(data.preferredTime, 80) || null;
+  const comment = cleanText(data.comment, 400) || null;
+  const details: Record<string, string> = {};
+  const detailsRaw = asRecord(data.details);
+  if (detailsRaw) {
+    for (const [key, value] of Object.entries(detailsRaw)) {
+      const cleanKey = cleanText(key, 40);
+      const cleanValue = cleanText(value, 120);
+      if (cleanKey && cleanValue) details[cleanKey] = cleanValue;
+    }
+  }
 
   return {
     ok: true,
@@ -144,6 +194,9 @@ export function validateLead(
       parentName,
       phone,
       messenger: messenger as Messenger,
+      audience,
+      kind,
+      direction,
       children,
       coachId,
       source,
@@ -151,6 +204,8 @@ export function validateLead(
       page,
       utm,
       preferredTime,
+      comment,
+      details,
     },
   };
 }
@@ -163,20 +218,37 @@ export function leadText(
   const utm = Object.entries(lead.utm)
     .map(([key, value]) => `${key}=${value}`)
     .join(", ");
+  const details = Object.entries(lead.details)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join(", ");
 
   return [
-    "Новая заявка — Veni Vidi Vici",
+    `Новая заявка — Veni Vidi Vici`,
+    `Тип: ${kindLabel[lead.kind]}`,
+    `Аудитория: ${lead.audience === "adult" ? "взрослый" : "ребёнок"}`,
     `Источник: ${lead.source === "quiz" ? "квиз" : "форма"} (${lead.placement})`,
     `Имя: ${lead.parentName}`,
     `Телефон: ${lead.phone}`,
     `Связь: ${messengerLabel[lead.messenger]}`,
+    lead.direction ? `Направление: ${labels.direction(lead.direction)}` : "",
     lead.preferredTime ? `Удобное время: ${lead.preferredTime}` : "",
-    "Дети:",
-    kids,
+    lead.comment ? `Комментарий: ${lead.comment}` : "",
+    details ? `Детали: ${details}` : "",
+    kids ? "Дети:\n" + kids : "",
     `Тренер: ${labels.coach(lead.coachId)}`,
     `Страница: ${lead.page}`,
     utm ? `Метки: ${utm}` : "",
   ]
     .filter(Boolean)
     .join("\n");
+}
+
+export function leadGoal(lead: Pick<CleanLead, "kind" | "audience" | "source">) {
+  if (lead.source === "quiz") return lead.audience === "adult" ? "quiz_enroll_adult" : "quiz_enroll_child";
+  if (lead.kind === "enroll") return lead.audience === "adult" ? "lead_enroll_adult" : "lead_enroll_child";
+  if (lead.kind === "waitlist") return "lead_waitlist";
+  if (lead.kind === "camp") return "lead_camp";
+  if (lead.kind === "china") return "lead_china";
+  if (lead.kind === "rent") return "lead_rent";
+  return "lead_coach";
 }

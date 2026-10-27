@@ -1,29 +1,30 @@
 {
-  "_comment": "Факт наличия соревнований, лагеря и сборов в Китае есть. Даты, место и стоимость клуб дописывает в поля details.",
+  "competitionsLead": "Соревнования помогают ребёнку увидеть свой уровень, поставить цель и научиться проигрывать спокойно. Текст со старого сайта копирайтер ещё перепишет. Ехать на турнир не обязательно, чтобы заниматься в клубе.",
+  "competitionCaptions": [
+    "Международный турнир в Беларуси, 2018",
+    "Международный турнир в Беларуси, 2019",
+    "Сборная клуба по ушу, 2022–2023",
+    "Лауреаты 1 степени на новогоднем «Звездопаде талантов», декабрь 2022",
+    "Junior acro Grand Prix",
+    "«Атмосфера акро-3»",
+    "Закрытие фестиваля «Золотая пятёрка»",
+    "Новогодний турнир «Кай и Герда», Санкт-Петербург",
+    "Открытый турнир по спортивной акробатике «фитнес-дети»",
+    "Август 2023, мастер-класс 2-кратного чемпиона мира по акробатике Н. П. Супрунова",
+    "Universal acro cup 2023"
+  ],
+  "certificationVisible": false,
   "items": [
-    {
-      "id": "competitions",
-      "title": "Соревнования",
-      "text": "Воспитанники выступают на соревнованиях. Это выбор семьи, а не условие, чтобы заниматься в клубе.",
-      "details": "Календарь стартов клуб добавит сюда."
-    },
-    {
-      "id": "attestation",
-      "title": "Аттестации",
-      "text": "Переход по ступеням ушу и уровням акробатики отмечают на аттестации. Ребёнок показывает то, что уже делает на тренировках.",
-      "details": "Даты аттестаций клуб добавит сюда."
-    },
-    {
-      "id": "camp",
-      "title": "Летний лагерь",
-      "text": "У клуба бывает летний лагерь. Туда едут свои воспитанники.",
-      "details": "Даты, место и стоимость клуб добавит сюда."
-    },
-    {
-      "id": "china",
-      "title": "Сборы в Китае",
-      "text": "Клуб проводит выездные сборы в Китае.",
-      "details": "Ближайшие даты клуб добавит сюда."
-    }
+    { "id": "muzeon", "title": "Фестиваль ушу в Музеоне", "type": "festival", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "12 сентября", "needsYear": true, "stale": true, "place": "Музеон", "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "photo-day", "title": "Фотосессия", "type": "festival", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "октябрь", "needsYear": true, "stale": false, "place": null, "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "path-start", "title": "Начало пути", "type": "festival", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "8–9 ноября", "needsYear": true, "stale": false, "place": null, "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "mo-championship", "title": "Первенство Московской области", "type": "tournament", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "ноябрь", "needsYear": true, "stale": false, "place": "Московская область", "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "china-calendar", "title": "Сборы в Китае", "type": "camp", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "15–23 ноября", "needsYear": true, "stale": false, "place": "Китай", "registration": false, "link": "/china-camp", "photo": null, "source": "calendar-plan" },
+    { "id": "eleonora", "title": "Открытый турнир «Элеонора 2026»", "type": "tournament", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "13–14 декабря", "needsYear": true, "stale": false, "place": null, "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "vazuza-camp", "title": "Сборы на Вазузе", "type": "camp", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "в календаре месяц январь, а даты указаны как 3–9 декабря", "needsYear": true, "stale": false, "place": "Вазуза", "registration": false, "link": "/camps", "photo": null, "source": "calendar-plan" },
+    { "id": "judges", "title": "Судейский семинар", "type": "seminar", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "февраль", "needsYear": true, "stale": false, "place": null, "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "kaishi", "title": "«Кайши»", "type": "tournament", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "28 февраля–1 марта", "needsYear": true, "stale": false, "place": null, "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "golden-lion", "title": "«Золотой лев»", "type": "tournament", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "апрель", "needsYear": true, "stale": false, "place": "Орёл", "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
+    { "id": "black-drake", "title": "«Чёрный селезень»", "type": "tournament", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "23–24 мая", "needsYear": true, "stale": false, "place": null, "registration": false, "link": null, "photo": null, "source": "calendar-plan" }
   ]
 }

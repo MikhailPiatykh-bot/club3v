@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Цены и скидки",
-  description: "Цены детского клуба Veni Vidi Vici: абонемент 9 000 ₽ в месяц, скидка многодетным 11%. Пробное и разовое — у администратора.",
+  description: "Цены клуба Veni Vidi Vici: абонемент 9 000 ₽ в месяц, месяц с гарантией, скидка многодетным 11%.",
   path: "/prices",
 });
 
@@ -30,7 +30,7 @@ export default function PricesPage() {
         <PriceCards />
         <div className="mt-8 max-w-2xl space-y-3 text-sm leading-relaxed text-ink-soft">
           <p>Число занятий в неделю смотрите в расписании группы. Пока дни уточняются, администратор называет их при записи.</p>
-          <p>Пробное и разовое без опубликованной цены: сумму скажет администратор. Скидку за друга тоже.</p>
+          <p>Разовое занятие и скидку за друга клуб подтвердит отдельно. Сумму до этого на сайте не пишем.</p>
         </div>
       </section>
       <CtaBand placement="prices" />
