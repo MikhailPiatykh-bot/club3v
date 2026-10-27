@@ -10,6 +10,9 @@ const legacyRedirects = [
 ] as const;
 
 const nextConfig: NextConfig = {
+  experimental: {
+    agentUpgrade: "security",
+  },
   images: {
     formats: ["image/avif", "image/webp"],
   },
