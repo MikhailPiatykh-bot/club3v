@@ -299,23 +299,19 @@ export function HomeView() {
           <span className="text-pink">полюбить спорт.</span>
         </h2>
         <p className="mt-4 max-w-xl text-ink-2">{coaches.length ? "Тренеры клуба «Veni Vidi Vici»: внимание к каждому ребёнку, посильная нагрузка и интерес к занятиям." : null}</p>
-        <article className="mt-8 max-w-xl rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
-          <h3 className="font-display text-2xl font-black">{site.founder.name}</h3>
-          <p>{site.founder.role}</p>
-          <p className="mt-2 text-sm">
-            <span className="ph">Фото, регалии и цитата ещё не присланы.</span>
-          </p>
-        </article>
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {coaches.map((coach) => (
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {coaches.filter((coach) => coach.home).map((coach) => (
             <article key={coach.id} className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
-              <div className="grid aspect-[3/4] place-items-center bg-blue text-center font-black text-white">Силуэт · единый фон</div>
+              <div className="relative aspect-[3/4] bg-ink">
+                {coach.photo ? (
+                  <Image src={coach.photo} alt={coach.name} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover object-center" />
+                ) : (
+                  <div className="grid h-full place-items-center bg-blue text-center font-black text-white">Силуэт · единый фон</div>
+                )}
+              </div>
               <div className="border-t-[3px] border-ink p-4">
                 <h3 className="font-display text-xl font-extrabold">{coach.name}</h3>
-                <p className="mt-1 text-sm">{coach.title}</p>
-                <p className="mt-2 text-sm font-extrabold">
-                  {coach.audience === "adult" ? "Взрослые" : "Дети"} · {coach.days} · {coach.time}
-                </p>
+                {coach.title ? <p className="mt-1 text-sm">{coach.title}</p> : null}
                 <SignupButton
                   placement="coach"
                   kind={coach.direction === "wushu-adult" ? "waitlist" : "coach"}
