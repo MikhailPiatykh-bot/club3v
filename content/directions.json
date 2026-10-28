@@ -50,8 +50,8 @@
     "card": "Ритм, координация и уверенность в движении.",
     "ages": "с 6 лет",
     "recruiting": false,
-    "photo": null,
-    "photoAlt": "",
+    "photo": "/photos/breakdance.jpg",
+    "photoAlt": "Группа брейкданса клуба",
     "givesTitle": "Что даёт ребёнку",
     "gives": [
       "Физическое развитие и растяжка",
