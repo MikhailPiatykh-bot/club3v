@@ -1,8 +1,11 @@
 {
   "yandex": {
-    "score": null,
-    "countLabel": "около 70",
-    "url": "https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B0%20%D0%96%D1%83%D0%BA%D0%BE%D0%B2%D0%B0%2C%2051",
+    "score": 5,
+    "scoreLabel": "5,0",
+    "ratingCount": 70,
+    "reviewCount": 60,
+    "countLabel": "70",
+    "url": "https://yandex.ru/maps/org/veni_vidi_vici/33488371147/",
     "items": []
   },
   "videos": []

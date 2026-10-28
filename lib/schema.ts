@@ -1,4 +1,4 @@
-import { faq, prices, site, siteUrl, upcomingEvents } from "@/lib/content";
+import { faq, prices, reviewsDoc, site, siteUrl, upcomingEvents } from "@/lib/content";
 import { formatRub, largeFamilyPrice } from "@/lib/money";
 
 export function businessJsonLd() {
@@ -47,6 +47,13 @@ export function businessJsonLd() {
       description: `Абонемент на месяц. Многодетным скидка ${prices.largeFamilyDiscountPercent}%, ${formatRub(family)}.`,
     },
     areaServed: "Москва",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: reviewsDoc.yandex.score,
+      bestRating: 5,
+      ratingCount: reviewsDoc.yandex.ratingCount,
+      reviewCount: reviewsDoc.yandex.reviewCount,
+    },
   };
 }
 

@@ -69,9 +69,10 @@ export function HomeView() {
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
               <span>
                 <b>
-                  <span className="ph">оценка X,X</span> · {reviewsDoc.yandex.countLabel} отзывов
+                  <span className="text-[#FFB400]" aria-hidden="true">★ </span>
+                  {reviewsDoc.yandex.scoreLabel} · {reviewsDoc.yandex.countLabel} оценок
                 </b>
-                <span className="mt-1 block text-sm">Мест в группах: <span className="ph">число подтвердит клуб</span></span>
+                <span className="mt-1 block text-sm">{prices.seatsNote}</span>
               </span>
             </div>
           </div>
@@ -467,8 +468,11 @@ export function HomeView() {
           <a href={reviewsDoc.yandex.url} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-4 shadow-rate">
             <span className="grid h-12 w-12 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
             <span>
-              <b className="font-display text-3xl">{reviewsDoc.yandex.countLabel}</b>
-              <span className="block text-sm">отзывов на Яндекс Картах · оценка <span className="ph">X,X</span></span>
+              <b className="font-display text-3xl">
+                <span className="text-[#FFB400]" aria-hidden="true">★ </span>
+                {reviewsDoc.yandex.scoreLabel}
+              </b>
+              <span className="block text-sm">{reviewsDoc.yandex.countLabel} оценок на Яндекс Картах</span>
             </span>
           </a>
           {yandexItems.length ? null : (

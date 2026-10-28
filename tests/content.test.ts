@@ -57,7 +57,12 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(site.hero.h1, "Ушу и акробатика для детей с 3 лет в СЗАО");
   assert.ok(faq.items.length >= 8);
   assert.ok(videos.items.length >= 4 && videos.items.length <= 6);
-  assert.equal(reviews.yandex.countLabel, "около 70");
+  assert.equal(reviews.yandex.score, 5);
+  assert.equal(reviews.yandex.scoreLabel, "5,0");
+  assert.equal(reviews.yandex.ratingCount, 70);
+  assert.equal(reviews.yandex.reviewCount, 60);
+  assert.equal(reviews.yandex.countLabel, "70");
+  assert.equal(prices.seatsNote, "Мест в группах: 5");
   assert.ok(reviews.yandex.items.every((item: { name: string; date: string; url: string }) => item.name && item.date && item.url));
   assert.equal(districts.items.filter((item: { published: boolean }) => item.published).length, 0);
   const directions = readJson("../content/directions.json");
