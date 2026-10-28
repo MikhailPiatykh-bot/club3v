@@ -248,9 +248,8 @@ export function HomeView() {
           <p className="mt-2">
             <span className="ph">{belts.note}</span>
           </p>
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <BeltList title="Ушу" items={belts.wushu} />
-            <BeltList title="Акробатика" items={belts.acrobatics} />
+          <div className="mt-6 max-w-3xl">
+            <BeltList title="Ушу Акробатика" items={belts.items} />
           </div>
         </div>
       </section>
