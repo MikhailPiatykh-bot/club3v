@@ -207,9 +207,6 @@ export function HomeView() {
               <article key={card.id} className={`flex min-h-[420px] flex-col rounded-card border-[3px] border-ink p-6 shadow-card max-md:shadow-card-sm ${tint[card.tint]}`}>
                 <span className="grid h-[34px] w-[34px] place-items-center rounded-full bg-ink text-sm font-black text-white">{card.number}</span>
                 <p className="mt-4 font-display text-[52px] font-black leading-none max-md:text-[42px]">{card.ages}</p>
-                <p className="mt-1 text-sm">
-                  <span className="ph">{card.agesNote}</span>
-                </p>
                 <h3 className="mt-4 font-display text-[22px] font-extrabold">{card.title}</h3>
                 <p className="mt-2 text-[14.5px] text-ink-3">{card.text}</p>
                 <div className="mt-auto border-t-2 border-dashed border-ink/40 pt-3 text-sm font-extrabold">
