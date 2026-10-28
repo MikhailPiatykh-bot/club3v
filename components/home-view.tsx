@@ -242,13 +242,10 @@ export function HomeView() {
       </section>
 
       <section className="bg-blue-mist py-24 max-md:py-14">
-        <div className="mx-auto max-w-wrap px-10 max-md:px-[18px]">
+        <div className="mx-auto max-w-wrap px-10 text-center max-md:px-[18px]">
           <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
           <h2 className="mt-4 font-display text-h2 font-black">Видимый прогресс</h2>
-          <p className="mt-2">
-            <span className="ph">{belts.note}</span>
-          </p>
-          <div className="mt-6 max-w-3xl">
+          <div className="mx-auto mt-6 max-w-3xl">
             <BeltList title="Ушу Акробатика" items={belts.items} />
           </div>
         </div>
@@ -521,7 +518,7 @@ function BeltList({ title, items }: { title: string; items: { id: string; name: 
   return (
     <div>
       <h3 className="font-display text-2xl font-black">{title}</h3>
-      <ol className="mt-3 grid gap-2">
+      <ol className="mt-3 grid gap-2 text-left">
         {items.map((item) => (
           <li key={item.id} className="rounded-card border-[3px] border-ink bg-white p-3">
             <b>{item.name}</b>
