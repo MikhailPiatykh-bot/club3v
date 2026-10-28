@@ -1,49 +1,49 @@
 {
-  "draft": true,
-  "note": "Дни ушу и акробатики взяты со старого расписания зала на пр-те Маршала Жукова, 51. Клуб ещё подтверждает, что сетка актуальна. Других адресов в таблице нет.",
+  "draft": false,
+  "note": "Детское расписание подтверждено. У взрослых групп часы клуб ещё назовёт.",
   "items": [
     {
       "id": "g3",
       "groupId": "g3",
-      "days": null,
-      "time": null,
-      "confirm": true,
+      "days": "вт, чт",
+      "time": "16:20–17:00",
+      "confirm": false,
       "recruiting": false,
-      "note": "На старом сайте у группы 3+ своего расписания не было."
+      "note": null
     },
     {
       "id": "wushu-jr",
       "groupId": "wushu-jr",
       "days": "пн, пт, вс",
       "time": "17:00–18:20",
-      "confirm": true,
+      "confirm": false,
       "recruiting": false,
-      "note": "На странице ушу та же группа встречалась как 6–9."
+      "note": null
     },
     {
       "id": "wushu-md",
       "groupId": "wushu-md",
       "days": "пн, пт, вс",
       "time": "18:20–19:40",
-      "confirm": true,
+      "confirm": false,
       "recruiting": false,
-      "note": "На странице ушу та же группа встречалась как 10–13."
+      "note": null
     },
     {
       "id": "wushu-sr",
       "groupId": "wushu-sr",
       "days": "пн, пт, вс",
       "time": "19:40–21:00",
-      "confirm": true,
+      "confirm": false,
       "recruiting": false,
-      "note": "На странице ушу та же группа встречалась как 14–16."
+      "note": null
     },
     {
       "id": "acro-jr",
       "groupId": "acro-jr",
       "days": "вт, чт",
       "time": "17:00–18:20",
-      "confirm": true,
+      "confirm": false,
       "recruiting": false,
       "note": null
     },
@@ -52,7 +52,7 @@
       "groupId": "acro-md",
       "days": "вт, чт",
       "time": "18:20–19:40",
-      "confirm": true,
+      "confirm": false,
       "recruiting": false,
       "note": null
     },
@@ -61,18 +61,18 @@
       "groupId": "acro-sr",
       "days": "вт, чт",
       "time": "19:40–21:00",
-      "confirm": true,
+      "confirm": false,
       "recruiting": false,
       "note": null
     },
     {
       "id": "breakdance",
       "groupId": "breakdance",
-      "days": "ср и сб",
-      "time": "ср 17:00–19:00, сб 14:00–16:00",
-      "confirm": true,
+      "days": "ср",
+      "time": "16:00–17:00, 17:00–18:00, 18:00–19:00",
+      "confirm": false,
       "recruiting": false,
-      "note": "Слоты со старого сайта. Клуб ещё подтвердит, что они актуальны."
+      "note": null
     },
     {
       "id": "aikido",
