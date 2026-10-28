@@ -54,7 +54,7 @@ export function HomeView() {
       <section className="relative overflow-hidden bg-cream">
         <div className="pointer-events-none absolute -left-20 bottom-0 h-[420px] w-[420px] rounded-full bg-[#FFE17A] max-md:hidden" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-16 -top-10 h-[360px] w-[360px] rounded-full bg-blue-pale max-md:hidden" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-wrap items-center gap-8 px-6 py-16 max-md:px-[18px] max-md:py-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:px-10">
+        <div className="relative mx-auto grid max-w-wrap items-center gap-8 px-6 py-16 max-md:px-[18px] max-md:py-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:items-start xl:px-10">
           <div className="min-w-0">
             <p className="inline-flex rounded-pill bg-pink px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white">{site.hero.kicker}</p>
             <h1 className="mt-4 max-w-full font-display text-h1 font-black text-ink">
@@ -75,6 +75,18 @@ export function HomeView() {
                 <span className="mt-1 block text-sm">{prices.seatsNote}</span>
               </span>
             </div>
+            {site.hero.cornerPhoto ? (
+              <Link href="/camps" className="relative z-0 mt-6 hidden max-w-xl -rotate-2 xl:block">
+                <Image
+                  src={site.hero.cornerPhoto}
+                  alt={site.hero.cornerAlt}
+                  width={1280}
+                  height={960}
+                  sizes="520px"
+                  className="aspect-[16/10] w-full rounded-[28px] border-4 border-ink object-cover object-[center_38%] shadow-card"
+                />
+              </Link>
+            ) : null}
           </div>
           <div className="relative">
             {site.hero.photo ? (
