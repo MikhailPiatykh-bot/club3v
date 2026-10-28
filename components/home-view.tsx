@@ -16,7 +16,6 @@ import {
   faq,
   camps,
   coaches,
-  comparison,
   directions,
   lessonPlan,
   motivation,
@@ -145,37 +144,6 @@ export function HomeView() {
           ))}
         </div>
         <p className="mt-6 max-w-3xl font-bold">{site.why.summary}</p>
-        <h3 className="mt-10 font-display text-3xl font-black">{comparison.title}</h3>
-        <p className="mt-2">
-          <span className="ph">{comparison.note}</span>
-        </p>
-        <div className="mt-4 grid gap-3 md:hidden">
-          {comparison.pairs.map((pair) => (
-            <article key={pair.usual} className="rounded-card border-[3px] border-ink bg-white p-4">
-              <p className="text-sm text-ink-soft">Обычно: {pair.usual}</p>
-              <p className="mt-1 font-extrabold">У нас: {pair.ours}</p>
-              {pair.confirm ? <span className="ph">подтвердить</span> : null}
-            </article>
-          ))}
-        </div>
-        <table className="mt-4 hidden w-full border-separate border-spacing-0 overflow-hidden rounded-card border-[3px] border-ink bg-white md:table">
-          <thead>
-            <tr className="bg-ink text-left text-white">
-              <th className="p-4">Обычная секция</th>
-              <th className="p-4">Veni Vidi Vici</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comparison.pairs.map((pair) => (
-              <tr key={pair.usual} className="border-t border-ink/20">
-                <td className="border-t border-ink/15 p-4">{pair.usual}</td>
-                <td className="border-t border-ink/15 p-4 font-extrabold">
-                  {pair.ours} {pair.confirm ? <span className="ph">подтвердить</span> : null}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </section>
 
       <section id="dir" className="bg-white py-24 max-md:py-14">

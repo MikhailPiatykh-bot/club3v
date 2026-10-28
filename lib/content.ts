@@ -4,7 +4,6 @@ import campsJson from "@/content/camps.json";
 import championsJson from "@/content/champions.json";
 import chinaJson from "@/content/china-camp.json";
 import coachesJson from "@/content/coaches.json";
-import comparisonJson from "@/content/comparison.json";
 import consentJson from "@/content/consent.json";
 import directionsJson from "@/content/directions.json";
 import districtsJson from "@/content/districts.json";
@@ -85,7 +84,6 @@ export const oferta = ofertaJson;
 export const offer = offerJson;
 export const sections = sectionsJson.items;
 export const ageGroups = ageGroupsJson;
-export const comparison = comparisonJson;
 export const lessonPlan = lessonJson;
 export const motivation = motivationJson;
 export type ChampionCard = {
