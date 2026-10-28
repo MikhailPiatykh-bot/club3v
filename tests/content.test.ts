@@ -52,6 +52,7 @@ test("prices, contacts and required blocks match the brief", () => {
   const districts = readJson("../content/districts.json");
   assert.equal(prices.subscription, 9000);
   assert.equal(prices.largeFamilyDiscountPercent, 11);
+  assert.equal(prices.secondChildDiscountPercent, 5);
   assert.equal(site.phoneDisplay, "+7 (977) 880-25-71");
   assert.match(site.address.full, /Маршала Жукова, 51/);
   assert.equal(site.hero.h1, "Ушу и акробатика для детей с 3 лет в СЗАО");

@@ -4,6 +4,7 @@ import { formatRub, largeFamilyPrice } from "@/lib/money";
 
 export function PriceCards() {
   const family = largeFamilyPrice(prices.subscription, prices.largeFamilyDiscountPercent);
+  const secondChild = largeFamilyPrice(prices.subscription, prices.secondChildDiscountPercent);
 
   return (
     <div className="grid gap-4 lg:grid-cols-2">
@@ -13,6 +14,9 @@ export function PriceCards() {
         <p className="mt-3">{prices.subscriptionCard.note}</p>
         <p className="mt-2 font-extrabold">
           Многодетным −{prices.largeFamilyDiscountPercent}%: {formatRub(family)}
+        </p>
+        <p className="mt-2 font-extrabold">
+          На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}
         </p>
         <Link href={offer.guaranteeHref} className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
           {offer.guaranteeLabel}

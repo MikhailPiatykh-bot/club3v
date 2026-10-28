@@ -42,6 +42,7 @@ const directionCards = [directions.wushu, directions.acrobatics, directions.brea
 
 export function HomeView() {
   const family = largeFamilyPrice(prices.subscription, prices.largeFamilyDiscountPercent);
+  const secondChild = largeFamilyPrice(prices.subscription, prices.secondChildDiscountPercent);
   const rows = scheduleRows();
   const nextEvents = upcomingEvents();
   const featured = championsDoc.items.filter((item) => item.featured && item.consent);
@@ -350,6 +351,9 @@ export function HomeView() {
               <p className="mt-2">{prices.subscriptionCard.note}</p>
               <p className="mt-2 font-extrabold">
                 Многодетным −{prices.largeFamilyDiscountPercent}%: {formatRub(family)}
+              </p>
+              <p className="mt-2 font-extrabold">
+                На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}
               </p>
               <p className="mt-2 text-sm">{prices.seatsNote}</p>
             </article>

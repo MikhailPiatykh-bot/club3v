@@ -2,6 +2,7 @@
   "currency": "RUB",
   "subscription": 9000,
   "largeFamilyDiscountPercent": 11,
+  "secondChildDiscountPercent": 5,
   "subscriptionCard": {
     "title": "Месяц с гарантией",
     "note": "Абонемент на месяц в своей группе. Если занятия не подойдут ребёнку, вернём деньги за первый месяц."

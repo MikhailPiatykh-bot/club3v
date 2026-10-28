@@ -3,6 +3,7 @@ import { formatRub, largeFamilyPrice } from "@/lib/money";
 
 export function businessJsonLd() {
   const family = largeFamilyPrice(prices.subscription, prices.largeFamilyDiscountPercent);
+  const secondChild = largeFamilyPrice(prices.subscription, prices.secondChildDiscountPercent);
   const contactPoint = [
     {
       "@type": "ContactPoint",
@@ -44,7 +45,7 @@ export function businessJsonLd() {
       "@type": "Offer",
       price: String(prices.subscription),
       priceCurrency: "RUB",
-      description: `Абонемент на месяц. Многодетным скидка ${prices.largeFamilyDiscountPercent}%, ${formatRub(family)}.`,
+      description: `Абонемент на месяц. Многодетным скидка ${prices.largeFamilyDiscountPercent}%, ${formatRub(family)}. На второго ребёнка скидка ${prices.secondChildDiscountPercent}%, ${formatRub(secondChild)}.`,
     },
     areaServed: "Москва",
     aggregateRating: {
