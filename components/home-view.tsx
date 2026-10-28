@@ -154,7 +154,13 @@ export function HomeView() {
           <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {directionCards.map((card) => (
               <article key={card.href} className="rounded-card border-[3px] border-ink bg-cream p-5 shadow-card">
-                <div className="stripes mb-4 grid h-36 place-items-center rounded-2xl text-center text-sm font-black text-white">Фото даст клуб</div>
+                {card.photo ? (
+                  <div className="relative mb-4 aspect-[3/2] overflow-hidden rounded-2xl border-[3px] border-ink">
+                    <Image src={card.photo} alt={card.photoAlt} fill sizes="(min-width: 1280px) 280px, 50vw" className="object-cover" />
+                  </div>
+                ) : (
+                  <div className="stripes mb-4 grid h-36 place-items-center rounded-2xl text-center text-sm font-black text-white">Фото даст клуб</div>
+                )}
                 <h3 className="font-display text-2xl font-black">{card.nav}</h3>
                 <p className="mt-2 text-sm">{card.card}</p>
                 <p className="mt-2 text-sm font-extrabold">{card.ages}</p>
