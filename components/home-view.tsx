@@ -230,30 +230,15 @@ export function HomeView() {
       <section className="mx-auto max-w-wrap px-10 py-24 max-md:px-[18px] max-md:py-14">
         <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("lessons")}</p>
         <h2 className="mt-4 font-display text-h2 font-black">Как проходит занятие</h2>
-        <p className="mt-2">
-          <span className="ph">Состав и минуты клуб ещё подтвердит.</span>
-        </p>
         <ol className="mt-6 grid gap-3 md:grid-cols-4">
           {lessonPlan.parts.map((part) => (
             <li key={part.id} className="rounded-card border-[3px] border-ink bg-white p-4 shadow-card-sm">
               <b>{part.title}</b>
-              <p className="text-sm">
-                <span className="ph">{part.minutes ? `${part.minutes} мин` : "N мин"}</span>
-              </p>
+              <p className="mt-1 text-sm font-extrabold">{part.time}</p>
             </li>
           ))}
         </ol>
-        <h3 className="mt-10 font-display text-3xl font-black">Как проходит первая тренировка</h3>
-        <ol className="mt-4 grid gap-3 md:grid-cols-4">
-          {lessonPlan.first.map((step, index) => (
-            <li key={step} className="rounded-card border-[3px] border-ink bg-cream p-4">
-              <span className="font-display text-2xl font-black">{index + 1}</span>
-              <p className="mt-2 font-extrabold">{step}</p>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-4 font-bold">{lessonPlan.firstNote}</p>
-        <SignupButton placement="direction" className="mt-4 inline-flex h-14 items-center rounded-btn border-[2.5px] border-ink bg-orange px-6 font-black text-ink shadow-btn-main">
+        <SignupButton placement="direction" className="mt-6 inline-flex h-14 items-center rounded-btn border-[2.5px] border-ink bg-orange px-6 font-black text-ink shadow-btn-main">
           Записаться
         </SignupButton>
       </section>
