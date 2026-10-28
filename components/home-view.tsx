@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ChampionCards } from "@/components/champion-cards";
 import { FaqList } from "@/components/faq-list";
@@ -75,9 +76,23 @@ export function HomeView() {
             </div>
           </div>
           <div className="relative">
-            <div className="stripes grid min-h-64 rotate-3 place-items-center rounded-photo border-4 border-ink p-6 text-center font-black text-white shadow-photo max-md:min-h-[170px] max-md:rotate-0 max-md:rounded-[26px] max-md:shadow-card">
-              {site.hero.mediaAlt}
-            </div>
+            {site.hero.photo ? (
+              <div className="relative aspect-[3/2] rotate-3 overflow-hidden rounded-photo border-4 border-ink shadow-photo max-md:rotate-0 max-md:rounded-[26px] max-md:shadow-card">
+                <Image
+                  src={site.hero.photo}
+                  alt={site.hero.mediaAlt}
+                  width={1600}
+                  height={1066}
+                  priority
+                  sizes="(min-width: 1280px) 640px, 100vw"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className="stripes grid min-h-64 rotate-3 place-items-center rounded-photo border-4 border-ink p-6 text-center font-black text-white shadow-photo max-md:min-h-[170px] max-md:rotate-0 max-md:rounded-[26px] max-md:shadow-card">
+                {site.hero.mediaAlt}
+              </div>
+            )}
             <article className="relative z-10 -mt-10 rounded-offer border-[3px] border-ink bg-white p-6 shadow-offer max-md:mt-4 xl:-ml-8 xl:max-w-[430px]">
               <p className="text-[11.5px] font-extrabold uppercase tracking-[0.14em] text-pink">{offer.eyebrow}</p>
               <h2 className="mt-2 font-display text-[38px] font-black leading-none max-md:text-[30px]">{offer.title}</h2>
