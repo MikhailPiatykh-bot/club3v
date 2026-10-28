@@ -77,14 +77,15 @@ export function HomeView() {
             </div>
             {site.hero.cornerPhoto ? (
               <Link href="/camps" className="relative z-0 mt-6 hidden max-w-xl -rotate-2 xl:block">
-                <Image
-                  src={site.hero.cornerPhoto}
-                  alt={site.hero.cornerAlt}
-                  width={1280}
-                  height={960}
-                  sizes="520px"
-                  className="aspect-[16/10] w-full rounded-[28px] border-4 border-ink object-cover object-[center_38%] shadow-card"
-                />
+                <span className="relative block aspect-[3/1] overflow-hidden rounded-[28px] border-4 border-ink shadow-card">
+                  <Image
+                    src={site.hero.cornerPhoto}
+                    alt={site.hero.cornerAlt}
+                    fill
+                    sizes="520px"
+                    className="object-cover object-[center_58%]"
+                  />
+                </span>
               </Link>
             ) : null}
           </div>
