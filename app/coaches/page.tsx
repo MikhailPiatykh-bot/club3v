@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CoachCard } from "@/components/coach-card";
 import { CtaBand } from "@/components/cta-band";
-import { DraftMark } from "@/components/draft-mark";
 import { JsonLd } from "@/components/json-ld";
 import { PhotoSlot } from "@/components/photo-slot";
-import { coaches, coachesDoc, site } from "@/lib/content";
+import { coaches, site } from "@/lib/content";
 import { founderJsonLd } from "@/lib/schema";
 import { pageMeta } from "@/lib/seo";
 
@@ -44,11 +43,6 @@ export default function CoachesPage() {
         </div>
       </section>
       <section className="mx-auto w-full max-w-6xl px-4 pb-12">
-        {coachesDoc.draft && (
-          <p className="mb-4">
-            <DraftMark />
-          </p>
-        )}
         <div className="grid gap-3 md:grid-cols-2">
           {coaches.filter((coach) => coach.id !== "founder").map((coach) => (
             <CoachCard key={coach.id} coach={coach} />
