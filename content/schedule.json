@@ -1,13 +1,96 @@
 {
-  "_comment": "Привязка к groups.json. Пока клуб не прислал дни и часы, оставляйте «уточняется». Других адресов нет.",
-  "draft": true,
-  "note": "Дни и время администратор подтвердит при записи. Сейчас в таблице группы и возрасты, не действующее расписание.",
+  "draft": false,
+  "note": "Детское расписание подтверждено. У взрослых групп часы клуб ещё назовёт.",
   "items": [
-    { "id": "wushu-3-4", "groupId": "wushu-3-4", "days": "уточняется", "time": "уточняется" },
-    { "id": "wushu-5-6", "groupId": "wushu-5-6", "days": "уточняется", "time": "уточняется" },
-    { "id": "wushu-7-plus", "groupId": "wushu-7-plus", "days": "уточняется", "time": "уточняется" },
-    { "id": "acro-3-4", "groupId": "acro-3-4", "days": "уточняется", "time": "уточняется" },
-    { "id": "acro-5-6", "groupId": "acro-5-6", "days": "уточняется", "time": "уточняется" },
-    { "id": "acro-7-plus", "groupId": "acro-7-plus", "days": "уточняется", "time": "уточняется" }
+    {
+      "id": "g3",
+      "groupId": "g3",
+      "days": "вт, чт",
+      "time": "16:20–17:00",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "wushu-jr",
+      "groupId": "wushu-jr",
+      "days": "пн, пт, вс",
+      "time": "17:00–18:20",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "wushu-md",
+      "groupId": "wushu-md",
+      "days": "пн, пт, вс",
+      "time": "18:20–19:40",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "wushu-sr",
+      "groupId": "wushu-sr",
+      "days": "пн, пт, вс",
+      "time": "19:40–21:00",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "acro-jr",
+      "groupId": "acro-jr",
+      "days": "вт, чт",
+      "time": "17:00–18:20",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "acro-md",
+      "groupId": "acro-md",
+      "days": "вт, чт",
+      "time": "18:20–19:40",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "acro-sr",
+      "groupId": "acro-sr",
+      "days": "вт, чт",
+      "time": "19:40–21:00",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "breakdance",
+      "groupId": "breakdance",
+      "days": "ср",
+      "time": "16:00–17:00, 17:00–18:00, 18:00–19:00",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "aikido",
+      "groupId": "aikido",
+      "days": "выходные",
+      "time": null,
+      "confirm": true,
+      "recruiting": false,
+      "note": "Группа для взрослых по выходным. Часы клуб ещё назовёт."
+    },
+    {
+      "id": "wushu-adult",
+      "groupId": "wushu-adult",
+      "days": null,
+      "time": null,
+      "confirm": true,
+      "recruiting": true,
+      "note": "Идёт набор. Дни и старт группы клуб ещё назовёт."
+    }
   ]
 }

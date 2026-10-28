@@ -1,5 +1,4 @@
 {
-  "_comment": "Факты клуба, шапка, первый экран, блок задач и путь от метро. Не добавлять другие адреса.",
   "name": "Veni Vidi Vici",
   "legalName": "ИП Пятых",
   "inn": "",
@@ -9,6 +8,15 @@
   "phoneTel": "+79778802571",
   "whatsapp": "https://wa.me/79778802571",
   "telegram": "https://t.me/Club_3_V",
+  "max": "",
+  "channels": {
+    "telegram": "",
+    "max": "",
+    "vk": "https://vk.com/venividiviciclub",
+    "vkConfirmed": false
+  },
+  "showAccount": false,
+  "accountUrl": "",
   "address": {
     "city": "Москва",
     "area": "СЗАО",
@@ -18,24 +26,17 @@
   },
   "mapsUrl": "https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B0%20%D0%96%D1%83%D0%BA%D0%BE%D0%B2%D0%B0%2C%2051",
   "mapWidgetUrl": "https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B0%20%D0%96%D1%83%D0%BA%D0%BE%D0%B2%D0%B0%2C%2051&z=16",
-  "reviewsCountLabel": "около 70",
+  "reviewsCountLabel": "70",
   "hero": {
+    "kicker": "Veni Vidi Vici • детский клуб • Москва · СЗАО",
     "h1": "Ушу и акробатика для детей с 3 лет в СЗАО",
-    "subtitle": "Традиционное и оздоровительное ушу и спортивная акробатика в одном зале.",
-    "trialResult": "Тренер оценит физподготовку и подскажет группу.",
-    "advantages": [
-      "Младшие группы с 3 лет",
-      "Один зал в Хорошёво-Мнёвниках",
-      "Абонемент 9 000 ₽, многодетным −11%"
-    ],
-    "media": {
-      "image": null,
-      "imageAlt": "Тренировка детей в зале на пр-те Маршала Жукова, 51",
-      "width": 1600,
-      "height": 1200,
-      "video": null,
-      "poster": null
-    }
+    "h1Accent": "с 3 лет в СЗАО",
+    "subtitle": "Традиционное и оздоровительное ушу и спортивная акробатика для детей с 3 лет. пр-т Маршала Жукова, 51. Абонемент 9 000 ₽ в месяц",
+    "adults": "Для взрослых: айкидо и ушу — идёт набор",
+    "photo": "/photos/club-team.jpg",
+    "mediaAlt": "Команда клуба Veni Vidi Vici",
+    "cornerPhoto": "/camps/camp-01.jpg",
+    "cornerAlt": "Дети клуба на летних сборах"
   },
   "why": {
     "title": "С какими задачами приходят родители",
@@ -47,7 +48,7 @@
       },
       {
         "problem": "Боится, что не получится",
-        "help": "Пробное без отбора. Тренер смотрит подготовку и предлагает группу, где ребёнку по силам."
+        "help": "Тренер смотрит подготовку и предлагает группу, где ребёнку по силам."
       },
       {
         "problem": "Энергия через край, трудно слушать",
@@ -61,8 +62,8 @@
   },
   "founder": {
     "name": "Михаил Александрович",
-    "role": "Основатель клуба",
-    "photo": null,
+    "role": "Основатель и тренер старшей группы",
+    "photo": "/photos/coach-founder.jpg",
     "photoAlt": "Михаил Александрович, основатель клуба Veni Vidi Vici",
     "width": 800,
     "height": 1000,
@@ -83,14 +84,26 @@
       "Маршрут от вашей станции построит Яндекс Карты по кнопке ниже."
     ]
   },
-  "nav": [
-    { "href": "/wushu", "label": "Ушу" },
-    { "href": "/acrobatics", "label": "Акробатика" },
-    { "href": "/schedule", "label": "Расписание" },
-    { "href": "/prices", "label": "Цены" },
-    { "href": "/coaches", "label": "Тренеры" },
-    { "href": "/events", "label": "События" },
-    { "href": "/contacts", "label": "Контакты" }
-  ],
-  "thankYou": "Спасибо, перезвоним в течение часа"
+  "menu": {
+    "directionsChild": [
+      { "href": "/wushu", "label": "Ушу" },
+      { "href": "/acrobatics", "label": "Акробатика" },
+      { "href": "/breakdance", "label": "Брейкданс" },
+      { "href": "/group-3plus", "label": "Группа 3+" }
+    ],
+    "directionsAdult": [
+      { "href": "/adults#aikido", "label": "Айкидо", "recruiting": false },
+      { "href": "/adults#wushu", "label": "Ушу", "recruiting": true }
+    ],
+    "events": [
+      { "href": "/events", "label": "Календарь мероприятий" },
+      { "href": "/china-camp", "label": "Сборы в Китае" },
+      { "href": "/camps", "label": "Детские лагеря" }
+    ]
+  },
+  "thankYou": "Спасибо, перезвоним в течение часа",
+  "thanks": {
+    "waitlist": "Вы в списке предварительной записи, свяжемся по выбранному способу.",
+    "rent": "Спасибо. Напишем, когда сверим свободное время зала."
+  }
 }

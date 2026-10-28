@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { coachById, coaches, directionLabel, formOptions, leadAges } from "@/lib/content";
+import { coachById, coaches, directionLabel, formOptions, leadAges, leadDirections } from "@/lib/content";
 import { deliverLead } from "@/lib/deliver";
 import { leadText, validateLead } from "@/lib/lead";
 import { isAllowedOrigin } from "@/lib/origin";
@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 const rules = {
   ages: leadAges,
-  directions: formOptions.directions.map((item) => item.id),
+  directions: leadDirections,
   messengers: formOptions.messengers.map((item) => item.id),
   coachIds: coaches.map((coach) => coach.id),
 };

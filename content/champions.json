@@ -1,0 +1,28 @@
+{
+  "note": "Имена, разряды и фото перенесены со страницы «Наши чемпионы» старого сайта. Годы турниров там не указаны.",
+  "summary": [
+    { "label": "Кандидат в мастера спорта, ушу", "count": 6 },
+    { "label": "Второй спортивный разряд, ушу", "count": 3 },
+    { "label": "Второй разряд, акробатика", "count": 4 },
+    { "label": "Третий разряд, акробатика", "count": 1 },
+    { "label": "Первый юношеский разряд, акробатика", "count": 1 }
+  ],
+  "summaryConfirmed": true,
+  "items": [
+    { "name": "Фетисов Алексей", "rank": "Кандидат в мастера спорта, ушу", "direction": "wushu", "year": null, "photo": "/champions/fetisov.jpg", "featured": true, "consent": true, "detail": null },
+    { "name": "Агапитова Алиса", "rank": "Кандидат в мастера спорта, ушу", "direction": "wushu", "year": null, "photo": "/champions/agapitova.jpg", "featured": true, "consent": true, "detail": "Ныне тренируется в центре подготовки спортсменов России по ушу" },
+    { "name": "Дорошенко Ирина", "rank": "Кандидат в мастера спорта, ушу", "direction": "wushu", "year": null, "photo": "/champions/doroshenko.jpg", "featured": true, "consent": true, "detail": null },
+    { "name": "Писарев Владислав", "rank": "Кандидат в мастера спорта, ушу", "direction": "wushu", "year": null, "photo": "/champions/pisarev.jpg", "featured": true, "consent": true, "detail": null },
+    { "name": "Белов Кирилл", "rank": "Кандидат в мастера спорта, ушу", "direction": "wushu", "year": null, "photo": "/champions/belov.jpg", "featured": true, "consent": true, "detail": null },
+    { "name": "Аликин Артем", "rank": "Кандидат в мастера спорта, ушу", "direction": "wushu", "year": null, "photo": "/champions/alikin.jpg", "featured": true, "consent": true, "detail": null },
+    { "name": "Коновалов Георг", "rank": "Второй спортивный разряд, ушу", "direction": "wushu", "year": null, "photo": null, "featured": false, "consent": true, "detail": null },
+    { "name": "Серяков Егор", "rank": "Второй спортивный разряд, ушу", "direction": "wushu", "year": null, "photo": null, "featured": false, "consent": true, "detail": null },
+    { "name": "Костина Варя", "rank": "Второй спортивный разряд, ушу", "direction": "wushu", "year": null, "photo": "/champions/kostina.jpg", "featured": true, "consent": true, "detail": null },
+    { "name": "Троицкая Мария", "rank": "Второй спортивный разряд, акробатика", "direction": "acrobatics", "year": null, "photo": "/champions/troitskaya.jpg", "featured": true, "consent": true, "detail": null },
+    { "name": "Ястребкова Тамила", "rank": "Второй спортивный разряд, акробатика", "direction": "acrobatics", "year": null, "photo": "/champions/yastrebkova.jpg", "featured": false, "consent": true, "detail": null },
+    { "name": "Бурдина Елена", "rank": "Второй спортивный разряд, акробатика", "direction": "acrobatics", "year": null, "photo": "/champions/burdina.jpg", "featured": false, "consent": true, "detail": null },
+    { "name": "Трапина Виктория", "rank": "Второй спортивный разряд, акробатика", "direction": "acrobatics", "year": null, "photo": "/champions/trapina-viktoria.jpg", "featured": false, "consent": true, "detail": null },
+    { "name": "Трапина Полина", "rank": "Третий спортивный разряд, акробатика", "direction": "acrobatics", "year": null, "photo": "/champions/trapina-polina.jpg", "featured": false, "consent": true, "detail": null },
+    { "name": "Алимкина Виктория", "rank": "Первый юношеский разряд, акробатика", "direction": "acrobatics", "year": null, "photo": "/champions/alimkina.jpg", "featured": false, "consent": true, "detail": null }
+  ]
+}

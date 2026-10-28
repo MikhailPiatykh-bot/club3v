@@ -1,27 +1,67 @@
 @import "tailwindcss";
-@import "./club-fonts.css";
-@import "./club.css";
-
-:root {
-  --font-manrope: "Manrope", sans-serif;
-  --font-unbounded: "Unbounded", sans-serif;
-}
 
 @theme inline {
-  --font-sans: var(--font-manrope), "Manrope", sans-serif;
-  --font-display: var(--font-unbounded), "Unbounded", sans-serif;
-  --color-ink: #141414;
-  --color-ink-soft: #6b645c;
-  --color-paper: #fbf7f2;
-  --color-paper-2: #f4ede4;
+  --font-sans: "Nunito", sans-serif;
+  --font-display: "Rubik", sans-serif;
+  --color-cream: #fff3c9;
+  --color-ink: #1d1a5e;
+  --color-ink-soft: #4a4780;
+  --color-ink-2: #33307a;
+  --color-ink-3: #2a2770;
+  --color-white: #ffffff;
+  --color-blue: #2f5bff;
+  --color-blue-deep: #1f46d9;
+  --color-blue-pale: #c6d4ff;
+  --color-blue-mist: #dce6ff;
+  --color-pink: #e5156b;
+  --color-orange: #ff6a1a;
+  --color-orange-shadow: #b7410a;
+  --color-mint: #12b886;
+  --color-sun: #ffd21f;
+  --color-tint-sun: #ffe9a0;
+  --color-tint-mint: #bdf0de;
+  --color-tint-pink: #ffc8de;
+  --color-tint-blue: #cbd8ff;
+  --color-paper: #fff3c9;
+  --color-paper-2: #dce6ff;
   --color-card: #ffffff;
-  --color-line: #e9e1d6;
-  --color-cinnabar: #e82430;
-  --color-cinnabar-deep: #781616;
-  --color-pine: #141414;
-  --color-gold: #c9a24a;
-  --color-gold-soft: #f3e7c9;
-  --color-cream: #fbf7f2;
+  --color-line: #1d1a5e;
+  --color-cinnabar: #e5156b;
+  --color-cinnabar-deep: #1d1a5e;
+  --color-pine: #2f5bff;
+  --color-gold: #ffd21f;
+  --color-gold-soft: #ffe9a0;
+  --color-ph-bg: #fff8cc;
+  --color-ph-text: #8a1148;
+  --color-ph-border: #e5156b;
+  --radius-btn: 18px;
+  --radius-chip: 12px;
+  --radius-rate: 20px;
+  --radius-card: 28px;
+  --radius-review: 26px;
+  --radius-offer: 30px;
+  --radius-photo: 40px;
+  --radius-cta: 44px;
+  --radius-pill: 999px;
+  --shadow-btn-main: 0 6px 0 #b7410a;
+  --shadow-btn-alt: 0 6px 0 #1d1a5e;
+  --shadow-icon: 0 3px 0 #1d1a5e;
+  --shadow-card: 6px 6px 0 #1d1a5e;
+  --shadow-card-sm: 5px 5px 0 #1d1a5e;
+  --shadow-offer: 8px 8px 0 #1d1a5e;
+  --shadow-cta: 10px 10px 0 #1d1a5e;
+  --shadow-photo: 12px 12px 0 #1d1a5e;
+  --shadow-rate: 4px 4px 0 #1d1a5e;
+  --shadow-on-ink: 0 6px 0 #ffffff;
+  --text-h1: clamp(2.25rem, 1.4rem + 2.6vw, 3.375rem);
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h1--font-weight: 900;
+  --text-h2: clamp(2.125rem, 1.5rem + 1.9vw, 3.5rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h2--font-weight: 900;
+  --max-width-wrap: 1360px;
 }
 
 html {
@@ -36,10 +76,11 @@ html {
 
 body {
   position: relative;
-  background: #fbf7f2;
-  color: #141414;
-  font-family: Manrope, Inter, sans-serif;
+  background: #fff3c9;
+  color: #1d1a5e;
+  font-family: Nunito, sans-serif;
   font-size: 17px;
+  font-weight: 600;
   line-height: 1.55;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
@@ -60,8 +101,8 @@ body.scroll-lock .mobile-dock {
 }
 
 ::selection {
-  background: #f3e7c9;
-  color: #141414;
+  background: #ffd21f;
+  color: #1d1a5e;
 }
 
 .skip-link {
@@ -70,22 +111,46 @@ body.scroll-lock .mobile-dock {
   top: -4rem;
   z-index: 80;
   border-radius: 999px;
-  background: #fffdf9;
+  background: #fff;
   padding: 0.5rem 1rem;
+  color: #1d1a5e;
 }
 
 .skip-link:focus {
   top: 1rem;
 }
 
+.marker {
+  background-image: linear-gradient(transparent 62%, #ffd21f 62% 92%, transparent 92%);
+  padding: 0 0.25rem;
+}
+
+.ph {
+  display: inline;
+  border: 1.5px dashed #e5156b;
+  border-radius: 5px;
+  background: #fff8cc;
+  color: #8a1148;
+  padding: 0 0.3rem;
+  font-size: 0.82em;
+  font-weight: 800;
+}
+
+.stripes {
+  background-color: #2f5bff;
+  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 14px, transparent 14px 28px);
+}
+
 dialog {
   margin: auto;
-  width: min(100vw - 1.5rem, 36rem);
+  width: min(100vw - 1.5rem, 40rem);
   max-width: calc(100vw - 1.5rem);
   max-height: calc(100dvh - 1.5rem);
   padding: 0;
-  border: 0;
-  background: transparent;
+  border: 3px solid #1d1a5e;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 8px 8px 0 #1d1a5e;
 }
 
 @media (max-width: 639px) {
@@ -95,11 +160,12 @@ dialog {
     height: 100dvh;
     max-height: 100dvh;
     margin: 0;
+    border-radius: 0;
   }
 }
 
 dialog::backdrop {
-  background: rgb(28 20 18 / 0.64);
+  background: rgb(29 26 94 / 0.55);
 }
 
 .hp {
@@ -108,4 +174,29 @@ dialog::backdrop {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+.nav-drop {
+  display: grid;
+}
+
+@media (min-width: 1240px) {
+  .nav-drop {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    display: none;
+    min-width: 240px;
+    border: 3px solid #1d1a5e;
+    border-radius: 20px;
+    background: #fff;
+    padding: 8px;
+    box-shadow: 6px 6px 0 #1d1a5e;
+  }
+
+  .nav-item:hover .nav-drop,
+  .nav-item:focus-within .nav-drop {
+    display: grid;
+  }
 }

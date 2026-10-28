@@ -55,6 +55,7 @@ test("keeps a valid lead, UTM and known coach only", () => {
 
 test("formats the subscription discount", () => {
   assert.equal(largeFamilyPrice(9000, 11), 8010);
+  assert.equal(largeFamilyPrice(9000, 5), 8550);
   assert.match(formatRub(9000), /9/);
   assert.match(formatRub(9000), /₽/);
 });
