@@ -213,7 +213,7 @@ export function HomeView() {
                 <h3 className="mt-4 font-display text-[22px] font-extrabold">{card.title}</h3>
                 <p className="mt-2 text-[14.5px] text-ink-3">{card.text}</p>
                 <div className="mt-auto border-t-2 border-dashed border-ink/40 pt-3 text-sm font-extrabold">
-                  Занятие <span className="ph">N мин</span> · группа <span className="ph">N человек</span>
+                  Занятие {card.duration} · группа {card.size}
                   <Link href={card.scheduleHref} className="mt-2 block text-blue underline">
                     Расписание этой группы →
                   </Link>
