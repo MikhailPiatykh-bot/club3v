@@ -93,8 +93,8 @@
       "audience": "child",
       "tier": "all",
       "name": "Брейкданс",
-      "ages": "возраст уточняется",
-      "ageMin": null,
+      "ages": "с 6 лет",
+      "ageMin": 6,
       "ageMax": null,
       "duration": null,
       "size": null
