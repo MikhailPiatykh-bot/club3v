@@ -1,0 +1,54 @@
+{
+  "draft": true,
+  "note": "Единую сетку возрастов клуб ещё не утвердил. У ушу и акробатики границы на старом сайте расходятся.",
+  "items": [
+    {
+      "id": "g3",
+      "number": "01",
+      "ages": "3+",
+      "agesNote": "Верхняя граница не утверждена. На старом сайте для этой группы было «с 3 до 6 лет».",
+      "title": "Группа 3+",
+      "text": "Игровые тренировки для самых маленьких: гимнастические упражнения, кувырки, прыжки на батуте, полоса препятствий, подвижные игры, внимание и дисциплина.",
+      "duration": null,
+      "size": null,
+      "scheduleHref": "/schedule?audience=child&direction=group-3plus",
+      "tint": "sun"
+    },
+    {
+      "id": "junior",
+      "number": "02",
+      "ages": "6–10",
+      "agesNote": "У акробатики на старом сайте 6–9. Общую границу клуб ещё не утвердил.",
+      "title": "Младшая группа",
+      "text": "Описание этапа клуб ещё напишет.",
+      "duration": null,
+      "size": null,
+      "scheduleHref": "/schedule?audience=child&tier=junior",
+      "tint": "mint"
+    },
+    {
+      "id": "middle",
+      "number": "03",
+      "ages": "10–14",
+      "agesNote": "У акробатики на старом сайте 10–13. Общую границу клуб ещё не утвердил.",
+      "title": "Средняя группа",
+      "text": "Описание этапа клуб ещё напишет.",
+      "duration": null,
+      "size": null,
+      "scheduleHref": "/schedule?audience=child&tier=middle",
+      "tint": "pink"
+    },
+    {
+      "id": "senior",
+      "number": "04",
+      "ages": "15+",
+      "agesNote": "У акробатики на старом сайте 14–16. Общую границу клуб ещё не утвердил.",
+      "title": "Старшая группа",
+      "text": "Описание этапа клуб ещё напишет.",
+      "duration": null,
+      "size": null,
+      "scheduleHref": "/schedule?audience=child&tier=senior",
+      "tint": "blue"
+    }
+  ]
+}

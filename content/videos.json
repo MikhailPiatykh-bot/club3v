@@ -1,0 +1,46 @@
+{
+  "_comment": "Положите ролики в public/video и укажите src, длительность и постер. Пока src пустой, плеер не грузится.",
+  "draft": true,
+  "items": [
+    {
+      "id": "training",
+      "title": "Тренировка",
+      "caption": "Как проходит занятие у младших",
+      "duration": null,
+      "src": "",
+      "poster": null
+    },
+    {
+      "id": "attestation",
+      "title": "Аттестация",
+      "caption": "Как выглядит переход по ступеням",
+      "duration": null,
+      "src": "",
+      "poster": null
+    },
+    {
+      "id": "tournament",
+      "title": "Турнир",
+      "caption": "Выезд на соревнования",
+      "duration": null,
+      "src": "",
+      "poster": null
+    },
+    {
+      "id": "camp",
+      "title": "Сборы",
+      "caption": "Лагерь и выездная смена",
+      "duration": null,
+      "src": "",
+      "poster": null
+    },
+    {
+      "id": "acro",
+      "title": "Акробатика",
+      "caption": "Занятие по акробатике",
+      "duration": null,
+      "src": "",
+      "poster": null
+    }
+  ]
+}

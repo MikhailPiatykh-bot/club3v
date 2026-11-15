@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>МАКЕТ · Veni Vidi Vici (CLUB3V) — ушу и акробатика для детей с 3 лет в СЗАО</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{
+  --bg:#FBF7F2; --bg2:#F4EDE4; --card:#FFFFFF; --ink:#141414; --muted:#6B645C;
+  --red:#E82430; --red-dark:#781616; --gold:#C9A24A; --gold-soft:#F3E7C9;
+  --ph:#E4DED6; --ph-ink:#8D857B; --line:#E9E1D6;
+  --r-xl:32px; --r-l:24px; --r-m:20px; --r-s:14px;
+  --head:'Unbounded', 'Montserrat', sans-serif; --body:'Manrope', 'Inter', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+h1,h2,h3,.head{font-family:var(--head);letter-spacing:-0.01em;line-height:1.12}
+h2{font-size:44px;font-weight:700}
+h3{font-size:24px;font-weight:600}
+section{padding:56px 0}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--red-dark);margin-bottom:16px}
+.kicker:before{content:"";width:28px;height:2px;background:var(--gold)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:40px}
+.sec-head p{max-width:420px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 30px;border-radius:999px;font-weight:700;font-size:16px;border:0;cursor:pointer;white-space:nowrap;font-family:var(--body)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(232,36,48,.25)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-white{background:#fff;color:var(--ink)}
+.chip{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:600;font-size:14px}
+.ph{background:var(--ph) repeating-linear-gradient(135deg, rgba(255,255,255,.18) 0 14px, transparent 14px 28px);border-radius:var(--r-l);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--ph-ink);font-weight:600;font-size:15px;text-align:center;padding:16px;position:relative;overflow:hidden}
+.ph svg{width:40px;height:40px;opacity:.7}
+.ph small{font-weight:500;font-size:12px;opacity:.85}
+.todo{background:#FFF3C4;color:#7A5A00;border-radius:6px;padding:0 6px;font-weight:700;white-space:nowrap}
+.draft{display:inline-block;margin-bottom:18px;background:#141414;color:#F3E7C9;font:700 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:999px;opacity:.85}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(251,247,242,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr{display:flex;align-items:center;gap:24px;height:84px}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand img{width:56px;height:56px;object-fit:contain}
+.brand b{font-family:var(--head);font-size:17px;font-weight:700;display:block;line-height:1.1}
+.brand span{font-size:12px;color:var(--muted);font-weight:600}
+nav.menu{display:flex;gap:20px;font-weight:600;font-size:15px;margin-left:12px}
+nav.menu a{opacity:.85}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.phone{font-weight:800;font-size:16px;margin-right:6px;white-space:nowrap}
+.ico{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.ico svg{width:22px;height:22px}
+.ico-tg{background:#2AABEE;color:#fff}.ico-wa{background:#25D366;color:#fff}
+.ico-line{border:1.5px solid var(--line);background:#fff}
+.hdr .btn{height:48px;padding:0 24px}
+.burger{display:none}
+.ss{display:none}
+
+/* hero */
+.hero{padding:40px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:40px;align-items:stretch}
+.hero-text{padding:36px 0 12px}
+.hero h1{font-size:60px;font-weight:800;margin-bottom:28px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.bul{list-style:none;display:grid;gap:14px;margin-bottom:32px}
+.bul li{display:flex;gap:14px;align-items:flex-start;font-size:18px;font-weight:500}
+.bul li i{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--gold-soft);color:var(--red-dark);display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:14px;margin-top:-1px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chips .lbl{font-size:13px;color:var(--muted);font-weight:600;margin-right:4px}
+.hero-photo{min-height:600px;border-radius:var(--r-xl);position:relative}
+.hero-photo .ph{position:absolute;inset:0;border-radius:var(--r-xl);font-size:17px}
+.float{position:absolute;background:#fff;border-radius:var(--r-m);padding:16px 18px;box-shadow:0 14px 40px rgba(20,20,20,.10);display:flex;gap:12px;align-items:center}
+.float b{font-family:var(--head);font-size:20px;display:block;line-height:1.1}
+.float span{font-size:13px;color:var(--muted);font-weight:600}
+.f1{left:-28px;bottom:48px}.f2{right:24px;top:24px;background:var(--ink);color:#fff}.f2 span{color:#cfc6b8}
+.ya{width:40px;height:40px;border-radius:12px;background:#FC3F1D;color:#fff;font:800 20px/40px var(--body);text-align:center}
+
+/* directions */
+.dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dir{border-radius:var(--r-xl);padding:36px;display:flex;flex-direction:column;gap:20px;min-height:560px;position:relative;overflow:hidden}
+.dir.wushu{background:var(--ink);color:#fff}
+.dir.acro{background:var(--red);color:#fff}
+.dir h3{font-size:30px;font-weight:700}
+.dir h3 small{display:block;font-family:var(--body);font-size:17px;font-weight:600;opacity:.75;margin-top:8px;letter-spacing:0}
+.dir .ph{flex:1;min-height:240px;background-color:rgba(255,255,255,.12);color:rgba(255,255,255,.75)}
+.dir p{opacity:.85;font-size:16px}
+.dir .tags{display:flex;gap:8px;flex-wrap:wrap}
+.dir .tags span{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600}
+.dir .row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.dir.wushu .num{color:var(--gold)}
+.num{font-family:var(--head);font-weight:800;font-size:15px;opacity:.9}
+
+/* ages */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:end}
+.step{background:#fff;border-radius:var(--r-l);padding:28px;border:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.step:nth-child(1){min-height:300px}.step:nth-child(2){min-height:340px}.step:nth-child(3){min-height:380px}.step:nth-child(4){min-height:420px;background:var(--ink);color:#fff;border-color:var(--ink)}
+.step .age{font-family:var(--head);font-size:44px;font-weight:800;line-height:1;color:var(--red)}
+.step:nth-child(4) .age{color:var(--gold)}
+.step .age small{font-size:17px;font-weight:600;color:var(--muted);margin-left:6px}
+.step:nth-child(4) .age small{color:#bdb4a7}
+.step p{color:var(--muted);font-size:15px}
+.step:nth-child(4) p{color:#cfc6b8}
+.step .meta{margin-top:auto;font-size:14px;font-weight:700;display:flex;gap:8px;flex-wrap:wrap}
+.step .meta span{background:var(--bg2);border-radius:999px;padding:5px 12px}
+.step:nth-child(4) .meta span{background:#2a2a2a}
+
+/* figures */
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.fig{border-radius:var(--r-l);padding:28px;background:var(--bg2);min-height:190px;display:flex;flex-direction:column;justify-content:space-between}
+.fig b{font-family:var(--head);font-size:56px;font-weight:800;line-height:1;color:var(--ink)}
+.fig span{font-weight:600;color:var(--muted)}
+.fig.real{background:var(--red);}
+.fig.real b,.fig.real span{color:#fff}
+.fig.real span{opacity:.9}
+
+/* coaches */
+.coaches{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.coach{background:#fff;border-radius:var(--r-l);padding:14px 14px 24px;border:1px solid var(--line)}
+.coach .ph{aspect-ratio:4/4.4;border-radius:var(--r-m);margin-bottom:18px}
+.coach h3{font-size:21px;margin:0 10px 6px}
+.coach p{margin:0 10px;color:var(--muted);font-size:15px}
+.coach .tags{margin:14px 10px 0;display:flex;gap:6px;flex-wrap:wrap}
+.coach .tags span{background:var(--gold-soft);color:#6e5620;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+
+/* prices */
+.prices{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:24px;align-items:stretch}
+.price{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:36px;display:flex;flex-direction:column;gap:18px}
+.price .t{font-family:var(--head);font-size:22px;font-weight:700}
+.price .v{font-family:var(--head);font-size:48px;font-weight:800;line-height:1}
+.price .v small{font-size:18px;font-weight:600;font-family:var(--body);opacity:.75}
+.price ul{list-style:none;display:grid;gap:10px;color:var(--muted);font-size:15px}
+.price ul li:before{content:"— ";color:var(--gold);font-weight:800}
+.price .btn{margin-top:auto}
+.price.hl{background:var(--ink);color:#fff;border:2px solid var(--gold);position:relative}
+.price.hl ul{color:#d6cdbf}
+.badge{position:absolute;top:-16px;left:36px;background:var(--gold);color:var(--ink);font-weight:800;font-size:13px;border-radius:999px;padding:7px 16px;letter-spacing:.04em;text-transform:uppercase}
+.disc{display:flex;align-items:center;gap:12px;background:var(--red);color:#fff;border-radius:var(--r-m);padding:14px 18px;font-weight:700}
+.disc b{font-family:var(--head);font-size:24px}
+
+/* schedule */
+.tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.tab{height:48px;padding:0 24px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:15px;display:inline-flex;align-items:center}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sched{background:#fff;border-radius:var(--r-xl);border:1px solid var(--line);overflow:hidden}
+.sched table{width:100%;border-collapse:collapse}
+.sched th,.sched td{text-align:left;padding:20px 28px;border-bottom:1px solid var(--line);font-size:16px}
+.sched th{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--bg2)}
+.sched tr:last-child td{border-bottom:0}
+.sched td.time{font-family:var(--head);font-weight:700}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.sched-note{display:flex;justify-content:space-between;align-items:center;margin-top:18px;color:var(--muted);font-size:15px;gap:16px}
+
+/* path */
+.path{background:var(--ink);color:#fff;border-radius:40px;padding:64px 56px}
+.path .kicker{color:var(--gold)}
+.path h2{margin-bottom:48px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.steps:before{content:"";position:absolute;left:30px;right:calc(25% - 45px);top:30px;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,transparent 10px 18px)}
+.ps{position:relative}
+.ps .n{width:60px;height:60px;border-radius:50%;background:var(--gold);color:var(--ink);font-family:var(--head);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;box-shadow:0 0 0 8px var(--ink)}
+.ps:last-child .n{background:var(--red);color:#fff}
+.ps h3{font-size:22px;margin-bottom:10px}
+.ps p{color:#bdb4a7;font-size:15px}
+
+/* videos */
+.vids{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.vid{aspect-ratio:9/16;border-radius:var(--r-l)}
+.play{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:var(--red)}
+.play svg{width:26px!important;height:26px!important;opacity:1!important;margin-left:4px}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px}
+.rev-side{background:var(--red);color:#fff;border-radius:var(--r-xl);padding:40px;display:flex;flex-direction:column;gap:18px}
+.rev-side b{font-family:var(--head);font-size:72px;line-height:1;font-weight:800}
+.rev-side p{font-size:18px;font-weight:600}
+.rev-side .btn{margin-top:auto}
+.widget{background:#fff;border:2px dashed #D6CCBF;border-radius:var(--r-xl);padding:32px;display:flex;flex-direction:column;gap:20px}
+.widget .top{display:flex;align-items:center;gap:14px}
+.widget .top b{font-size:18px}
+.widget .top span{display:block;font-size:14px;color:var(--muted);font-weight:600}
+.wl{display:grid;gap:12px}
+.wl div{height:84px;border-radius:var(--r-s);background:var(--bg2) repeating-linear-gradient(135deg, rgba(255,255,255,.35) 0 12px, transparent 12px 24px);display:flex;align-items:center;padding:0 20px;color:var(--ph-ink);font-weight:600;font-size:14px}
+
+/* trust */
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.logos .ph{height:140px;border-radius:var(--r-m);font-size:14px}
+
+/* quiz */
+.quiz{background:#fff;border-radius:40px;border:1px solid var(--line);padding:56px;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.quiz h2{margin-bottom:16px}
+.quiz .lead{color:var(--muted);margin-bottom:24px}
+.prog{display:flex;justify-content:space-between;font-weight:700;font-size:14px;color:var(--muted);margin-bottom:10px}
+.bar{height:10px;background:var(--bg2);border-radius:999px;overflow:hidden;margin-bottom:28px}
+.bar i{display:block;width:25%;height:100%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:999px}
+.q{font-family:var(--head);font-size:24px;font-weight:700;margin-bottom:20px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.opt{height:72px;border-radius:var(--r-m);border:1.5px solid var(--line);background:var(--bg);display:flex;align-items:center;gap:14px;padding:0 20px;font-weight:700;font-size:17px}
+.opt i{width:22px;height:22px;border-radius:50%;border:2px solid #C9BFB2;flex-shrink:0}
+.opt.sel{border-color:var(--red);background:#FFF0F0}
+.opt.sel i{border:7px solid var(--red)}
+.qnav{display:flex;justify-content:space-between;gap:12px}
+.qnav .btn-ghost{opacity:.4}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.acc{display:grid;gap:12px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:var(--r-m);padding:22px 26px}
+.qa .qh{display:flex;justify-content:space-between;gap:20px;align-items:center;font-weight:700;font-size:18px}
+.qa .pm{width:36px;height:36px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;flex-shrink:0}
+.qa.open{border-color:var(--ink)}
+.qa.open .pm{background:var(--red);color:#fff}
+.qa .ans{margin-top:12px;color:var(--muted);font-size:16px}
+
+/* contacts */
+.contacts{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}
+.map{min-height:460px;border-radius:var(--r-xl)}
+.pin{width:56px;height:56px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--red);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.pin:after{content:"";width:18px;height:18px;border-radius:50%;background:#fff}
+.ccard{background:var(--ink);color:#fff;border-radius:var(--r-xl);padding:40px;display:flex;flex-direction:column;gap:24px}
+.ccard .lbl{font-size:13px;color:#bdb4a7;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.ccard .val{font-size:20px;font-weight:700}
+.ccard .val.big{font-family:var(--head);font-size:24px}
+.ccard .msg{display:flex;gap:10px;flex-wrap:wrap}
+.ccard .msg a{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 6px;border-radius:999px;background:#262626;font-weight:700;font-size:15px}
+.ccard .msg .ico{width:36px;height:36px}
+.ccard .msg .ico svg{width:18px;height:18px}
+
+footer{margin-top:56px;background:#0F0F0F;color:#cfc6b8;padding:48px 0 40px}
+.ft{display:flex;justify-content:space-between;gap:40px;align-items:flex-start;flex-wrap:wrap}
+.ft .brand b{color:#fff}
+.ft nav{display:flex;gap:24px;flex-wrap:wrap;font-weight:600;font-size:15px}
+.ft-bottom{margin-top:36px;padding-top:24px;border-top:1px solid #262626;display:flex;justify-content:space-between;gap:16px;font-size:13px;flex-wrap:wrap}
+.sticky-msg{display:none}
+body{position:relative}
+html.fullshot .sticky-msg{position:absolute!important}
+
+/* ================= MOBILE ================= */
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  section{padding:36px 0}
+  h2{font-size:28px}
+  .draft{font-size:9px;padding:6px 9px;margin-bottom:12px}
+  .hdr{height:64px;gap:10px}
+  .brand img{width:44px;height:44px}
+  .brand b{font-size:14px}.brand span{font-size:11px}
+  nav.menu,.phone,.hdr .btn,.sl{display:none}
+  .ss{display:inline}
+  .brand{min-width:0;flex-shrink:1}
+  .hdr-right{gap:8px}
+  .ico{width:40px;height:40px}.ico svg{width:20px;height:20px}
+  .burger{display:inline-flex;width:44px;height:44px;border-radius:14px;background:var(--ink);align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .burger i{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:24px}
+  .kicker{font-size:11px;margin-bottom:12px}
+  .hero{padding:20px 0 36px}
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  .hero-text{padding:0}
+  .hero h1{font-size:30px;margin-bottom:20px;line-height:1.15}
+  .bul{gap:10px;margin-bottom:22px}
+  .bul li{font-size:16px;gap:12px}
+  .bul li i{width:26px;height:26px;font-size:12px}
+  .cta-row{flex-direction:column;margin-bottom:20px}
+  .cta-row .btn{width:100%}
+  .chip{height:32px;font-size:13px;padding:0 12px}
+  .chips .lbl{width:100%}
+  .hero-photo{min-height:360px}
+  .f1{left:12px;bottom:12px;padding:12px 14px}.f1 b{font-size:17px}
+  .f2{right:12px;top:12px;padding:10px 14px}.f2 b{font-size:16px}
+  .ya{width:34px;height:34px;font-size:17px;line-height:34px;border-radius:10px}
+  .dir-grid{grid-template-columns:1fr;gap:16px}
+  .dir{padding:24px;min-height:0;border-radius:var(--r-l)}
+  .dir h3{font-size:22px}.dir h3 small{font-size:15px}
+  .dir .ph{min-height:200px;flex:none}
+  .dir .row{flex-direction:column;align-items:stretch}
+  .dir .row .btn{width:100%}
+  .ladder{grid-template-columns:1fr 1fr;gap:12px;align-items:stretch}
+  .step{min-height:0!important;padding:20px;border-radius:var(--r-m)}
+  .step .age{font-size:30px}
+  .step .age small{display:block;margin:6px 0 0;font-size:14px}
+  .step p{font-size:14px}
+  .step .meta{font-size:12px}
+  .figs{grid-template-columns:1fr 1fr;gap:12px}
+  .fig{min-height:140px;padding:20px;border-radius:var(--r-m)}
+  .fig b{font-size:38px}
+  .fig span{font-size:14px;line-height:1.35}
+  .coaches{grid-template-columns:1fr;gap:16px}
+  .coach{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;padding:12px}
+  .coach .ph{aspect-ratio:1/1.15;margin:0;border-radius:var(--r-s);font-size:12px;padding:8px}
+  .coach .ph svg{width:28px;height:28px}
+  .coach h3,.coach p,.coach .tags{margin-left:0;margin-right:0}
+  .coach h3{font-size:17px}
+  .coach p{font-size:14px}
+  .prices{grid-template-columns:1fr;gap:16px}
+  .price{padding:26px;border-radius:var(--r-l);gap:14px}
+  .price .v{font-size:38px}
+  .price.hl{order:-1;margin-top:12px}
+  .badge{left:26px}
+  .disc b{font-size:20px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;margin-right:-18px;padding-right:18px}
+  .tab{height:42px;padding:0 18px;font-size:14px;flex-shrink:0}
+  .sched{border-radius:var(--r-l)}
+  .sched table,.sched tbody,.sched tr,.sched td{display:block}
+  .sched thead{display:none}
+  .sched tr{padding:16px 20px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:4px 12px}
+  .sched tr:last-child{border-bottom:0}
+  .sched td{padding:0;border:0;font-size:14px}
+  .sched td.time{font-size:16px;grid-column:2;grid-row:1}
+  .sched td.day{font-weight:700;font-size:16px}
+  .sched td.place{color:var(--muted);grid-column:1/3}
+  .sched-note{flex-direction:column;align-items:stretch}
+  .sched-note .btn{width:100%}
+  .path{border-radius:var(--r-l);padding:32px 22px}
+  .path h2{margin-bottom:28px}
+  .steps{grid-template-columns:1fr;gap:26px}
+  .steps:before{left:25px;right:auto;top:20px;bottom:20px;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--gold) 0 10px,transparent 10px 18px)}
+  .ps{display:grid;grid-template-columns:50px 1fr;gap:16px}
+  .ps .n{width:50px;height:50px;font-size:17px;margin:0;box-shadow:0 0 0 6px var(--ink)}
+  .ps h3{font-size:18px;margin-bottom:4px}
+  .ps p{font-size:14px}
+  .vids{display:flex;overflow-x:auto;gap:12px;margin-right:-18px;padding-right:18px;scrollbar-width:none}
+  .dbr{display:none}
+  .todo{white-space:normal}
+  .vid{flex:0 0 150px;border-radius:var(--r-m);font-size:13px}
+  .play{width:52px;height:52px}
+  .rev-grid{grid-template-columns:1fr;gap:16px}
+  .rev-side{padding:26px;border-radius:var(--r-l)}
+  .rev-side b{font-size:52px}
+  .rev-side p{font-size:16px}
+  .widget{padding:20px;border-radius:var(--r-l)}
+  .wl div{height:70px;font-size:13px;padding:0 14px}
+  .logos{grid-template-columns:1fr 1fr;gap:12px}
+  .logos .ph{height:100px;font-size:13px}
+  .logos .ph:last-child{grid-column:1/3}
+  .quiz{grid-template-columns:1fr;gap:20px;padding:26px 20px;border-radius:var(--r-l)}
+  .q{font-size:19px}
+  .opts{gap:10px}
+  .opt{height:60px;font-size:15px;padding:0 14px;gap:10px}
+  .qnav .btn{flex:1;padding:0 16px}
+  .faq-grid{grid-template-columns:1fr;gap:20px}
+  .qa{padding:18px}
+  .qa .qh{font-size:16px}
+  .qa .pm{width:32px;height:32px;font-size:20px}
+  .qa .ans{font-size:15px}
+  .contacts{grid-template-columns:1fr;gap:16px}
+  .map{min-height:280px;border-radius:var(--r-l)}
+  .ccard{padding:26px;border-radius:var(--r-l);gap:18px}
+  .ccard .val.big{font-size:21px}
+  .ccard .val{font-size:17px}
+  .ccard .btn{width:100%}
+  footer{margin-top:36px;padding:36px 0 110px}
+  .ft nav{gap:12px 20px;font-size:14px}
+  .ft-bottom{flex-direction:column;gap:6px}
+  .sticky-msg{display:flex;position:fixed;left:12px;right:12px;bottom:14px;z-index:70;gap:8px;background:var(--ink);border-radius:999px;padding:6px;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+  .sticky-msg a{flex:1;height:52px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:15px;color:#fff}
+  .sticky-msg a svg{width:22px;height:22px}
+  .sticky-msg .wa{background:#25D366}.sticky-msg .tg{background:#2AABEE}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.5c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.3l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3.1c.9-.3 1.6.2 1.4 1.2Z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.3-.3-.4-.7-.5Z"/></symbol>
+  <symbol id="i-ph" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 7h3l2-2.5h6L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15l12.5-7.5L7 4.5Z"/></symbol>
+  <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="2" fill="currentColor"/><path d="m4 18 5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+</svg>
+
+
+<header>
+  <div class="wrap hdr">
+    <a class="brand" href="#"><img src="logo_club3v.png" alt="CLUB3V"><div><b>Veni Vidi Vici</b><span class="sl">Детский спортивный клуб · CLUB3V</span><span class="ss">CLUB3V · детский клуб</span></div></a>
+    <nav class="menu"><a href="#dir">Направления</a><a href="#coach">Тренеры</a><a href="#price">Цены</a><a href="#sched">Расписание</a><a href="#cont">Контакты</a></nav>
+    <div class="hdr-right">
+      <a class="phone" href="tel:+79778802571">+7 (977) 880-25-71</a>
+      <a class="ico ico-tg" href="https://t.me/Club_3_V" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a>
+      <a class="ico ico-wa" href="https://wa.me/79778802571" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+      <a class="btn btn-red" href="#quiz">Записаться</a>
+      <span class="burger" aria-label="Меню"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="draft">Макет · черновик</div>
+      <div class="kicker">Детский спортивный клуб · Москва, СЗАО</div>
+      <h1>Ушу и&nbsp;акробатика для детей <em>с&nbsp;3&nbsp;лет</em> в&nbsp;СЗАО</h1>
+      <ul class="bul">
+        <li><i>✓</i>Группы по возрасту — для детей с 3 лет</li>
+        <li><i>✓</i>Соревнования, лагерь и сборы в Китае</li>
+        <li><i>✓</i>Один адрес: пр-т Маршала Жукова, 51</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-red" href="#quiz">Записаться на пробное</a>
+        <a class="btn btn-ghost" href="https://wa.me/79778802571"><svg width="20" height="20" style="color:#25D366"><use href="#i-wa"/></svg>Написать в WhatsApp</a>
+      </div>
+      <div class="chips"><span class="lbl">Группы:</span><span class="chip">3–4 года</span><span class="chip">5–6 лет</span><span class="chip">7–10 лет</span><span class="chip">11+ лет</span></div>
+    </div>
+    <div class="hero-photo">
+      <div class="ph"><svg><use href="#i-cam"/></svg>Фото: дети на тренировке<small>главное фото клуба, горизонтальное / вертикальное</small></div>
+      <div class="float f1"><div class="ya">Я</div><div><b>~70 отзывов</b><span>на Яндекс Картах</span></div></div>
+      <div class="float f2"><div><b>9 000 ₽/мес</b><span>абонемент</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIONS -->
+<section id="dir">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Направления</div><h2>Два направления —<br class="dbr"> один клуб</h2></div><p>Оба направления — для детей с 3 лет, группы формируются по возрасту.</p></div>
+    <div class="dir-grid">
+      <div class="dir wushu">
+        <div class="num">01</div>
+        <h3>Детское ушу<small>традиционное и оздоровительное</small></h3>
+        <div class="ph"><svg><use href="#i-cam"/></svg>Фото: занятие по ушу</div>
+        <p><span class="todo">Описание направления — текст от клуба</span></p>
+        <div class="row"><div class="tags"><span>С 3 лет</span><span>Группы по возрасту</span><span>Соревнования</span></div><a class="btn btn-white" href="#quiz">Подробнее</a></div>
+      </div>
+      <div class="dir acro">
+        <div class="num">02</div>
+        <h3>Спортивная акробатика<small>для детей с 3 лет</small></h3>
+        <div class="ph"><svg><use href="#i-cam"/></svg>Фото: занятие по акробатике</div>
+        <p><span class="todo">Описание направления — текст от клуба</span></p>
+        <div class="row"><div class="tags"><span>С 3 лет</span><span>Группы по возрасту</span><span>Соревнования</span></div><a class="btn btn-dark" href="#quiz">Подробнее</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGES -->
+<section id="ages">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Возрастные группы</div><h2>Растём шаг за шагом</h2></div><p>Ребёнок занимается со сверстниками и переходит в следующую группу по мере взросления.</p></div>
+    <div class="ladder">
+      <div class="step"><div class="age">3–4<small>года</small></div><p>Самые младшие. Первое знакомство с тренировками.</p><div class="meta"><span>Ушу</span><span>Акробатика</span></div></div>
+      <div class="step"><div class="age">5–6<small>лет</small></div><p>Дошкольники. Основы техники направления.</p><div class="meta"><span>Ушу</span><span>Акробатика</span></div></div>
+      <div class="step"><div class="age">7–10<small>лет</small></div><p>Младшие школьники. Регулярные тренировки и старты.</p><div class="meta"><span>Ушу</span><span>Акробатика</span></div></div>
+      <div class="step"><div class="age">11+<small>лет</small></div><p>Старшая группа. Соревнования, лагерь, сборы в Китае.</p><div class="meta"><span>Ушу</span><span>Акробатика</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIGURES -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Клуб в цифрах</div><h2>CLUB3V в цифрах</h2></div></div>
+    <div class="figs">
+      <div class="fig"><b>X</b><span>лет работы клуба</span></div>
+      <div class="fig"><b>X</b><span>учеников занимается</span></div>
+      <div class="fig"><b>X</b><span>наград на соревнованиях</span></div>
+      <div class="fig real"><b>~70</b><span>отзывов на Яндекс Картах</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES -->
+<section id="coach">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Тренеры</div><h2>Тренерский состав</h2></div><p><span class="todo">Короткий текст о тренерах — от клуба</span></p></div>
+    <div class="coaches">
+      <div class="coach"><div class="ph"><svg><use href="#i-cam"/></svg>Фото тренера</div><div><h3>Имя тренера</h3><p>Направление: ушу</p><div class="tags"><span>Стаж: X лет</span><span>Регалии: —</span></div></div></div>
+      <div class="coach"><div class="ph"><svg><use href="#i-cam"/></svg>Фото тренера</div><div><h3>Имя тренера</h3><p>Направление: акробатика</p><div class="tags"><span>Стаж: X лет</span><span>Регалии: —</span></div></div></div>
+      <div class="coach"><div class="ph"><svg><use href="#i-cam"/></svg>Фото тренера</div><div><h3>Имя тренера</h3><p>Направление: —</p><div class="tags"><span>Стаж: X лет</span><span>Регалии: —</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICES -->
+<section id="price">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Стоимость</div><h2>Цены на занятия</h2></div><p>Начните с пробного занятия, затем выберите удобный формат.</p></div>
+    <div class="prices">
+      <div class="price"><div class="t">Пробное</div><div class="v">— ₽</div><ul><li>Знакомство с тренером и группой</li><li>Длительность: X мин</li></ul><a class="btn btn-ghost" href="#quiz">Записаться</a></div>
+      <div class="price"><div class="t">Разовое</div><div class="v">— ₽</div><ul><li>Одно занятие в группе</li><li>Длительность: X мин</li></ul><a class="btn btn-ghost" href="#quiz">Записаться</a></div>
+      <div class="price hl"><span class="badge">Выгодно</span><div class="t">Абонемент</div><div class="v">9 000 ₽<small> / мес</small></div><ul><li>Занятий в месяц: X</li><li>Длительность: X мин</li></ul><div class="disc"><b>−11%</b>Многодетным — скидка 11%</div><a class="btn btn-red" href="#quiz">Оформить абонемент</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="sched">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Расписание</div><h2>Расписание групп</h2></div><p>пр-т Маршала Жукова, 51</p></div>
+    <div class="tabs"><span class="tab on">3–4 года</span><span class="tab">5–6 лет</span><span class="tab">7–10 лет</span><span class="tab">11+ лет</span></div>
+    <div class="sched">
+      <table>
+        <thead><tr><th>День</th><th>Время</th><th>Направление</th><th>Адрес</th></tr></thead>
+        <tbody>
+          <tr><td class="day">День недели</td><td class="time">00:00–00:00</td><td><span class="dot" style="background:#141414"></span>Ушу</td><td class="place">пр-т Маршала Жукова, 51</td></tr>
+          <tr><td class="day">День недели</td><td class="time">00:00–00:00</td><td><span class="dot" style="background:#E82430"></span>Акробатика</td><td class="place">пр-т Маршала Жукова, 51</td></tr>
+          <tr><td class="day">День недели</td><td class="time">00:00–00:00</td><td><span class="dot" style="background:#141414"></span>Ушу</td><td class="place">пр-т Маршала Жукова, 51</td></tr>
+          <tr><td class="day">День недели</td><td class="time">00:00–00:00</td><td><span class="dot" style="background:#E82430"></span>Акробатика</td><td class="place">пр-т Маршала Жукова, 51</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sched-note"><span>Расписание уточняйте у администратора.</span><a class="btn btn-dark" href="tel:+79778802571">Уточнить по телефону</a></div>
+  </div>
+</section>
+
+<!-- PATH -->
+<section>
+  <div class="wrap">
+    <div class="path">
+      <div class="kicker">Путь спортсмена</div>
+      <h2>Путь ребёнка в клубе</h2>
+      <div class="steps">
+        <div class="ps"><div class="n">1</div><div><h3>Соревнования</h3><p>Участие в стартах. <span class="todo">Уровни — от клуба</span></p></div></div>
+        <div class="ps"><div class="n">2</div><div><h3>Пояса</h3><p>Аттестации. <span class="todo">Система поясов — от клуба</span></p></div></div>
+        <div class="ps"><div class="n">3</div><div><h3>Лагерь</h3><p>Лагерь клуба. <span class="todo">Даты, место — от клуба</span></p></div></div>
+        <div class="ps"><div class="n">4</div><div><h3>Сборы в Китае</h3><p>Тренировочные сборы в Китае. <span class="todo">Детали — от клуба</span></p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Видео</div><h2>Как проходят тренировки</h2></div><p>Короткие вертикальные видео из зала и с соревнований.</p></div>
+    <div class="vids">
+      <div class="ph vid"><div class="play"><svg><use href="#i-play"/></svg></div>Видео 9:16<small>тренировка ушу</small></div>
+      <div class="ph vid"><div class="play"><svg><use href="#i-play"/></svg></div>Видео 9:16<small>акробатика</small></div>
+      <div class="ph vid"><div class="play"><svg><use href="#i-play"/></svg></div>Видео 9:16<small>соревнования</small></div>
+      <div class="ph vid"><div class="play"><svg><use href="#i-play"/></svg></div>Видео 9:16<small>лагерь</small></div>
+      <div class="ph vid"><div class="play"><svg><use href="#i-play"/></svg></div>Видео 9:16<small>сборы в Китае</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="rev">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Отзывы</div><h2>Что говорят родители</h2></div></div>
+    <div class="rev-grid">
+      <div class="rev-side"><b>~70</b><p>отзывов о клубе на Яндекс Картах</p><a class="btn btn-white" href="#">Читать на Яндекс Картах</a><a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.6);margin-top:-6px" href="#">Оставить отзыв</a></div>
+      <div class="widget">
+        <div class="top"><div class="ya">Я</div><div><b>Виджет отзывов Яндекс Карт • ~70 отзывов</b><span>Встраивается кодом с Яндекс Карт, данные подтягиваются автоматически</span></div></div>
+        <div class="wl"><div>Место для отзыва из Яндекс Карт</div><div>Место для отзыва из Яндекс Карт</div><div>Место для отзыва из Яндекс Карт</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Доверие</div><h2>Федерации и награды</h2></div><p><span class="todo">Список федераций и наград — от клуба</span></p></div>
+    <div class="logos">
+      <div class="ph"><svg><use href="#i-img"/></svg>Логотип федерации</div>
+      <div class="ph"><svg><use href="#i-img"/></svg>Логотип федерации</div>
+      <div class="ph"><svg><use href="#i-img"/></svg>Награда / диплом</div>
+      <div class="ph"><svg><use href="#i-img"/></svg>Награда / диплом</div>
+      <div class="ph"><svg><use href="#i-img"/></svg>Логотип партнёра</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="quiz">
+      <div>
+        <div class="kicker">Запись</div>
+        <h2>Подберём группу</h2>
+        <p class="lead">Ответьте на 4 коротких вопроса — администратор подберёт группу и время пробного занятия.</p>
+        <div class="chips"><span class="chip">Возраст</span><span class="chip">Направление</span><span class="chip">Время</span><span class="chip">Контакты</span></div>
+      </div>
+      <div>
+        <div class="prog"><span>Шаг 1 из 4</span><span>25%</span></div>
+        <div class="bar"><i></i></div>
+        <div class="q">Сколько лет ребёнку?</div>
+        <div class="opts">
+          <div class="opt sel"><i></i>3–4 года</div>
+          <div class="opt"><i></i>5–6 лет</div>
+          <div class="opt"><i></i>7–10 лет</div>
+          <div class="opt"><i></i>11+ лет</div>
+        </div>
+        <div class="qnav"><span class="btn btn-ghost">Назад</span><span class="btn btn-red">Далее →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap faq-grid">
+    <div><div class="kicker">Вопросы</div><h2>Частые вопросы</h2></div>
+    <div class="acc">
+      <div class="qa open"><div class="qh">С какого возраста можно начать?<span class="pm">−</span></div><div class="ans">Принимаем детей с 3 лет. Группы формируются по возрасту: 3–4, 5–6, 7–10 и 11+ лет.</div></div>
+      <div class="qa"><div class="qh">Сколько стоит абонемент?<span class="pm">+</span></div></div>
+      <div class="qa"><div class="qh">Где проходят занятия?<span class="pm">+</span></div></div>
+      <div class="qa"><div class="qh">Чем отличается традиционное и оздоровительное ушу?<span class="pm">+</span></div></div>
+      <div class="qa"><div class="qh">Что взять на пробное занятие?<span class="pm">+</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="cont">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="kicker">Контакты</div><h2>Ждём на тренировке</h2></div></div>
+    <div class="contacts">
+      <div class="ph map"><div class="pin"></div>Карта Яндекс<small>пр-т Маршала Жукова, 51</small></div>
+      <div class="ccard">
+        <div><div class="lbl">Адрес</div><div class="val">Москва, СЗАО,<br>пр-т Маршала Жукова, 51</div></div>
+        <div><div class="lbl">Телефон</div><div class="val big">+7 (977) 880-25-71</div></div>
+        <div><div class="lbl">Мессенджеры</div><div class="msg"><a href="https://wa.me/79778802571"><span class="ico ico-wa"><svg><use href="#i-wa"/></svg></span>WhatsApp</a><a href="https://t.me/Club_3_V"><span class="ico ico-tg"><svg><use href="#i-tg"/></svg></span>Telegram</a></div></div>
+        <a class="btn btn-red" href="#quiz">Записаться на пробное</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <a class="brand" href="#"><img src="logo_club3v.png" alt="CLUB3V"><div><b>Veni Vidi Vici</b><span>Детский спортивный клуб · CLUB3V</span></div></a>
+      <nav><a href="#dir">Направления</a><a href="#price">Цены</a><a href="#sched">Расписание</a><a href="#rev">Отзывы</a><a href="#cont">Контакты</a></nav>
+      <div><div style="font-weight:800;color:#fff">+7 (977) 880-25-71</div><div style="font-size:14px">Москва, СЗАО, пр-т Маршала Жукова, 51</div></div>
+    </div>
+    <div class="ft-bottom"><span>© 2026 Veni Vidi Vici · CLUB3V</span><span>Политика конфиденциальности</span></div>
+  </div>
+</footer>
+
+<div class="sticky-msg">
+  <a class="wa" href="https://wa.me/79778802571"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="tg" href="https://t.me/Club_3_V"><svg><use href="#i-tg"/></svg>Telegram</a>
+</div>
+</body>
+</html>
