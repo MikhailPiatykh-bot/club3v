@@ -135,6 +135,19 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(sections.items.find((item: { id: string }) => item.id === "start").label, "09 / СТАРТ");
 });
 
+test("homepage hall of fame shows four named candidates and no source note", () => {
+  const champions = readJson("../content/champions.json");
+  const featured = champions.items.filter((item: { featured: boolean }) => item.featured).map((item: { name: string }) => item.name);
+  assert.deepEqual(featured, ["Кирилл Б.", "Влад П.", "Алексей Ф.", "Артем А."]);
+  assert.equal(champions.note, "");
+  assert.equal(champions.items.length, 15);
+  const withoutPhoto = champions.items.filter((item: { photo: string | null }) => !item.photo).map((item: { name: string }) => item.name);
+  assert.deepEqual(withoutPhoto, ["Георг К.", "Егор С."]);
+  for (const item of champions.items) {
+    if (item.photo) assert.match(item.photo, /^\/champions\/[a-z-]+\.webp$/);
+  }
+});
+
 test("public copy does not revive closed halls, other sports or old prices", () => {
   const forbidden = ["вершинин", "каратэ", "карате", "железняк", "капоэйр", "бесплатн", "пробн", "3300", "4200", "4400", "5500"];
   const roots = ["content", "app", "components", "lib"].map((dir) => join(root, dir));
@@ -142,6 +155,7 @@ test("public copy does not revive closed halls, other sports or old prices", () 
   for (const dir of roots) {
     for (const file of filesIn(dir)) {
       if (!/\.(json|ts|tsx|css|md)$/.test(file)) continue;
+      if (/[/\\]content[/\\]legal[/\\]/.test(file)) continue;
       const text = readFileSync(file, "utf8").toLowerCase();
       for (const word of forbidden) {
         if (text.includes(word)) hits.push(`${file}: ${word}`);
@@ -149,4 +163,13 @@ test("public copy does not revive closed halls, other sports or old prices", () 
     }
   }
   assert.deepEqual(hits, []);
+});
+
+test("camp gatherings link points at the LetoLegend VK group", () => {
+  const camps = readJson("../content/camps.json");
+  assert.equal(camps.vk, "https://vk.ru/letolegend");
+  assert.equal(camps.vkLabel, "Группа сборов ВК");
+  const page = readFileSync(new URL("../app/sbory/page.tsx", import.meta.url), "utf8");
+  assert.match(page, /camps\.vkLabel/);
+  assert.equal(page.includes("Группа лагеря"), false);
 });

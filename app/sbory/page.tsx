@@ -57,7 +57,7 @@ export default function SboryPage() {
           ))}
         </ul>
         <a href={camps.vk} className="mt-4 inline-flex min-h-11 items-center font-black text-blue underline" target="_blank" rel="noopener noreferrer">
-          Группа лагеря ВКонтакте
+          {camps.vkLabel}
         </a>
       </section>
       {camps.photos.length > 1 ? (
