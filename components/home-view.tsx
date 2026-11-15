@@ -257,7 +257,7 @@ export function HomeView() {
               <br />
               <span className="text-sun">растут в клубе.</span>
             </h2>
-            <p className="text-[#D6D8F5]">{championsDoc.note}</p>
+            {championsDoc.note ? <p className="text-[#D6D8F5]">{championsDoc.note}</p> : null}
           </div>
           {featured.length ? (
             <ChampionCards items={featured} />

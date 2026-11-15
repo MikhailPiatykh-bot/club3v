@@ -77,6 +77,14 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(sections.items.find((item: { id: string }) => item.id === "start").label, "09 / СТАРТ");
 });
 
+test("homepage hall of fame shows four named candidates and no source note", () => {
+  const champions = readJson("../content/champions.json");
+  const featured = champions.items.filter((item: { featured: boolean }) => item.featured).map((item: { name: string }) => item.name);
+  assert.deepEqual(featured, ["Кирилл Б.", "Влад П.", "Алексей Ф.", "Артем А."]);
+  assert.equal(champions.note, "");
+  assert.equal(champions.items.length, 15);
+});
+
 test("public copy does not revive closed halls, other sports or old prices", () => {
   const forbidden = ["вершинин", "каратэ", "карате", "железняк", "капоэйр", "бесплатн", "пробн", "3300", "4200", "4400", "5500"];
   const roots = ["content", "app", "components", "lib"].map((dir) => join(root, dir));

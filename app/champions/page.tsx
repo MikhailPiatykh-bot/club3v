@@ -20,7 +20,7 @@ export default function ChampionsPage() {
         <div className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
           <Breadcrumbs items={[{ name: "Главная", path: "/" }, { name: "Зал славы", path: "/champions" }]} />
           <h1 className="mt-4 font-display text-h1 font-black">Наши чемпионы</h1>
-          <p className="mt-4 max-w-2xl">{championsDoc.note}</p>
+          {championsDoc.note ? <p className="mt-4 max-w-2xl">{championsDoc.note}</p> : null}
         </div>
       </header>
       <section className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
