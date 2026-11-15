@@ -148,6 +148,13 @@ test("homepage hall of fame shows four named candidates and no source note", () 
   }
 });
 
+test("home page links to the club history page", () => {
+  const home = readFileSync(new URL("../components/home-view.tsx", import.meta.url), "utf8");
+  assert.equal(home.includes('id="history"'), true);
+  assert.equal(home.includes('href="/club-history"'), true);
+  assert.equal(home.includes("Вся история"), true);
+});
+
 test("public copy does not revive closed halls, other sports or old prices", () => {
   const forbidden = ["вершинин", "каратэ", "карате", "железняк", "капоэйр", "бесплатн", "пробн", "3300", "4200", "4400", "5500"];
   const roots = ["content", "app", "components", "lib"].map((dir) => join(root, dir));
