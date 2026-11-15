@@ -19,7 +19,7 @@ export function ChampionCards({ items }: { items: ChampionCard[] }) {
   return (
     <ul className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
       {items.map((item, index) => (
-        <li key={item.name} className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
+        <li key={item.name} className="overflow-hidden rounded-card border-[3px] border-ink bg-white text-ink shadow-card">
           <div className="relative aspect-[3/3.6] border-b-[3px] border-ink bg-blue">
             {item.photo ? (
               // Portraits are content files with a fixed frame, not layout images.
@@ -30,7 +30,7 @@ export function ChampionCards({ items }: { items: ChampionCard[] }) {
                 {initials(item.name)}
               </div>
             )}
-            <span className="absolute right-2 top-2 rounded-pill border-2 border-ink bg-white px-2 py-0.5 text-[11px] font-black">
+            <span className="absolute right-2 top-2 rounded-pill border-2 border-ink bg-white px-2 py-0.5 text-[11px] font-black text-ink">
               {sport[item.direction] ?? item.direction}
             </span>
           </div>

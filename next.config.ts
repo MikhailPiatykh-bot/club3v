@@ -22,6 +22,7 @@ const legacyRedirects = [
 ] as const;
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["*.trycloudflare.com"],
   experimental: {
     agentUpgrade: "security",
   },
