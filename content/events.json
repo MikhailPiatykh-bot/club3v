@@ -14,6 +14,73 @@
     "Universal acro cup 2023"
   ],
   "certificationVisible": false,
+  "home": {
+    "title": "Мероприятия",
+    "accent": "соревнования, фестивали и сборы.",
+    "path": ["Соревнования", "Лагерь", "Сборы в Китае"],
+    "emptyCalendar": "Расписание турниров уточняется.",
+    "cards": [
+      {
+        "id": "calendar",
+        "number": "01",
+        "tint": "blue",
+        "title": "Мероприятия",
+        "text": "Календарь турниров, фестивалей, семинаров и выездов. В ближайшие попадают только даты с подтверждённым годом.",
+        "href": "/events",
+        "link": "Весь календарь",
+        "goal": "calendar_all"
+      },
+      {
+        "id": "competitions",
+        "number": "02",
+        "tint": "pink",
+        "title": "Соревнования",
+        "text": "Ребёнок видит свой уровень, ставит цель и учится спокойно проигрывать. Ехать на турнир не обязательно, чтобы заниматься в клубе.",
+        "examples": ["Турнир в Беларуси", "«Звездопад талантов»", "Universal acro cup"],
+        "examplesNote": "Названия прошлых стартов со старого сайта. Годы клуб ещё подтвердит.",
+        "href": "/events#competitions",
+        "link": "Как проходят соревнования"
+      },
+      {
+        "id": "festivals",
+        "number": "03",
+        "tint": "sun",
+        "title": "Фестивали",
+        "text": "Клуб выезжает на фестивали ушу и акробатики. Даты без года в ближайшие не ставим.",
+        "examples": ["Фестиваль ушу в Музеоне", "«Золотая пятёрка»", "«Начало пути»"],
+        "examplesNote": "Сентябрьский фестиваль в Музеоне уже прошёл. Остальные даты без года.",
+        "href": "/events#festivals",
+        "link": "Фестивали клуба"
+      },
+      {
+        "id": "camps",
+        "number": "04",
+        "tint": "mint",
+        "title": "Сборы",
+        "text": "Выездные тренировки: Китай и детский лагерь на Вазузе. Старые даты не показываем как будущие.",
+        "photoLabel": "ФОТО-ЗАГЛУШКА: сборы и лагерь (даст Михаил)",
+        "trips": [
+          {
+            "title": "Сборы в Китае",
+            "text": "Набор на следующие сборы. Даты клуб ещё назовёт.",
+            "href": "/china-camp",
+            "link": "О сборах",
+            "signup": "china",
+            "signupLabel": "Записаться на сборы"
+          },
+          {
+            "title": "Лагерь на Вазузе",
+            "text": "Набор откроется, когда клуб назовёт смены.",
+            "ageNote": "На старом сайте: с 6 до 16 лет",
+            "href": "/camps",
+            "link": "О лагере",
+            "signup": "camp",
+            "signupLabel": "Записаться в лагерь"
+          }
+        ]
+      }
+    ]
+  },
   "items": [
     { "id": "muzeon", "title": "Фестиваль ушу в Музеоне", "type": "festival", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "12 сентября", "needsYear": true, "stale": true, "place": "Музеон", "registration": false, "link": null, "photo": null, "source": "calendar-plan" },
     { "id": "photo-day", "title": "Фотосессия", "type": "festival", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "октябрь", "needsYear": true, "stale": false, "place": null, "registration": false, "link": null, "photo": null, "source": "calendar-plan" },

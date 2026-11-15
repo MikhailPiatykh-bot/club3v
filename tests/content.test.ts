@@ -85,3 +85,21 @@ test("public copy does not revive closed halls, other sports or old prices", () 
   }
   assert.deepEqual(hits, []);
 });
+
+test("home events block lists competitions, festivals and camps", () => {
+  const events = readJson("../content/events.json");
+  assert.deepEqual(
+    events.home.cards.map((card: { title: string }) => card.title),
+    ["Мероприятия", "Соревнования", "Фестивали", "Сборы"],
+  );
+  assert.deepEqual(events.home.path, ["Соревнования", "Лагерь", "Сборы в Китае"]);
+  const camps = events.home.cards.find((card: { id: string }) => card.id === "camps");
+  assert.deepEqual(
+    camps.trips.map((trip: { signup: string }) => trip.signup),
+    ["china", "camp"],
+  );
+  const homeText = JSON.stringify(events.home);
+  assert.equal(homeText.includes("8000"), false);
+  assert.equal(homeText.includes("13–24"), false);
+  assert.equal(homeText.includes("15–23"), false);
+});

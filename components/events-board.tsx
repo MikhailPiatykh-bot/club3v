@@ -95,7 +95,7 @@ export function EventsBoard({
           </li>
         ))}
       </ul>
-      <section id="competitions" className="mt-12">
+      <section id="competitions" className="mt-12 scroll-mt-24">
         <h2 className="font-display text-3xl font-black">Соревнования</h2>
         <p className="mt-3 max-w-3xl">{lead}</p>
         <ul className="mt-4 grid gap-2">
@@ -104,6 +104,24 @@ export function EventsBoard({
               {caption} <span className="ph">фото после согласия</span>
             </li>
           ))}
+        </ul>
+      </section>
+      <section id="festivals" className="mt-12 scroll-mt-24">
+        <h2 className="font-display text-3xl font-black">Фестивали</h2>
+        <p className="mt-3 max-w-3xl">Названия со старого календаря. Год клуб ещё подтвердит, поэтому в ближайшие эти даты не попадают.</p>
+        <ul className="mt-4 grid gap-2">
+          {items
+            .filter((item) => item.type === "festival" && item.id !== "photo-day") // фотосессия в старом календаре не фестиваль
+            .map((item) => (
+              <li key={item.id} className="rounded-card border-[3px] border-ink bg-white p-3">
+                <b className="font-display text-xl">{item.title}</b>
+                <p className="text-sm">
+                  {item.dateText}
+                  {item.place ? ` · ${item.place}` : ""}
+                  {item.stale ? " · уже прошло" : ""} <span className="ph">год не подтверждён</span>
+                </p>
+              </li>
+            ))}
         </ul>
       </section>
       {certification ? (

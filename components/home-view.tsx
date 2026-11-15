@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaqList } from "@/components/faq-list";
+import { HomeEvents } from "@/components/home-events";
 import { HomeSchedule } from "@/components/home-schedule";
 import { MapEmbed } from "@/components/map-embed";
 import { MessengerLinks } from "@/components/messengers";
@@ -23,7 +24,6 @@ import {
   sectionLabel,
   site,
   stats,
-  upcomingEvents,
   videos,
 } from "@/lib/content";
 import { formatRub, largeFamilyPrice } from "@/lib/money";
@@ -41,7 +41,6 @@ const directionCards = [directions.wushu, directions.acrobatics, directions.brea
 export function HomeView() {
   const family = largeFamilyPrice(prices.subscription, prices.largeFamilyDiscountPercent);
   const rows = scheduleRows();
-  const nextEvents = upcomingEvents();
   const featured = championsDoc.items.filter((item) => item.featured && item.consent);
   const motivationOn = motivation.effortPatches || motivation.yearEndUniform;
   const yandexItems = reviewsDoc.yandex.items.filter((item) => item.visible);
@@ -383,48 +382,7 @@ export function HomeView() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-wrap px-10 py-24 max-md:px-[18px] max-md:py-14">
-        <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
-        <h2 className="mt-4 font-display text-h2 font-black">Мероприятия, сборы и лагеря</h2>
-        <p className="mt-2">Соревнования, потом лагерь, потом сборы в Китае.</p>
-        <h3 className="mt-6 font-display text-2xl font-black">Ближайшие мероприятия</h3>
-        {nextEvents.length ? (
-          <ul className="mt-3 grid gap-3">
-            {nextEvents.slice(0, 3).map((item) => (
-              <li key={item.id} className="rounded-card border-[3px] border-ink bg-white p-4">
-                {item.dateText} · {item.title}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-3">Расписание турниров уточняется.</p>
-        )}
-        <TrackLink href="/events" goal="calendar_all" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
-          Весь календарь
-        </TrackLink>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <article className="rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
-            <h3 className="font-display text-2xl font-black">Сборы в Китае</h3>
-            <p className="mt-2">Набор на следующие сборы. Даты клуб ещё назовёт.</p>
-            <Link href="/china-camp" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
-              Подробнее
-            </Link>
-            <SignupButton kind="china" placement="china" className="mt-3 inline-flex h-12 items-center rounded-btn border-[2.5px] border-ink bg-orange px-4 font-black text-ink shadow-btn-main">
-              Записаться на сборы
-            </SignupButton>
-          </article>
-          <article className="rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
-            <h3 className="font-display text-2xl font-black">Детские спортивные лагеря</h3>
-            <p className="mt-2">Набор откроется, когда клуб назовёт смены.</p>
-            <Link href="/camps" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
-              Подробнее
-            </Link>
-            <SignupButton kind="camp" audience="child" placement="camp" className="mt-3 inline-flex h-12 items-center rounded-btn border-[2.5px] border-ink bg-orange px-4 font-black text-ink shadow-btn-main">
-              Записаться в лагерь
-            </SignupButton>
-          </article>
-        </div>
-      </section>
+      <HomeEvents />
 
       <section className="bg-white py-16">
         <div className="mx-auto max-w-wrap px-10 max-md:px-[18px]">
