@@ -55,8 +55,15 @@ export function HomeView() {
         <div className="relative mx-auto grid max-w-wrap items-center gap-8 px-6 py-16 max-md:px-[18px] max-md:py-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:items-start xl:px-10">
           <div className="min-w-0">
             <p className="inline-flex rounded-pill bg-pink px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white">{site.hero.kicker}</p>
-            <h1 className="mt-4 max-w-full font-display text-h1 font-black text-ink">
-              Ушу и акробатика для детей <span className="marker text-pink">с 3 лет в СЗАО</span>
+            <h1 className="mt-4 max-w-[12em] font-display text-[clamp(2rem,1.15rem+2vw,2.85rem)] font-black leading-[1.05] tracking-[-0.015em] text-ink">
+              {site.hero.h1.endsWith(site.hero.h1Accent) ? (
+                <>
+                  {site.hero.h1.slice(0, -site.hero.h1Accent.length).trim()}{" "}
+                  <span className="marker whitespace-nowrap text-pink">{site.hero.h1Accent}</span>
+                </>
+              ) : (
+                site.hero.h1
+              )}
             </h1>
             <p className="mt-4 max-w-xl text-[19px] font-bold max-md:text-base">{site.hero.subtitle}</p>
             <div className="mt-4 max-w-xl">

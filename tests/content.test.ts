@@ -59,7 +59,11 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(prices.secondChildDiscountPercent, 5);
   assert.equal(site.phoneDisplay, "+7 (977) 880-25-71");
   assert.match(site.address.full, /Маршала Жукова, 51/);
-  assert.equal(site.hero.h1, "Ушу и акробатика для детей с 3 лет в СЗАО");
+  assert.equal(site.hero.h1, "Ушу, акробатика, брейкданс и айкидо для детей и взрослых с 3 лет в СЗАО");
+  assert.equal(site.hero.h1.endsWith(site.hero.h1Accent), true);
+  assert.match(site.hero.subtitle, /брейкданс/);
+  assert.match(site.hero.subtitle, /айкидо/);
+  assert.match(site.hero.subtitle, /взрослых/);
   assert.ok(faq.items.length >= 8);
   assert.ok(videos.items.length >= 4 && videos.items.length <= 6);
   assert.equal(reviews.yandex.score, 5);
