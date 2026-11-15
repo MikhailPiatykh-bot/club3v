@@ -53,6 +53,7 @@ test("prices, contacts and required blocks match the brief", () => {
   const districts = readJson("../content/districts.json");
   assert.equal(prices.subscription, 9000);
   assert.equal(offer.mainCondition, "При посещении 8 занятий в первый месяц, для новых учеников.");
+  assert.equal(offer.bullets[2], "Вернём деньги за первый месяц, если не подойдёт (по условиям гарантии)");
   assert.equal(
     offer.conditionsNote,
     "Гарантия действует для новых учеников при посещении 8 занятий в первый месяц. Если ребёнок заболел, первый месяц продлевается по справке. Заявление на возврат подаётся в течение 7 дней после окончания первого месяца, деньги возвращаем в течение 10 дней.",

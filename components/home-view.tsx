@@ -128,7 +128,13 @@ export function HomeView() {
               <p className="text-[11.5px] font-extrabold uppercase tracking-[0.14em] text-pink">{offer.eyebrow}</p>
               <h2 className="mt-2 font-display text-[38px] font-black leading-none max-md:text-[30px]">{offer.title}</h2>
               <p className="mt-3 text-base text-ink-2">{offer.text}</p>
-              <p className="mt-2 text-[15px] font-extrabold">{offer.mainCondition}</p>
+              <p className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[15px] font-extrabold">
+                <span>{offer.mainCondition}</span>
+                <Link href={offer.guaranteeHref} className="inline-flex min-h-11 items-center text-blue underline">
+                  {offer.guaranteeLabel}
+                </Link>
+              </p>
+              <p className="text-sm leading-snug text-ink-2">{offer.conditionsNote}</p>
               <ul className="mt-4 grid gap-2 text-[15px] font-bold">
                 {offer.bullets.map((item) => (
                   <li key={item} className="flex gap-2">
@@ -140,10 +146,6 @@ export function HomeView() {
               <SignupButton placement="hero" className="mt-4 flex h-14 w-full items-center justify-center rounded-btn border-[2.5px] border-ink bg-orange font-black text-ink shadow-btn-main">
                 {offer.cta}
               </SignupButton>
-              <Link href={offer.guaranteeHref} className="mt-3 inline-flex min-h-11 items-center font-extrabold text-blue underline">
-                {offer.guaranteeLabel}
-              </Link>
-              <p className="mt-2 text-sm leading-snug text-ink-2">{offer.conditionsNote}</p>
             </article>
           </div>
         </div>
