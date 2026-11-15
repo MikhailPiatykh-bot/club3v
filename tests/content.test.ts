@@ -74,6 +74,21 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.match(site.hero.subtitle, /брейкданс/);
   assert.match(site.hero.subtitle, /айкидо/);
   assert.match(site.hero.subtitle, /взрослых/);
+  assert.deepEqual(
+    site.why.cards.map((card: { problem: string; help: string }) => [card.problem, card.help]),
+    [
+      ["Физическое развитие", "Родители понимают необходимость физически развивать тело своего ребёнка."],
+      [
+        "Чтобы сформировать характер и дисциплину",
+        "Регулярные посещения занятий вырабатывают у ребёнка привычку к труду, которая очень пригодится в жизни.",
+      ],
+      [
+        "Энергия через край",
+        "На занятии энергия уходит в дело: разминка, короткое задание, повтор. В младших группах темп частый.",
+      ],
+      ["Не вытащить из телефона", "В зале телефон не нужен. Ребёнок занят вместе с группой своего возраста."],
+    ],
+  );
   assert.ok(faq.items.length >= 8);
   assert.ok(videos.items.length >= 4 && videos.items.length <= 6);
   assert.equal(reviews.yandex.score, 5);
