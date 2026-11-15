@@ -66,21 +66,7 @@ export function HomeView() {
               )}
             </h1>
             <p className="mt-4 max-w-xl text-[19px] font-bold max-md:text-base">{site.hero.subtitle}</p>
-            <div className="mt-4 max-w-xl">
-              <p className="recruit-blink inline-flex rounded-pill border-[3px] border-ink bg-sun px-4 py-1.5 font-display text-lg font-black text-ink shadow-card-sm">
-                {site.hero.openingsLabel}
-              </p>
-              <ul className="mt-3 grid gap-2">
-                {site.hero.openings.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="flex min-h-11 items-center justify-between gap-3 rounded-2xl border-[3px] border-ink bg-white px-3 py-1.5 shadow-card-sm">
-                      <span className="font-extrabold">{item.name}</span>
-                      <span className="shrink-0 rounded-pill bg-mint px-2.5 py-0.5 text-sm font-black text-ink">{item.places}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <OpeningsList className="mt-4 max-w-xl" />
             <div className="mt-5 flex items-start gap-12 xl:gap-14">
               <div className="flex w-fit max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
                 <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
@@ -216,9 +202,6 @@ export function HomeView() {
             <br />
             <span className="text-pink">для каждого возраста.</span>
           </h2>
-          <p className="mt-3 max-w-2xl text-sm">
-            <span className="ph">{ageGroups.note}</span>
-          </p>
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {ageGroups.items.map((card) => (
               <article key={card.id} className={`flex min-h-[420px] flex-col rounded-card border-[3px] border-ink p-6 shadow-card max-md:shadow-card-sm ${tint[card.tint]}`}>
@@ -518,6 +501,30 @@ export function HomeView() {
         </div>
         <MapEmbed widgetUrl={site.mapWidgetUrl} mapsUrl={site.mapsUrl} />
       </section>
+
+      <section aria-label="Идёт набор" className="mx-auto max-w-wrap px-10 pb-16 pt-4 max-md:px-[18px]">
+        <OpeningsList className="max-w-xl" />
+      </section>
+    </div>
+  );
+}
+
+function OpeningsList({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <p className="recruit-blink inline-flex rounded-pill border-[3px] border-ink bg-sun px-4 py-1.5 font-display text-lg font-black text-ink shadow-card-sm">
+        {site.hero.openingsLabel}
+      </p>
+      <ul className="mt-3 grid gap-2">
+        {site.hero.openings.map((item) => (
+          <li key={item.href}>
+            <Link href={item.href} className="flex min-h-11 items-center justify-between gap-3 rounded-2xl border-[3px] border-ink bg-white px-3 py-1.5 shadow-card-sm">
+              <span className="font-extrabold">{item.name}</span>
+              <span className="shrink-0 rounded-pill bg-mint px-2.5 py-0.5 text-sm font-black text-ink">{item.places}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

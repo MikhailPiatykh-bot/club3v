@@ -24,6 +24,7 @@ test("age columns and schedule groups stay explicit", () => {
     columns.items.map((item: { ages: string }) => item.ages),
     ["3+", "6–10", "10–14", "15+"],
   );
+  assert.equal(columns.note, "");
   const groups = readJson("../content/groups.json");
   const ages = (direction: string) =>
     groups.items.filter((item: { direction: string }) => item.direction === direction).map((item: { ages: string }) => item.ages);
