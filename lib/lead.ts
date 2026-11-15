@@ -52,6 +52,7 @@ const placements = new Set([
   "camp",
   "rent",
   "champions",
+  "history",
   "channels",
   "other",
 ]);

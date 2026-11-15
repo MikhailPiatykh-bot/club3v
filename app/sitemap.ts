@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tournaments/acrobatics",
     "/china-camp",
     "/champions",
+    "/club-history",
     "/rent",
     "/contacts",
     "/privacy",

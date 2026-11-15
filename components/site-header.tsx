@@ -55,6 +55,9 @@ function MenuLinks({ onNavigate }: { onNavigate?: () => void }) {
       <Link href="/champions" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
         Зал славы
       </Link>
+      <Link href="/club-history" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
+        История
+      </Link>
       <Link href="/contacts" className="inline-flex min-h-11 items-center whitespace-nowrap font-extrabold" onClick={onNavigate}>
         Контакты
       </Link>

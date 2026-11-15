@@ -8,7 +8,6 @@ const legacyRedirects = [
   ["/aikido-senior-group", "/adults#aikido"],
   ["/our-coaches", "/coaches"],
   ["/our-champions", "/champions"],
-  ["/club-history", "/"],
   ["/calendar-plan", "/events"],
   ["/competitions", "/events#competitions"],
   ["/childrens-summer-sports-camps", "/sbory"],

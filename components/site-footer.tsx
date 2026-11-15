@@ -20,6 +20,7 @@ const links = [
   { href: "/events", label: "Мероприятия клуба" },
   { href: "/china-camp", label: "Сборы в Китае" },
   { href: "/champions", label: "Зал славы" },
+  { href: "/club-history", label: "История клуба" },
   { href: "/contacts", label: "Контакты" },
   { href: "/rent", label: "Аренда зала" },
 ];

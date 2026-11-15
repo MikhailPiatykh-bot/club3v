@@ -12,6 +12,7 @@ import eventsJson from "@/content/events.json";
 import faqJson from "@/content/faq.json";
 import formJson from "@/content/form.json";
 import groupsJson from "@/content/groups.json";
+import historyJson from "@/content/history.json";
 import lessonJson from "@/content/lesson.json";
 import motivationJson from "@/content/motivation.json";
 import ofertaJson from "@/content/oferta.json";
@@ -104,6 +105,7 @@ export const championsDoc = {
   items: championsJson.items as ChampionCard[],
 };
 export const chinaCamp = chinaJson;
+export const history = historyJson;
 export const camps = campsJson;
 export const rent = rentJson;
 
