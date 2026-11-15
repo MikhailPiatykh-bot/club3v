@@ -175,28 +175,3 @@ dialog::backdrop {
   height: 1px;
   overflow: hidden;
 }
-
-.nav-drop {
-  display: grid;
-}
-
-@media (min-width: 1240px) {
-  .nav-drop {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    z-index: 30;
-    display: none;
-    min-width: 240px;
-    border: 3px solid #1d1a5e;
-    border-radius: 20px;
-    background: #fff;
-    padding: 8px;
-    box-shadow: 6px 6px 0 #1d1a5e;
-  }
-
-  .nav-item:hover .nav-drop,
-  .nav-item:focus-within .nav-drop {
-    display: grid;
-  }
-}
