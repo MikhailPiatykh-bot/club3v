@@ -33,14 +33,12 @@ test("age columns and schedule groups stay explicit", () => {
   assert.deepEqual(ages("group-3plus"), ["3+"]);
 });
 
-test("visible progress lists wushu with acrobatics and breakdance", () => {
+test("visible progress lists wushu, acrobatics and breakdance once", () => {
   const belts = readJson("../content/belts.json");
+  assert.equal(belts.title, "Ушу Акробатика Брейкданс");
   assert.deepEqual(
-    belts.tracks.map((track: { title: string; items: { name: string }[] }) => [track.title, track.items.map((item) => item.name)]),
-    [
-      ["Ушу Акробатика", ["Старт", "База", "Техника", "Дальше"]],
-      ["Брейкданс", ["Старт", "База", "Техника", "Дальше"]],
-    ],
+    belts.items.map((item: { name: string }) => item.name),
+    ["Старт", "База", "Техника", "Дальше"],
   );
 });
 
