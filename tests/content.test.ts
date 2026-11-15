@@ -83,6 +83,11 @@ test("homepage hall of fame shows four named candidates and no source note", () 
   assert.deepEqual(featured, ["Кирилл Б.", "Влад П.", "Алексей Ф.", "Артем А."]);
   assert.equal(champions.note, "");
   assert.equal(champions.items.length, 15);
+  const withoutPhoto = champions.items.filter((item: { photo: string | null }) => !item.photo).map((item: { name: string }) => item.name);
+  assert.deepEqual(withoutPhoto, ["Георг К.", "Егор С."]);
+  for (const item of champions.items) {
+    if (item.photo) assert.match(item.photo, /^\/champions\/[a-z-]+\.webp$/);
+  }
 });
 
 test("public copy does not revive closed halls, other sports or old prices", () => {

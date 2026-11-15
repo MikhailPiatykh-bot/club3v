@@ -15,16 +15,28 @@ function initials(name: string) {
     .join("");
 }
 
+function portraitSet(photo: string) {
+  return `${photo} 1000w, ${photo.replace(/(\.\w+)$/, "@2x$1")} 1600w`;
+}
+
 export function ChampionCards({ items }: { items: ChampionCard[] }) {
   return (
     <ul className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
       {items.map((item, index) => (
         <li key={item.name} className="overflow-hidden rounded-card border-[3px] border-ink bg-white text-ink shadow-card">
-          <div className="relative aspect-[3/3.6] border-b-[3px] border-ink bg-blue">
+          <div className="relative aspect-[4/5] border-b-[3px] border-ink bg-[#14224f]">
             {item.photo ? (
               // Portraits are content files with a fixed frame, not layout images.
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={item.photo} alt={item.name} width={420} height={560} className="h-full w-full object-cover" />
+              <img
+                src={item.photo}
+                srcSet={portraitSet(item.photo)}
+                sizes="(min-width: 1024px) 320px, 46vw"
+                alt={item.name}
+                width={800}
+                height={1000}
+                className="h-full w-full object-cover"
+              />
             ) : (
               <div className={`grid h-full place-items-center font-display text-5xl font-black text-white ${tint[index % tint.length]}`}>
                 {initials(item.name)}
