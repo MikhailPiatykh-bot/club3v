@@ -26,6 +26,7 @@ import {
   site,
   stats,
   eventHub,
+  scheduleDoc,
   videos,
 } from "@/lib/content";
 import { formatRub, largeFamilyPrice } from "@/lib/money";
@@ -362,10 +363,11 @@ export function HomeView() {
           <h3 className="mt-10 font-display text-3xl font-black">Расписание</h3>
           <div className="mt-4">
             <Image
-              src="/schedule/raspisanie_light_1080x1350.png"
-              alt="Расписание клуба Veni Vidi Vici: группа 3+ во вторник и четверг 16:20–17:00, брейкданс по средам, ушу и акробатика по возрастам. Суббота выходной."
-              width={1080}
-              height={1350}
+              src={scheduleDoc.poster.src}
+              alt={scheduleDoc.poster.alt}
+              width={scheduleDoc.poster.width}
+              height={scheduleDoc.poster.height}
+              sizes="(max-width: 760px) 100vw, 1080px"
               className="mx-auto h-auto w-full max-w-[1080px]"
             />
             <Link href="/schedule" className="mt-4 inline-flex min-h-11 items-center font-black text-blue underline">

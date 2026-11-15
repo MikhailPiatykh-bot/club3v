@@ -45,6 +45,9 @@ export type LessonInput = {
   confirm: boolean;
   recruiting: boolean;
   note: string | null;
+  name?: string | null;
+  ages?: string | null;
+  tiers?: string[] | null;
 };
 
 export type GroupInput = {
@@ -71,6 +74,7 @@ export type GridSession = {
   direction: string;
   audience: "child" | "adult";
   tier: string;
+  tiers: string[];
   name: string;
   ages: string;
   daysLabel: string;
@@ -161,8 +165,9 @@ export function buildGrid(input: {
       direction,
       audience: group.audience === "adult" ? "adult" : "child",
       tier: group.tier,
-      name: group.name,
-      ages: group.ages,
+      tiers: lesson.tiers?.length ? lesson.tiers : [group.tier],
+      name: lesson.name || group.name,
+      ages: lesson.ages || group.ages,
       daysLabel: lesson.days ?? "дни уточняются",
       confirm: lesson.confirm,
       recruiting: lesson.recruiting,
@@ -200,7 +205,7 @@ export function buildGrid(input: {
 export function matchesFilter(session: GridSession, query: ScheduleQuery) {
   if (query.audience !== "all" && session.audience !== query.audience) return false;
   if (query.direction !== "all" && session.directionId !== query.direction) return false;
-  if (query.tier !== "all" && session.tier !== query.tier) return false;
+  if (query.tier !== "all" && session.tier !== query.tier && !session.tiers.includes(query.tier)) return false;
   return true;
 }
 

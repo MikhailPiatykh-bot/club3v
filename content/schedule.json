@@ -1,6 +1,12 @@
 {
   "draft": false,
   "note": "Детское расписание подтверждено. У взрослых групп часы клуб ещё назовёт.",
+  "poster": {
+    "src": "/schedule/raspisanie_light_2160x2700.png",
+    "width": 2160,
+    "height": 2700,
+    "alt": "Расписание клуба Veni Vidi Vici. Группа 3+ во вторник и четверг 16:20–17:00. Брейкданс по средам 16:00–19:00, затем ушу: 6–14 в 19:00–20:00 и старшая в 20:00–21:00. Ушу в понедельник и пятницу по трём группам, в воскресенье младшая и средняя 6–14 в 17:00–18:30 и старшая в 18:30–20:30. Акробатика во вторник и четверг. Суббота выходной."
+  },
   "items": [
     {
       "id": "g3",
@@ -14,7 +20,7 @@
     {
       "id": "wushu-jr",
       "groupId": "wushu-jr",
-      "days": "пн, пт, вс",
+      "days": "пн, пт",
       "time": "17:00–18:20",
       "confirm": false,
       "recruiting": false,
@@ -23,7 +29,7 @@
     {
       "id": "wushu-md",
       "groupId": "wushu-md",
-      "days": "пн, пт, вс",
+      "days": "пн, пт",
       "time": "18:20–19:40",
       "confirm": false,
       "recruiting": false,
@@ -32,8 +38,50 @@
     {
       "id": "wushu-sr",
       "groupId": "wushu-sr",
-      "days": "пн, пт, вс",
+      "days": "пн, пт",
       "time": "19:40–21:00",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "wushu-wed-both",
+      "groupId": "wushu-jr",
+      "name": "Младшая и средняя",
+      "ages": "6–14",
+      "tiers": ["junior", "middle"],
+      "days": "ср",
+      "time": "19:00–20:00",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "wushu-wed-sr",
+      "groupId": "wushu-sr",
+      "days": "ср",
+      "time": "20:00–21:00",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "wushu-sun-both",
+      "groupId": "wushu-jr",
+      "name": "Младшая и средняя",
+      "ages": "6–14",
+      "tiers": ["junior", "middle"],
+      "days": "вс",
+      "time": "17:00–18:30",
+      "confirm": false,
+      "recruiting": false,
+      "note": null
+    },
+    {
+      "id": "wushu-sun-sr",
+      "groupId": "wushu-sr",
+      "days": "вс",
+      "time": "18:30–20:30",
       "confirm": false,
       "recruiting": false,
       "note": null

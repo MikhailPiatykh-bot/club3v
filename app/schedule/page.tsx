@@ -41,12 +41,12 @@ export default function SchedulePage() {
         <figure className="mt-12">
           <figcaption className="font-display text-2xl font-black">Картинка расписания</figcaption>
           <Image
-            src="/schedule/raspisanie_light_1080x1350.png"
-            alt="Расписание клуба Veni Vidi Vici: группа 3+ во вторник и четверг 16:20–17:00, брейкданс по средам, ушу и акробатика по возрастам. Суббота выходной."
-            width={1080}
-            height={1350}
-            sizes="(max-width: 760px) 100vw, 720px"
-            className="mt-3 h-auto w-full max-w-[720px] rounded-card border-[3px] border-ink shadow-card"
+            src={scheduleDoc.poster.src}
+            alt={scheduleDoc.poster.alt}
+            width={scheduleDoc.poster.width}
+            height={scheduleDoc.poster.height}
+            sizes="(max-width: 760px) 100vw, 1080px"
+            className="mt-3 h-auto w-full max-w-[1080px] rounded-card border-[3px] border-ink shadow-card"
           />
         </figure>
       </section>

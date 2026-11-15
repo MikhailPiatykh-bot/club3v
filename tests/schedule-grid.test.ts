@@ -49,14 +49,29 @@ test("confirmed groups fill the week and Saturday stays closed", () => {
     ["wed 16:00–17:00", "wed 17:00–18:00", "wed 18:00–19:00"],
   );
 
-  const wushuJunior = placed.filter((row) => row.groupId === "wushu-jr");
+  const wushuJunior = placed.filter((row) => row.lessonId === "wushu-jr");
   assert.deepEqual(
-    wushuJunior.map((row) => row.dayId),
-    ["mon", "fri", "sun"],
+    wushuJunior.map((row) => `${row.dayId} ${row.time}`),
+    ["mon 17:00–18:20", "fri 17:00–18:20"],
   );
-  assert.equal(wushuJunior[0]?.time, "17:00–18:20");
   assert.equal(wushuJunior[0]?.coachName, null);
-  assert.equal(placed.find((row) => row.groupId === "wushu-sr")?.coachName, "Михаил Александрович");
+  assert.deepEqual(
+    placed.filter((row) => row.lessonId === "wushu-sun-both").map((row) => `${row.dayId} ${row.time} ${row.name} ${row.ages}`),
+    ["sun 17:00–18:30 Младшая и средняя 6–14"],
+  );
+  assert.deepEqual(
+    placed.filter((row) => row.lessonId === "wushu-sun-sr").map((row) => `${row.dayId} ${row.time}`),
+    ["sun 18:30–20:30"],
+  );
+  assert.deepEqual(
+    placed.filter((row) => row.lessonId === "wushu-wed-both").map((row) => `${row.dayId} ${row.time}`),
+    ["wed 19:00–20:00"],
+  );
+  assert.deepEqual(
+    placed.filter((row) => row.lessonId === "wushu-wed-sr").map((row) => `${row.dayId} ${row.time}`),
+    ["wed 20:00–21:00"],
+  );
+  assert.equal(placed.find((row) => row.lessonId === "wushu-sr")?.coachName, "Михаил Александрович");
 
   const acroSenior = placed.filter((row) => row.groupId === "acro-sr");
   assert.deepEqual(
@@ -78,6 +93,10 @@ test("adult groups stay out of the week grid until hours are known", () => {
   );
 
   const juniors = rows.filter((row) => matchesFilter(row, { audience: "child", direction: "all", tier: "junior" }) && row.placed);
-  assert.equal(juniors.every((row) => row.tier === "junior"), true);
+  assert.equal(juniors.every((row) => row.tiers.includes("junior")), true);
+  assert.equal(juniors.some((row) => row.lessonId === "wushu-sun-both"), true);
   assert.equal(juniors.some((row) => row.groupId === "breakdance" || row.groupId === "g3"), false);
+  const middle = rows.filter((row) => matchesFilter(row, { audience: "child", direction: "all", tier: "middle" }) && row.placed);
+  assert.equal(middle.some((row) => row.lessonId === "wushu-sun-both" || row.lessonId === "wushu-wed-both"), true);
+  assert.equal(middle.some((row) => row.lessonId === "wushu-jr"), false);
 });
