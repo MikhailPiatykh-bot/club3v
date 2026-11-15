@@ -157,3 +157,12 @@ test("public copy does not revive closed halls, other sports or old prices", () 
   }
   assert.deepEqual(hits, []);
 });
+
+test("camp gatherings link points at the LetoLegend VK group", () => {
+  const camps = readJson("../content/camps.json");
+  assert.equal(camps.vk, "https://vk.ru/letolegend");
+  assert.equal(camps.vkLabel, "Группа сборов ВК");
+  const page = readFileSync(new URL("../app/sbory/page.tsx", import.meta.url), "utf8");
+  assert.match(page, /camps\.vkLabel/);
+  assert.equal(page.includes("Группа лагеря"), false);
+});
