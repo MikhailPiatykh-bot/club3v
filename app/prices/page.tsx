@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Цены и скидки",
-  description: "Цены клуба Veni Vidi Vici: абонемент 9 000 ₽ в месяц, месяц с гарантией, скидка многодетным 11%, на второго ребёнка 5%.",
+  description: "Цены клуба Veni Vidi Vici: абонемент 9 000 ₽ в месяц, приведи друга −50%, айкидо, ушу для взрослых и брейкданс 8 000 ₽ в месяц.",
   path: "/prices",
 });
 
@@ -23,7 +23,7 @@ export default function PricesPage() {
           <Breadcrumbs items={[{ name: "Главная", path: "/" }, { name: "Цены", path: "/prices" }]} />
           <h1 className="mt-4 font-display text-4xl leading-tight">Цены и скидки</h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-soft">
-            Абонемент {formatRub(prices.subscription)} в месяц. Многодетным −{prices.largeFamilyDiscountPercent}%: {formatRub(family)}. На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}.
+            Абонемент {formatRub(prices.subscription)} в месяц. Многодетным −{prices.largeFamilyDiscountPercent}%: {formatRub(family)}. На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}. {prices.friend.title}: −{prices.friend.percent}% на месячный абонемент. Айкидо, ушу для взрослых и брейкданс: {formatRub(prices.adults)} в месяц.
           </p>
         </div>
       </header>
@@ -31,7 +31,7 @@ export default function PricesPage() {
         <PriceCards />
         <div className="mt-8 max-w-2xl space-y-3 text-sm leading-relaxed text-ink-soft">
           <p>Число занятий в неделю смотрите в расписании группы. Пока дни уточняются, администратор называет их при записи.</p>
-          <p>Разовое занятие и скидку за друга клуб подтвердит отдельно. Сумму до этого на сайте не пишем.</p>
+          <p>Разовое занятие клуб подтвердит отдельно. Сумму до этого на сайте не пишем.</p>
         </div>
       </section>
       <CtaBand placement="prices" />

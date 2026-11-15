@@ -177,7 +177,7 @@ export function HomeView() {
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             <article className="rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
               <h3 className="font-display text-2xl font-black">Айкидо</h3>
-              <p className="mt-2">Группа по выходным. Дни и цену клуб ещё назовёт.</p>
+              <p className="mt-2">Группа по выходным. {formatRub(prices.adults)} в месяц. Дни клуб ещё назовёт.</p>
               <Link href="/adults#aikido" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
                 Подробнее
               </Link>
@@ -185,7 +185,7 @@ export function HomeView() {
             <article className="rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
               <span className="rounded-pill border-2 border-ink bg-sun px-2 py-0.5 text-xs font-black">Идёт набор</span>
               <h3 className="mt-2 font-display text-2xl font-black">Ушу для взрослых</h3>
-              <p className="mt-2">Предварительная запись, пока нет даты старта.</p>
+              <p className="mt-2">Предварительная запись, пока нет даты старта. {formatRub(prices.adults)} в месяц.</p>
               <SignupButton kind="waitlist" audience="adult" direction="wushu-adult" placement="direction" className="mt-3 inline-flex h-12 items-center rounded-btn border-[2.5px] border-ink bg-orange px-4 font-black text-ink shadow-btn-main">
                 Записаться в группу
               </SignupButton>
@@ -350,13 +350,15 @@ export function HomeView() {
               <p className="mt-2 font-extrabold">
                 На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}
               </p>
+              <p className="mt-2 font-extrabold">
+                {prices.friend.title} −{prices.friend.percent}% на месячный абонемент: {formatRub(largeFamilyPrice(prices.subscription, prices.friend.percent))}
+              </p>
             </article>
             <article className="rounded-card border-[3px] border-ink bg-white p-6 shadow-card">
-              <h3 className="font-display text-2xl font-black">Взрослым</h3>
-              <p className="mt-2">{prices.adultsNote}</p>
-              <p className="mt-3">
-                <span className="ph">{prices.friend.title}: {prices.friend.note}</span>
-              </p>
+              <h3 className="font-display text-2xl font-black">Взрослым и брейкданс</h3>
+              <p className="mt-2 font-extrabold">Айкидо и ушу для взрослых: {formatRub(prices.adults)} в месяц</p>
+              <p className="mt-2 font-extrabold">Брейкданс: {formatRub(prices.breakdance)} в месяц</p>
+              <p className="mt-3">{prices.group3Note}</p>
             </article>
           </div>
           <h3 className="mt-10 font-display text-3xl font-black">Расписание</h3>

@@ -45,7 +45,7 @@ export function businessJsonLd() {
       "@type": "Offer",
       price: String(prices.subscription),
       priceCurrency: "RUB",
-      description: `Абонемент на месяц. Многодетным скидка ${prices.largeFamilyDiscountPercent}%, ${formatRub(family)}. На второго ребёнка скидка ${prices.secondChildDiscountPercent}%, ${formatRub(secondChild)}.`,
+      description: `Абонемент на месяц. Многодетным скидка ${prices.largeFamilyDiscountPercent}%, ${formatRub(family)}. На второго ребёнка скидка ${prices.secondChildDiscountPercent}%, ${formatRub(secondChild)}. Приведи друга: скидка ${prices.friend.percent}% на месячный абонемент. Айкидо, ушу для взрослых и брейкданс: ${formatRub(prices.adults)} в месяц.`,
     },
     areaServed: "Москва",
     aggregateRating: {

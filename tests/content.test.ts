@@ -62,6 +62,12 @@ test("prices, contacts and required blocks match the brief", () => {
   const reviews = readJson("../content/reviews.json");
   const districts = readJson("../content/districts.json");
   assert.equal(prices.subscription, 9000);
+  assert.equal(prices.breakdance, 8000);
+  assert.equal(prices.adults, 8000);
+  assert.equal(prices.friend.title, "Приведи друга");
+  assert.equal(prices.friend.percent, 50);
+  assert.equal(prices.friend.note.includes("не указываем"), false);
+  assert.equal(prices.group3Note, "Цену группы 3+ клуб ещё назовёт.");
   assert.equal(offer.mainCondition, "При посещении 8 занятий в первый месяц, для новых учеников.");
   assert.equal(offer.bullets[2], "Вернём деньги за первый месяц, если не подойдёт (по условиям гарантии)");
   assert.equal(
