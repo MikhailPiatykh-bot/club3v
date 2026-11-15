@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ChampionCards } from "@/components/champion-cards";
 import { FaqList } from "@/components/faq-list";
 import { MapEmbed } from "@/components/map-embed";
-import { MessengerLinks } from "@/components/messengers";
+import { ContactSocial, MessengerLinks } from "@/components/messengers";
 import { Quiz } from "@/components/quiz";
 import { ReviewsRail } from "@/components/reviews-rail";
 import { SignupButton } from "@/components/signup-button";
@@ -503,7 +503,7 @@ export function HomeView() {
           <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="mt-2 inline-flex font-display text-2xl font-black">
             {site.phoneDisplay}
           </TrackLink>
-          <MessengerLinks className="mt-4" />
+          <ContactSocial className="mt-4" />
           <ul className="mt-4 grid gap-2 text-sm">
             {site.metro.steps.map((step) => (
               <li key={step}>{step}</li>
