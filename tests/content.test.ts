@@ -129,6 +129,12 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.match(directions.wushu.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
   assert.match(directions.acrobatics.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
   assert.match(directions.breakdance.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
+  assert.match(directions.wushu.lead, /восточных единоборств/);
+  assert.match(directions.acrobatics.lead, /грации, силы и координации/);
+  assert.match(directions.breakdance.lead, /Олимпийских игр/);
+  assert.equal(directions.breakdance.lead.includes("подтвердит"), false);
+  assert.equal(directions.wushu.club.length, 7);
+  assert.equal(directions.acrobatics.club.length, 5);
   assert.match(directions.group3.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
   const sections = readJson("../content/sections.json");
   assert.equal(sections.items.find((item: { id: string }) => item.id === "ages").label, "03 / ВОЗРАСТ");

@@ -39,6 +39,20 @@ export function DirectionView({ direction }: { direction: DirectionId }) {
           ))}
         </ul>
       </section>
+      {page.club?.length ? (
+        <section className="bg-cream py-12">
+          <div className="mx-auto w-full max-w-wrap px-10 max-md:px-[18px]">
+            <h2 className="font-display text-3xl font-black">{page.clubTitle}</h2>
+            <ul className="mt-5 grid gap-3 md:grid-cols-2">
+              {page.club.map((item) => (
+                <li key={item} className="rounded-card border-[3px] border-ink bg-white p-5 shadow-card-sm">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
       <section className="bg-white py-12">
         <div className="mx-auto w-full max-w-wrap px-10 max-md:px-[18px]">
           <h2 className="font-display text-3xl font-black">Группы по возрасту</h2>
