@@ -7,6 +7,7 @@ import coachesJson from "@/content/coaches.json";
 import consentJson from "@/content/consent.json";
 import directionsJson from "@/content/directions.json";
 import districtsJson from "@/content/districts.json";
+import eventHubJson from "@/content/event-hub.json";
 import eventsJson from "@/content/events.json";
 import faqJson from "@/content/faq.json";
 import formJson from "@/content/form.json";
@@ -71,6 +72,7 @@ export type ClubEvent = {
 };
 
 export const eventsDoc = eventsJson;
+export const eventHub = eventHubJson;
 export const events = eventsJson.items as ClubEvent[];
 export const videosDoc = videosJson;
 export const videos = videosJson.items;

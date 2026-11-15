@@ -96,9 +96,11 @@
       { "href": "/adults#wushu", "label": "Ушу", "recruiting": true }
     ],
     "events": [
-      { "href": "/events", "label": "Календарь мероприятий" },
-      { "href": "/china-camp", "label": "Сборы в Китае" },
-      { "href": "/camps", "label": "Детские лагеря" }
+      { "href": "/sbory", "label": "Сборы" },
+      { "href": "/certification", "label": "Клубная аттестация" },
+      { "href": "/tournaments/wushu", "label": "Турниры по ушу" },
+      { "href": "/tournaments/acrobatics", "label": "Турниры по акробатике" },
+      { "href": "/events", "label": "Мероприятия клуба" }
     ]
   },
   "thankYou": "Спасибо, перезвоним в течение часа",

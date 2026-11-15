@@ -11,7 +11,6 @@ const legacyRedirects = [
   ["/club-history", "/"],
   ["/calendar-plan", "/events"],
   ["/competitions", "/events#competitions"],
-  ["/certification", "/events#certification"],
   ["/childrens-summer-sports-camps", "/camps"],
   ["/kidscamp", "/camps"],
   ["/family-holidays-in-turkey", "/china-camp"],

@@ -25,6 +25,7 @@ import {
   sectionLabel,
   site,
   stats,
+  eventHub,
   upcomingEvents,
   videos,
 } from "@/lib/content";
@@ -34,6 +35,7 @@ const tint: Record<string, string> = {
   mint: "bg-tint-mint",
   pink: "bg-tint-pink",
   blue: "bg-tint-blue",
+  orange: "bg-orange",
 };
 
 const directionCards = [directions.wushu, directions.acrobatics, directions.breakdance, directions.group3];
@@ -238,7 +240,7 @@ export function HomeView() {
         </SignupButton>
       </section>
 
-      <section className="bg-blue-mist py-24 max-md:py-14">
+      <section id="progress" className="scroll-mt-28 bg-blue-mist py-24 max-md:py-14">
         <div className="mx-auto max-w-wrap px-10 text-center max-md:px-[18px]">
           <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
           <h2 className="mt-4 font-display text-h2 font-black">Видимый прогресс</h2>
@@ -377,50 +379,47 @@ export function HomeView() {
       <section className="mx-auto max-w-wrap px-10 py-24 max-md:px-[18px] max-md:py-14">
         <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
         <h2 className="mt-4 font-display text-h2 font-black">Соревнования, фестивали, мероприятия и сборы</h2>
-        <p className="mt-2">Соревнования, потом лагерь, потом сборы в Китае.</p>
-        <h3 className="mt-6 font-display text-2xl font-black">Ближайшие мероприятия</h3>
-        {nextEvents.length ? (
-          <ul className="mt-3 grid gap-3">
-            {nextEvents.slice(0, 3).map((item) => (
-              <li key={item.id} className="rounded-card border-[3px] border-ink bg-white p-4">
-                {item.dateText} · {item.title}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-3">Расписание турниров уточняется.</p>
-        )}
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+          {eventHub.blocks.map((block, index) => (
+            <li key={block.href} className={index === 3 ? "lg:col-span-2 lg:col-start-2" : "lg:col-span-2"}>
+              <Link href={block.href} className={`flex h-full min-h-40 flex-col justify-between rounded-card border-[3px] border-ink p-4 shadow-card ${tint[block.tint] ?? "bg-white"}`}>
+                <span className="text-xs font-extrabold tracking-[0.14em]">0{index + 1}</span>
+                <h3 className="font-display text-2xl font-black leading-tight">{block.title}</h3>
+                <span className="font-black">На страницу →</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <h3 className="mt-10 font-display text-3xl font-black">Ближайшие мероприятия</h3>
+        <ul className="mt-4 grid gap-4 lg:grid-cols-2">
+          {nextEvents.slice(0, 2).map((item) => (
+            <li key={item.id}>
+              <Link href={item.link || "/events"} className="flex h-full min-h-44 flex-col justify-end rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
+                <p className="text-sm font-extrabold">{item.dateText}</p>
+                <h3 className="mt-1 font-display text-3xl font-black">{item.title}</h3>
+              </Link>
+            </li>
+          ))}
+          {eventHub.banners.map((banner) => (
+            <li key={banner.id}>
+              <Link href={banner.href} className="relative block overflow-hidden rounded-card border-[3px] border-ink bg-sun shadow-card">
+                {banner.image ? (
+                  <Image src={banner.image} alt={banner.alt} width={1200} height={525} className="aspect-[16/7] w-full object-cover" />
+                ) : (
+                  <span className="flex aspect-[16/7] items-center bg-sun px-6 font-display text-4xl font-black text-ink">{banner.title}</span>
+                )}
+                <span className="absolute inset-x-0 bottom-0 bg-ink/85 p-4 text-white">
+                  {banner.image ? <span className="block font-display text-2xl font-black">{banner.title}</span> : null}
+                  <span className="mt-1 block text-sm">{banner.text}</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3">Даты турниров клуб ещё подтвердит.</p>
         <TrackLink href="/events" goal="calendar_all" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
           Весь календарь
         </TrackLink>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <article className="rounded-card border-[3px] border-ink bg-white p-5 shadow-card">
-            <h3 className="font-display text-2xl font-black">Сборы в Китае</h3>
-            <p className="mt-2">Набор на следующие сборы. Даты клуб ещё назовёт.</p>
-            <Link href="/china-camp" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
-              Подробнее
-            </Link>
-            <SignupButton kind="china" placement="china" className="mt-3 inline-flex h-12 items-center rounded-btn border-[2.5px] border-ink bg-orange px-4 font-black text-ink shadow-btn-main">
-              Записаться на сборы
-            </SignupButton>
-          </article>
-          <article className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
-            {camps.photos[0] ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={camps.photos[0].src} alt={camps.photos[0].alt} width={1200} height={900} className="aspect-[16/9] w-full border-b-[3px] border-ink object-cover" />
-            ) : null}
-            <div className="p-5">
-            <h3 className="font-display text-2xl font-black">Детские спортивные лагеря</h3>
-            <p className="mt-2">Набор откроется, когда клуб назовёт смены.</p>
-            <Link href="/camps" className="mt-3 inline-flex min-h-11 items-center font-black text-blue underline">
-              Подробнее
-            </Link>
-            <SignupButton kind="camp" audience="child" placement="camp" className="mt-3 inline-flex h-12 items-center rounded-btn border-[2.5px] border-ink bg-orange px-4 font-black text-ink shadow-btn-main">
-              Записаться в лагерь
-            </SignupButton>
-            </div>
-          </article>
-        </div>
       </section>
 
       <section className="bg-white py-16">
