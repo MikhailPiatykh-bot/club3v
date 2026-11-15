@@ -141,6 +141,33 @@ export function HomeView() {
         </div>
       </section>
 
+      <section id="history" className="scroll-mt-28 border-y-[3px] border-ink bg-white py-16 max-md:py-12">
+        <div className="mx-auto grid max-w-wrap items-center gap-8 px-10 max-md:px-[18px] lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">История</p>
+            <h2 className="mt-4 font-display text-h2 font-black">{history.title}</h2>
+            <p className="mt-4 max-w-xl">{history.lead}</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {history.chapters.map((chapter) => (
+                <li key={chapter.title} className="rounded-pill border-2 border-ink bg-white px-3 py-1.5 text-sm font-extrabold">
+                  {chapter.title}
+                </li>
+              ))}
+            </ul>
+            <Link href="/club-history" className="mt-5 inline-flex min-h-11 items-center font-black text-blue underline">
+              Вся история
+            </Link>
+          </div>
+          <ul className="grid grid-cols-3 gap-3">
+            {historyShots.map((photo) => (
+              <li key={photo.src} className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card-sm">
+                <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="aspect-[3/4] w-full object-cover" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section id="why" className="mx-auto max-w-wrap px-10 py-24 max-md:px-[18px] max-md:py-14">
         <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("tasks")}</p>
         <h2 className="mt-4 max-w-3xl font-display text-h2 font-black">{site.why.title}</h2>
@@ -329,33 +356,6 @@ export function HomeView() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section id="history" className="scroll-mt-28 border-y-[3px] border-ink bg-cream py-16 max-md:py-12">
-        <div className="mx-auto grid max-w-wrap items-center gap-8 px-10 max-md:px-[18px] lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">История</p>
-            <h2 className="mt-4 font-display text-h2 font-black">{history.title}</h2>
-            <p className="mt-4 max-w-xl">{history.lead}</p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {history.chapters.map((chapter) => (
-                <li key={chapter.title} className="rounded-pill border-2 border-ink bg-white px-3 py-1.5 text-sm font-extrabold">
-                  {chapter.title}
-                </li>
-              ))}
-            </ul>
-            <Link href="/club-history" className="mt-5 inline-flex min-h-11 items-center font-black text-blue underline">
-              Вся история
-            </Link>
-          </div>
-          <ul className="grid grid-cols-3 gap-3">
-            {historyShots.map((photo) => (
-              <li key={photo.src} className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card-sm">
-                <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="aspect-[3/4] w-full object-cover" />
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

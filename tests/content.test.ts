@@ -150,7 +150,9 @@ test("homepage hall of fame shows four named candidates and no source note", () 
 
 test("home page links to the club history page", () => {
   const home = readFileSync(new URL("../components/home-view.tsx", import.meta.url), "utf8");
-  assert.equal(home.includes('id="history"'), true);
+  const historyAt = home.indexOf('id="history"');
+  const tasksAt = home.indexOf('id="why"');
+  assert.ok(historyAt > 0 && tasksAt > historyAt);
   assert.equal(home.includes('href="/club-history"'), true);
   assert.equal(home.includes("Вся история"), true);
 });
