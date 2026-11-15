@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChampionCards } from "@/components/champion-cards";
@@ -379,13 +380,21 @@ export function HomeView() {
         <h2 className="mt-4 font-display text-h2 font-black">Соревнования, фестивали, мероприятия и сборы</h2>
         <h3 className="mt-8 font-display text-3xl font-black">Афиша мероприятий</h3>
         <ul className="mt-4 flex flex-wrap items-start gap-4">
-          {eventHub.afisha.map((poster) => (
-            <li key={poster.src} className="w-[calc((100%-1rem)/3)] md:w-[calc((100%-1rem)/6)]">
-              <Link href={poster.href} className="block overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
-                <Image src={poster.src} alt={poster.alt} width={poster.width} height={poster.height} className="h-auto w-full" />
-              </Link>
-            </li>
-          ))}
+          {eventHub.afisha.map((poster) => {
+            const tallest = Math.max(...eventHub.afisha.map((item) => item.height / item.width));
+            const scale = (poster.width / poster.height) * tallest;
+            return (
+              <li
+                key={poster.src}
+                className="w-[calc((100%-1rem)/3*var(--poster-scale)+6px*(1-var(--poster-scale)))] md:w-[calc((100%-1rem)/6*var(--poster-scale)+6px*(1-var(--poster-scale)))]"
+                style={{ "--poster-scale": scale } as CSSProperties}
+              >
+                <Link href={poster.href} className="block overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
+                  <Image src={poster.src} alt={poster.alt} width={poster.width} height={poster.height} className="h-auto w-full" />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {eventHub.blocks.map((block, index) => (
