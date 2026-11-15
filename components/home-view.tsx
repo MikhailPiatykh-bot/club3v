@@ -370,7 +370,7 @@ export function HomeView() {
 
       <section className="mx-auto max-w-wrap px-10 py-24 max-md:px-[18px] max-md:py-14">
         <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
-        <h2 className="mt-4 font-display text-h2 font-black">Мероприятия, сборы и лагеря</h2>
+        <h2 className="mt-4 font-display text-h2 font-black">Соревнования, фестивали, мероприятия и сборы</h2>
         <p className="mt-2">Соревнования, потом лагерь, потом сборы в Китае.</p>
         <h3 className="mt-6 font-display text-2xl font-black">Ближайшие мероприятия</h3>
         {nextEvents.length ? (
