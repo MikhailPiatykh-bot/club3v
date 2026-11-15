@@ -293,18 +293,18 @@ export function HomeView() {
           <span className="text-pink">полюбить спорт.</span>
         </h2>
         <p className="mt-4 max-w-xl text-ink-2">{coaches.length ? "Тренеры клуба «Veni Vidi Vici»: внимание к каждому ребёнку, посильная нагрузка и интерес к занятиям." : null}</p>
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mx-auto mt-8 grid w-full max-w-3xl gap-4 sm:grid-cols-2 xl:max-w-none xl:grid-cols-4">
           {coaches.filter((coach) => coach.home).map((coach) => (
             <article key={coach.id} className="overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
-              <div className="relative aspect-[3/4] bg-ink">
+              <div className="relative aspect-[4/5] bg-ink">
                 {coach.photo ? (
-                  <Image src={coach.photo} alt={coach.name} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover object-center" />
+                  <Image src={coach.photo} alt={coach.name} fill sizes="(min-width: 1280px) 25vw, (min-width: 640px) 28rem, 100vw" className="object-cover object-[center_18%]" />
                 ) : (
                   <div className="grid h-full place-items-center bg-blue text-center font-black text-white">Силуэт · единый фон</div>
                 )}
               </div>
-              <div className="border-t-[3px] border-ink p-4">
-                <h3 className="font-display text-xl font-extrabold">{coach.name}</h3>
+              <div className="border-t-[3px] border-ink p-3">
+                <h3 className="font-display text-lg font-extrabold">{coach.name}</h3>
                 {coach.title ? <p className="mt-1 text-sm">{coach.title}</p> : null}
                 <SignupButton
                   placement="coach"
@@ -314,7 +314,7 @@ export function HomeView() {
                   coachId={coach.id}
                   coachName={coach.name}
                   goal="coach_signup"
-                  className="mt-3 flex h-12 w-full items-center justify-center rounded-btn border-[2.5px] border-ink bg-white font-black shadow-btn-alt"
+                  className="mt-3 flex h-11 w-full items-center justify-center rounded-btn border-[2.5px] border-ink bg-white font-black shadow-btn-alt"
                 >
                   Записаться к тренеру
                 </SignupButton>
