@@ -29,7 +29,7 @@ export function SiteFooter() {
     <footer className="border-t-[3px] border-ink bg-ink text-white">
       <div className="mx-auto grid max-w-wrap gap-8 px-10 py-12 max-md:px-[18px] md:grid-cols-[1.2fr_2fr]">
         <div className="grid content-start gap-4">
-          <div className="w-fit rounded-full bg-white px-3 py-1">
+          <div className="w-fit rounded-2xl bg-white px-3 py-2">
             <BrandLockup />
           </div>
           <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="font-display text-xl font-black text-white">
