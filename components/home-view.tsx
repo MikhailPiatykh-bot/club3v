@@ -141,9 +141,7 @@ export function HomeView() {
               <Link href={offer.guaranteeHref} className="mt-3 inline-flex min-h-11 items-center font-extrabold text-blue underline">
                 {offer.guaranteeLabel}
               </Link>
-              <p className="mt-2 text-sm">
-                <span className="ph">{offer.conditionsNote}</span>
-              </p>
+              <p className="mt-2 text-sm leading-snug text-ink-2">{offer.conditionsNote}</p>
             </article>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { DraftMark } from "@/components/draft-mark";
 
-type Block = { type: string; text?: string; items?: string[] };
+type Block = { type: string; text?: string; items?: string[]; id?: string };
 
 export function LegalDoc({
   title,
@@ -23,7 +23,7 @@ export function LegalDoc({
         {blocks.map((block, index) => {
           if (block.type === "h2" && block.text) {
             return (
-              <h2 key={index} className="pt-4 font-display text-2xl text-ink">
+              <h2 key={index} id={block.id} className="scroll-mt-24 pt-4 font-display text-2xl text-ink">
                 {block.text}
               </h2>
             );

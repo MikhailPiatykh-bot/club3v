@@ -53,6 +53,15 @@ test("prices, contacts and required blocks match the brief", () => {
   const districts = readJson("../content/districts.json");
   assert.equal(prices.subscription, 9000);
   assert.equal(offer.mainCondition, "При посещении 8 занятий в первый месяц, для новых учеников.");
+  assert.equal(
+    offer.conditionsNote,
+    "Гарантия действует для новых учеников при посещении 8 занятий в первый месяц. Если ребёнок заболел, первый месяц продлевается по справке. Заявление на возврат подаётся в течение 7 дней после окончания первого месяца, деньги возвращаем в течение 10 дней.",
+  );
+  assert.equal(offer.guaranteeHref, "/oferta#guarantee");
+  assert.equal(offer.conditionsNote.includes("ещё утверждает"), false);
+  const oferta = readJson("../content/oferta.json");
+  const guarantee = oferta.blocks.find((block: { id?: string }) => block.id === "guarantee");
+  assert.equal(oferta.blocks[oferta.blocks.indexOf(guarantee) + 1].text, offer.conditionsNote);
   assert.match(prices.subscriptionCard.note, /8 занятий в первый месяц/);
   assert.match(offer.finalText, /8 занятий в первый месяц/);
   assert.equal(prices.largeFamilyDiscountPercent, 11);
