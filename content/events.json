@@ -13,6 +13,16 @@
     "Август 2023, мастер-класс 2-кратного чемпиона мира по акробатике Н. П. Супрунова",
     "Universal acro cup 2023"
   ],
+  "acrobaticsPast": [
+    { "src": "/tournaments/acro/zvezdopad.jpg", "alt": "Группа акробатики на новогоднем «Звездопаде талантов» с дипломом и кубком", "caption": "Новогодний «Звездопад талантов»", "width": 1200, "height": 1600 },
+    { "src": "/tournaments/acro/acro-cup-autumn.jpg", "alt": "Группа акробатики с грамотами и медалями Acro Cup Autumn", "caption": "Acro Cup Autumn", "width": 960, "height": 1280 },
+    { "src": "/tournaments/acro/diplomas.jpg", "alt": "Группа акробатики с дипломами и кубками после награждения", "caption": "Награждение: дипломы и кубки", "width": 1280, "height": 1280 },
+    { "src": "/tournaments/acro/pair.jpg", "alt": "Две спортсменки выполняют парный элемент на ковре", "caption": "Парный элемент на ковре", "width": 1279, "height": 1279 },
+    { "src": "/tournaments/acro/atmosphere.jpg", "alt": "Команда акробатики на пьедестале турнира «Атмосфера»", "caption": "«Атмосфера»: пьедестал", "width": 766, "height": 1024 },
+    { "src": "/tournaments/acro/nebo-podium.jpg", "alt": "Дети на пьедестале Кубка Небо 2021 с грамотами", "caption": "Кубок Небо 2021", "width": 1279, "height": 1279 },
+    { "src": "/tournaments/acro/mascot.jpg", "alt": "Команда акробатики с талисманом в зале Московского центра боевых искусств", "caption": "Команда с талисманом в зале", "width": 958, "height": 1280 },
+    { "src": "/tournaments/acro/nebo-medals.jpg", "alt": "Группа акробатики с медалями и грамотами Кубка Небо 2021", "caption": "Кубок Небо 2021: грамоты и медали", "width": 853, "height": 1280 }
+  ],
   "certificationVisible": false,
   "items": [
     { "id": "muzeon", "title": "Фестиваль ушу в Музеоне", "type": "festival", "direction": "wushu", "startDate": null, "endDate": null, "dateText": "12 сентября", "needsYear": true, "stale": true, "place": "Музеон", "registration": false, "link": null, "photo": null, "source": "calendar-plan" },

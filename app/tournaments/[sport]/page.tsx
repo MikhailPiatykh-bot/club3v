@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { events, eventsDoc } from "@/lib/content";
@@ -36,6 +37,7 @@ export default async function TournamentPage({ params }: { params: Promise<{ spo
   if (!page) notFound();
 
   const items = events.filter((item) => item.type === "tournament" && item.direction === sport && !item.stale);
+  const photos = sport === "acrobatics" ? eventsDoc.acrobaticsPast : [];
   const past = eventsDoc.competitionCaptions.filter((caption) =>
     sport === "acrobatics" ? /акробат|acro|акро-/i.test(caption) : /ушу|беларус/i.test(caption),
   );
@@ -66,16 +68,28 @@ export default async function TournamentPage({ params }: { params: Promise<{ spo
           </ul>
         </section>
       ) : null}
-      {past.length ? (
-        <section className="mx-auto max-w-wrap px-10 pb-12 max-md:px-[18px]">
+      {photos.length || past.length ? (
+        <section className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
           <h2 className="font-display text-3xl font-black">Как это было</h2>
-          <ul className="mt-4 grid gap-2">
-            {past.map((caption) => (
-              <li key={caption} className="rounded-card border-[3px] border-ink bg-cream p-3">
-                {caption}
-              </li>
-            ))}
-          </ul>
+          {photos.length ? (
+            <ul className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+              {photos.map((photo) => (
+                <li key={photo.src} className="overflow-hidden rounded-card border-[3px] border-ink bg-cream shadow-card-sm">
+                  <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="h-auto w-full" />
+                  <p className="p-3 text-sm font-bold">{photo.caption}</p>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {past.length ? (
+            <ul className="mt-4 grid gap-2">
+              {past.map((caption) => (
+                <li key={caption} className="rounded-card border-[3px] border-ink bg-cream p-3">
+                  {caption}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </section>
       ) : null}
     </>
