@@ -8,17 +8,17 @@
     {
       "value": "20 лет",
       "label": "выездных лагерей",
-      "confirm": true
+      "confirm": false
     },
     {
-      "value": "50",
-      "label": "лагерных смен",
-      "confirm": true
+      "value": "более 60",
+      "label": "спортивных смен",
+      "confirm": false
     },
     {
       "value": "3000",
       "label": "детей за 20 лет",
-      "confirm": true
+      "confirm": false
     }
   ],
   "points": [
