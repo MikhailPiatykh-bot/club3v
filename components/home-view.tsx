@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChampionCards } from "@/components/champion-cards";
 import { FaqList } from "@/components/faq-list";
-import { HomeSchedule } from "@/components/home-schedule";
 import { MapEmbed } from "@/components/map-embed";
 import { MessengerLinks } from "@/components/messengers";
 import { Quiz } from "@/components/quiz";
@@ -30,8 +29,6 @@ import {
   videos,
 } from "@/lib/content";
 import { formatRub, largeFamilyPrice } from "@/lib/money";
-import { scheduleRows } from "@/lib/schedule-rows";
-
 const tint: Record<string, string> = {
   sun: "bg-tint-sun",
   mint: "bg-tint-mint",
@@ -44,7 +41,6 @@ const directionCards = [directions.wushu, directions.acrobatics, directions.brea
 export function HomeView() {
   const family = largeFamilyPrice(prices.subscription, prices.largeFamilyDiscountPercent);
   const secondChild = largeFamilyPrice(prices.subscription, prices.secondChildDiscountPercent);
-  const rows = scheduleRows();
   const nextEvents = upcomingEvents();
   const featured = championsDoc.items.filter((item) => item.featured && item.consent);
   const motivationOn = motivation.effortPatches || motivation.yearEndUniform;
@@ -364,7 +360,16 @@ export function HomeView() {
           </div>
           <h3 className="mt-10 font-display text-3xl font-black">Расписание</h3>
           <div className="mt-4">
-            <HomeSchedule rows={rows} />
+            <Image
+              src="/schedule/raspisanie_light_1080x1350.png"
+              alt="Расписание клуба Veni Vidi Vici: группа 3+ во вторник и четверг 16:20–17:00, брейкданс по средам, ушу и акробатика по возрастам. Суббота выходной."
+              width={1080}
+              height={1350}
+              className="mx-auto h-auto w-full max-w-[1080px]"
+            />
+            <Link href="/schedule" className="mt-4 inline-flex min-h-11 items-center font-black text-blue underline">
+              Всё расписание
+            </Link>
           </div>
         </div>
       </section>
