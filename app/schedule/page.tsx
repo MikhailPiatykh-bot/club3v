@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Suspense } from "react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
@@ -27,9 +28,19 @@ export default function SchedulePage() {
         </div>
       </header>
       <section className="mx-auto max-w-wrap px-10 py-10 max-md:px-[18px]">
-        <Suspense fallback={<p>Загрузка расписания…</p>}>
-          <ScheduleExplorer rows={scheduleRows()} />
-        </Suspense>
+        <Image
+          src="/schedule/raspisanie_light_1080x1350.png"
+          alt="Расписание клуба Veni Vidi Vici: группа 3+ во вторник и четверг 16:20–17:00, брейкданс по средам, ушу и акробатика по возрастам. Суббота выходной."
+          width={1080}
+          height={1350}
+          priority
+          className="mx-auto h-auto w-full max-w-[1080px]"
+        />
+        <div className="mt-10">
+          <Suspense fallback={<p>Загрузка расписания…</p>}>
+            <ScheduleExplorer rows={scheduleRows()} />
+          </Suspense>
+        </div>
       </section>
     </>
   );
