@@ -1,4 +1,5 @@
 import { SignupButton } from "@/components/signup-button";
+import { offer } from "@/lib/content";
 
 export function CtaBand({
   direction,
@@ -16,7 +17,7 @@ export function CtaBand({
       <div className="mx-auto flex w-full max-w-wrap flex-col gap-5 px-10 py-12 max-md:px-[18px] md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="font-display text-3xl font-black">Месяц с гарантией</h2>
-          <p className="mt-2 max-w-xl">Абонемент 9 000 ₽. Если не подойдёт, вернём деньги за первый месяц.</p>
+          <p className="mt-2 max-w-xl">Абонемент 9 000 ₽. Если не подойдёт, вернём деньги за первый месяц. {offer.mainCondition}</p>
         </div>
         <SignupButton placement={placement} direction={direction} kind={kind} audience={audience} className="inline-flex h-14 items-center justify-center rounded-btn border-[2.5px] border-ink bg-orange px-6 font-black text-ink shadow-btn-main">
           Записаться

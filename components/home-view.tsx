@@ -119,6 +119,7 @@ export function HomeView() {
               <p className="text-[11.5px] font-extrabold uppercase tracking-[0.14em] text-pink">{offer.eyebrow}</p>
               <h2 className="mt-2 font-display text-[38px] font-black leading-none max-md:text-[30px]">{offer.title}</h2>
               <p className="mt-3 text-base text-ink-2">{offer.text}</p>
+              <p className="mt-2 text-[15px] font-extrabold">{offer.mainCondition}</p>
               <ul className="mt-4 grid gap-2 text-[15px] font-bold">
                 {offer.bullets.map((item) => (
                   <li key={item} className="flex gap-2">

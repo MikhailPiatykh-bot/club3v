@@ -45,12 +45,16 @@ test("schedule and coaches point at real groups", () => {
 
 test("prices, contacts and required blocks match the brief", () => {
   const prices = readJson("../content/prices.json");
+  const offer = readJson("../content/offer.json");
   const site = readJson("../content/site.json");
   const faq = readJson("../content/faq.json");
   const videos = readJson("../content/videos.json");
   const reviews = readJson("../content/reviews.json");
   const districts = readJson("../content/districts.json");
   assert.equal(prices.subscription, 9000);
+  assert.equal(offer.mainCondition, "При посещении 8 занятий в первый месяц, для новых учеников.");
+  assert.match(prices.subscriptionCard.note, /8 занятий в первый месяц/);
+  assert.match(offer.finalText, /8 занятий в первый месяц/);
   assert.equal(prices.largeFamilyDiscountPercent, 11);
   assert.equal(prices.secondChildDiscountPercent, 5);
   assert.equal(site.phoneDisplay, "+7 (977) 880-25-71");
