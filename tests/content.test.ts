@@ -63,7 +63,16 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(reviews.yandex.ratingCount, 70);
   assert.equal(reviews.yandex.reviewCount, 60);
   assert.equal(reviews.yandex.countLabel, "70");
-  assert.equal(prices.seatsNote, "Мест в группах: 5");
+  assert.deepEqual(
+    site.hero.openings.map((item: { name: string; places: string }) => `${item.name}: ${item.places}`),
+    [
+      "Ушу для взрослых: 5 мест",
+      "Айкидо для взрослых: 2 места",
+      "Раннее развитие 3+: 4 места",
+      "Ушу младшая группа: 2 места",
+      "Акробатика младшая группа: 2 места",
+    ],
+  );
   assert.equal(reviews.yandex.items.length, reviews.yandex.reviewCount);
   assert.ok(reviews.yandex.items.every((item: { name: string; date: string; url: string; visible: boolean }) => item.visible && item.name && item.date && item.url));
   assert.equal(districts.items.filter((item: { published: boolean }) => item.published).length, 0);

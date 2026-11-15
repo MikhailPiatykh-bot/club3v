@@ -59,10 +59,21 @@ export function HomeView() {
               Ушу и акробатика для детей <span className="marker text-pink">с 3 лет в СЗАО</span>
             </h1>
             <p className="mt-4 max-w-xl text-[19px] font-bold max-md:text-base">{site.hero.subtitle}</p>
-            <Link href="/adults" className="mt-3 inline-flex min-h-11 items-center font-extrabold text-blue underline">
-              {site.hero.adults}
-              {"\u00A0→"}
-            </Link>
+            <div className="mt-4 max-w-xl">
+              <p className="recruit-blink inline-flex rounded-pill border-[3px] border-ink bg-sun px-4 py-1.5 font-display text-lg font-black text-ink shadow-card-sm">
+                {site.hero.openingsLabel}
+              </p>
+              <ul className="mt-3 grid gap-2">
+                {site.hero.openings.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="flex min-h-11 items-center justify-between gap-3 rounded-2xl border-[3px] border-ink bg-white px-3 py-1.5 shadow-card-sm">
+                      <span className="font-extrabold">{item.name}</span>
+                      <span className="shrink-0 rounded-pill bg-mint px-2.5 py-0.5 text-sm font-black text-ink">{item.places}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="mt-5 flex w-fit max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
               <span>
@@ -70,7 +81,6 @@ export function HomeView() {
                   <span className="text-[#FFB400]" aria-hidden="true">★ </span>
                   {reviewsDoc.yandex.scoreLabel} · {reviewsDoc.yandex.countLabel} оценок
                 </b>
-                <span className="mt-1 block text-sm">{prices.seatsNote}</span>
               </span>
             </div>
             {site.hero.cornerPhoto ? (
@@ -349,7 +359,6 @@ export function HomeView() {
               <p className="mt-2 font-extrabold">
                 На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}
               </p>
-              <p className="mt-2 text-sm">{prices.seatsNote}</p>
             </article>
             <article className="rounded-card border-[3px] border-ink bg-white p-6 shadow-card">
               <h3 className="font-display text-2xl font-black">Взрослым</h3>
