@@ -6,6 +6,7 @@ import { HomeSchedule } from "@/components/home-schedule";
 import { MapEmbed } from "@/components/map-embed";
 import { MessengerLinks } from "@/components/messengers";
 import { Quiz } from "@/components/quiz";
+import { ReviewsRail } from "@/components/reviews-rail";
 import { SignupButton } from "@/components/signup-button";
 import { TrackLink } from "@/components/track-link";
 import { VideoGrid } from "@/components/video-grid";
@@ -440,11 +441,7 @@ export function HomeView() {
               <span className="block text-sm">{reviewsDoc.yandex.countLabel} оценок на Яндекс Картах</span>
             </span>
           </a>
-          {yandexItems.length ? null : (
-            <p className="mt-4">
-              <span className="ph">Слайдер включится, когда Михаил выберет отзывы: имя, дата, оценка, текст и ссылка на Яндекс. Выдуманные отзывы не публикуем.</span>
-            </p>
-          )}
+          <ReviewsRail items={yandexItems} />
           <a href={reviewsDoc.yandex.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center font-black text-blue underline">
             Все отзывы на Яндекс Картах
           </a>

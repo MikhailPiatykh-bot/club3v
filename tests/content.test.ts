@@ -64,7 +64,8 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(reviews.yandex.reviewCount, 60);
   assert.equal(reviews.yandex.countLabel, "70");
   assert.equal(prices.seatsNote, "Мест в группах: 5");
-  assert.ok(reviews.yandex.items.every((item: { name: string; date: string; url: string }) => item.name && item.date && item.url));
+  assert.equal(reviews.yandex.items.length, reviews.yandex.reviewCount);
+  assert.ok(reviews.yandex.items.every((item: { name: string; date: string; url: string; visible: boolean }) => item.visible && item.name && item.date && item.url));
   assert.equal(districts.items.filter((item: { published: boolean }) => item.published).length, 0);
   const directions = readJson("../content/directions.json");
   assert.match(directions.wushu.h1, /Хорошёво-Мнёвниках, пр-т Маршала Жукова, 51/);
