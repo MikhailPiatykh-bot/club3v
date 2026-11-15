@@ -445,7 +445,7 @@ export function HomeView() {
           <a href={reviewsDoc.yandex.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center font-black text-blue underline">
             Все отзывы на Яндекс Картах
           </a>
-          <div className="mt-10 max-w-3xl">
+          <div id="channels" className="mt-10 max-w-3xl scroll-mt-28">
             <h2 className="font-display text-3xl font-black">Наши каналы</h2>
             <p className="mt-2">Новости клуба, расписание турниров, фото и видео с тренировок.</p>
             {site.channels.telegram || site.channels.max ? <MessengerLinks channel className="mt-4" /> : <p className="mt-3"><span className="ph">Ссылки на Telegram-канал и канал в MAX клуб ещё пришлёт. Карточки скрыты, пока ссылок нет.</span></p>}

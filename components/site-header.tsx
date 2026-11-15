@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BrandLockup } from "@/components/brand-lockup";
-import { MessengerLinks } from "@/components/messengers";
+import { HeaderSocial } from "@/components/messengers";
 import { SignupButton } from "@/components/signup-button";
 import { TrackLink } from "@/components/track-link";
 import { site } from "@/lib/content";
@@ -67,26 +67,24 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b-[3px] border-ink bg-white">
-      <div className="mx-auto flex h-[76px] max-w-wrap items-center gap-3 px-4 max-md:h-16 max-md:px-[18px] xl:px-8">
+      <div className="mx-auto flex min-h-[76px] max-w-wrap items-center gap-3 px-4 py-1.5 max-md:min-h-16 max-md:px-[18px] xl:px-8">
         <BrandLockup />
         <nav aria-label="Основное меню" className="ml-2 hidden items-center gap-3 text-[13px] min-[1240px]:flex xl:gap-4 xl:text-[14px]">
           <MenuLinks />
         </nav>
-        <div className="ml-auto hidden shrink-0 items-center gap-2 min-[1240px]:flex">
+        <div className="ml-auto flex shrink-0 items-center gap-2">
           <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="hidden whitespace-nowrap font-display text-sm font-black min-[1420px]:inline">
             {site.phoneDisplay}
           </TrackLink>
-          <MessengerLinks compact />
-          <MessengerLinks channel compact />
-          <SignupButton placement="header" className="inline-flex h-11 items-center whitespace-nowrap rounded-btn border-[2.5px] border-ink bg-orange px-3.5 text-sm font-black text-ink shadow-btn-main">
+          <div className="hidden min-[640px]:block">
+            <HeaderSocial />
+          </div>
+          <SignupButton placement="header" className="hidden h-11 items-center whitespace-nowrap rounded-btn border-[2.5px] border-ink bg-orange px-3.5 text-sm font-black text-ink shadow-btn-main min-[1240px]:inline-flex">
             Записаться
           </SignupButton>
-        </div>
-        <div className="ml-auto flex items-center gap-2 min-[1240px]:hidden">
-          <MessengerLinks />
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-xl border-[2.5px] border-ink bg-sun font-black"
+            className="grid h-10 w-10 place-items-center rounded-xl border-[2.5px] border-ink bg-sun font-black min-[1240px]:hidden"
             aria-expanded={open}
             aria-label={open ? "Закрыть меню" : "Открыть меню"}
             onClick={() => setOpen((value) => !value)}
@@ -94,6 +92,9 @@ export function SiteHeader() {
             {open ? "×" : "☰"}
           </button>
         </div>
+      </div>
+      <div className="flex justify-end px-[18px] pb-2 min-[640px]:hidden">
+        <HeaderSocial />
       </div>
       {open ? (
         <nav aria-label="Мобильное меню" className="grid max-h-[calc(100dvh-4rem-5.5rem)] gap-2 overflow-y-auto border-t-[3px] border-ink bg-white px-[18px] py-4 text-[16px] min-[1240px]:hidden">
