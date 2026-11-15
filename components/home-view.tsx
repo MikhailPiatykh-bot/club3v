@@ -378,9 +378,9 @@ export function HomeView() {
         <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
         <h2 className="mt-4 font-display text-h2 font-black">Соревнования, фестивали, мероприятия и сборы</h2>
         <h3 className="mt-8 font-display text-3xl font-black">Афиша мероприятий</h3>
-        <ul className="mt-4 grid items-start gap-4 md:grid-cols-2">
+        <ul className="mt-4 flex flex-wrap items-start gap-4">
           {eventHub.afisha.map((poster) => (
-            <li key={poster.src}>
+            <li key={poster.src} className="w-[calc((100%-1rem)/3)] md:w-[calc((100%-1rem)/6)]">
               <Link href={poster.href} className="block overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
                 <Image src={poster.src} alt={poster.alt} width={poster.width} height={poster.height} className="h-auto w-full" />
               </Link>
