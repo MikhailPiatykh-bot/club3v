@@ -54,7 +54,9 @@ test("confirmed groups fill the week and Saturday stays closed", () => {
     wushuJunior.map((row) => `${row.dayId} ${row.time}`),
     ["mon 17:00–18:20", "fri 17:00–18:20"],
   );
-  assert.equal(wushuJunior[0]?.coachName, null);
+  assert.equal(wushuJunior[0]?.coachName, "Виктория Сергеевна");
+  assert.equal(kids[0]?.coachName, "Ольга Владимировна");
+  assert.equal(breaking[0]?.coachName, "Алексей Юрьевич");
   assert.deepEqual(
     placed.filter((row) => row.lessonId === "wushu-sun-both").map((row) => `${row.dayId} ${row.time} ${row.name} ${row.ages}`),
     ["sun 17:00–18:30 Младшая и средняя 6–14"],
