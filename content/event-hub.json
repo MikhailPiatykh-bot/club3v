@@ -51,6 +51,13 @@
       "href": "/certification",
       "width": 1080,
       "height": 1920
+    },
+    {
+      "src": "/events/afisha-studio.jpg",
+      "alt": "Фотосессия героев клуба: мальчик в чёрной толстовке и девочка в гимнастическом купальнике.",
+      "href": "/sbory",
+      "width": 720,
+      "height": 1280
     }
   ]
 }
