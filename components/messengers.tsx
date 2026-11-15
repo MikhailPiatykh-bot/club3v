@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { MaxIcon, TelegramIcon, WhatsappIcon } from "@/components/icons";
+import { MaxIcon, PhoneIcon, TelegramIcon, WhatsappIcon } from "@/components/icons";
 import { TrackLink } from "@/components/track-link";
 import { site } from "@/lib/content";
 
@@ -41,13 +41,21 @@ export function MessengerLinks({ channel = false, className = "", compact = fals
 const headerIconClass =
   "grid h-10 w-10 place-items-center rounded-full border-[2.5px] border-ink bg-white text-ink shadow-icon max-[639px]:h-9 max-[639px]:w-9";
 
-function SocialGroup({ title, children }: { title: string; children: ReactNode }) {
+function SocialGroup({ lines, children }: { lines: [string, string]; children: ReactNode }) {
   return (
-    <div className="flex flex-col items-center gap-0.5">
-      <span className="whitespace-nowrap text-[10px] font-extrabold leading-none min-[640px]:text-[11px]">{title}</span>
+    <div className="flex items-center gap-1.5">
+      <span className="text-right text-[11px] font-extrabold leading-[1.05]">
+        {lines[0]}
+        <br />
+        {lines[1]}
+      </span>
       {children}
     </div>
   );
+}
+
+function HeaderRule() {
+  return <span className="mx-0.5 h-10 w-px shrink-0 bg-ink" aria-hidden="true" />;
 }
 
 export function HeaderSocial() {
@@ -56,19 +64,19 @@ export function HeaderSocial() {
       href: site.channels.max,
       label: "Канал в MAX",
       goal: "max_channel_click",
-      icon: <MaxIcon className="h-5 w-5 max-[639px]:h-4 max-[639px]:w-4" />,
+      icon: <MaxIcon className="h-5 w-5" />,
     },
     {
       href: site.channels.telegram,
       label: "Канал в Telegram",
       goal: "telegram_channel_click",
-      icon: <TelegramIcon className="h-5 w-5 text-[#2AABEE] max-[639px]:h-4 max-[639px]:w-4" />,
+      icon: <TelegramIcon className="h-5 w-5 text-[#2AABEE]" />,
     },
   ];
 
   return (
-    <div className="flex items-center gap-2 min-[640px]:gap-3">
-      <SocialGroup title="Наши каналы">
+    <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+      <SocialGroup lines={["Наши", "каналы"]}>
         <div className="flex items-center gap-1.5">
           {channels.map((item) => (
             <TrackLink
@@ -86,10 +94,21 @@ export function HeaderSocial() {
           ))}
         </div>
       </SocialGroup>
-      <span className="h-8 w-0.5 bg-ink/15" aria-hidden="true" />
-      <SocialGroup title="Написать нам">
-        <MessengerLinks compact className="gap-1.5 [&_a]:h-10 [&_a]:w-10 max-[639px]:[&_a]:h-9 max-[639px]:[&_a]:w-9" />
-      </SocialGroup>
+      <div className="flex items-center gap-2">
+        <HeaderRule />
+        <SocialGroup lines={["Написать", "нам"]}>
+          <MessengerLinks compact className="gap-1.5 [&_a]:h-10 [&_a]:w-10" />
+        </SocialGroup>
+      </div>
+      <div className="flex items-center gap-2">
+        <HeaderRule />
+        <TrackLink href={`tel:${site.phoneTel}`} goal="phone_click" className="inline-flex items-center gap-1.5 whitespace-nowrap font-display text-[15px] font-black text-ink" aria-label={`Позвонить ${site.phoneDisplay}`}>
+          <span className={headerIconClass}>
+            <PhoneIcon className="h-5 w-5" />
+          </span>
+          {site.phoneDisplay}
+        </TrackLink>
+      </div>
     </div>
   );
 }
