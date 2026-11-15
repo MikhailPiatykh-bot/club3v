@@ -74,13 +74,13 @@ export function HomeView() {
               </span>
             </div>
             {site.hero.cornerPhoto ? (
-              <Link href="/wushu" className="relative z-0 mt-6 hidden w-[240px] -rotate-2 xl:block">
+              <Link href="/wushu" className="relative z-0 mt-6 ml-auto mr-5 hidden w-[420px] -rotate-1 xl:block">
                 <span className="relative block aspect-[2/3] overflow-hidden rounded-[28px] border-4 border-ink shadow-card">
                   <Image
                     src={site.hero.cornerPhoto}
                     alt={site.hero.cornerAlt}
                     fill
-                    sizes="240px"
+                    sizes="420px"
                     className="object-cover"
                   />
                 </span>
