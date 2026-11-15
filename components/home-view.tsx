@@ -81,28 +81,30 @@ export function HomeView() {
                 ))}
               </ul>
             </div>
-            <div className="mt-5 flex w-fit max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
-              <span>
-                <b>
-                  <span className="text-[#FFB400]" aria-hidden="true">★ </span>
-                  {reviewsDoc.yandex.scoreLabel} · {reviewsDoc.yandex.countLabel} оценок
-                </b>
-              </span>
-            </div>
-            {site.hero.cornerPhoto ? (
-              <Link href="/wushu" className="relative z-0 mt-6 ml-auto mr-5 hidden w-[240px] -rotate-1 xl:block">
-                <span className="relative block aspect-[2/3] overflow-hidden rounded-[28px] border-4 border-ink shadow-card">
-                  <Image
-                    src={site.hero.cornerPhoto}
-                    alt={site.hero.cornerAlt}
-                    fill
-                    sizes="240px"
-                    className="object-cover"
-                  />
+            <div className="mt-5 flex items-start gap-12 xl:gap-14">
+              <div className="flex w-fit max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
+                <span>
+                  <b>
+                    <span className="text-[#FFB400]" aria-hidden="true">★ </span>
+                    {reviewsDoc.yandex.scoreLabel} · {reviewsDoc.yandex.countLabel} оценок
+                  </b>
                 </span>
-              </Link>
-            ) : null}
+              </div>
+              {site.hero.cornerPhoto ? (
+                <Link href="/wushu" className="relative z-0 mt-5 hidden w-[210px] shrink-0 -rotate-1 xl:block">
+                  <span className="relative block aspect-[2/3] overflow-hidden rounded-[28px] border-4 border-ink shadow-card">
+                    <Image
+                      src={site.hero.cornerPhoto}
+                      alt={site.hero.cornerAlt}
+                      fill
+                      sizes="210px"
+                      className="object-cover"
+                    />
+                  </span>
+                </Link>
+              ) : null}
+            </div>
           </div>
           <div className="relative">
             {site.hero.photo ? (
