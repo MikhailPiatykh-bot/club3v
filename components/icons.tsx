@@ -24,6 +24,13 @@ export function TelegramIcon({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function MaxIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/brand/max.svg" alt="" className={className} />
+  );
+}
+
 export function PinIcon({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">

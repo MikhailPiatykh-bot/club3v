@@ -1,4 +1,4 @@
-import { TelegramIcon, WhatsappIcon } from "@/components/icons";
+import { MaxIcon, TelegramIcon, WhatsappIcon } from "@/components/icons";
 import { TrackLink } from "@/components/track-link";
 import { site } from "@/lib/content";
 
@@ -28,7 +28,7 @@ export function MessengerLinks({ channel = false, className = "", compact = fals
           <TrackLink key={item.goal + item.href} href={item.href} goal={item.goal} target="_blank" rel="noopener noreferrer" className={buttonClass} aria-label={item.label} title={item.label}>
             {item.mark === "WA" ? <WhatsappIcon className="h-5 w-5 text-[#25D366]" /> : null}
             {item.mark === "TG" ? <TelegramIcon className="h-5 w-5 text-[#2AABEE]" /> : null}
-            {item.mark === "MAX" ? <span className="text-[10px] font-black">MAX</span> : null}
+            {item.mark === "MAX" ? <MaxIcon className="h-5 w-5" /> : null}
             {item.mark === "VK" ? <span className="text-[11px] font-black">VK</span> : null}
           </TrackLink>
         ) : null,
