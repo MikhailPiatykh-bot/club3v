@@ -244,8 +244,10 @@ export function HomeView() {
         <div className="mx-auto max-w-wrap px-10 text-center max-md:px-[18px]">
           <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
           <h2 className="mt-4 font-display text-h2 font-black">Видимый прогресс</h2>
-          <div className="mx-auto mt-6 max-w-3xl">
-            <BeltList title="Ушу Акробатика" items={belts.items} />
+          <div className="mx-auto mt-6 grid max-w-5xl gap-6 text-left md:grid-cols-2">
+            {belts.tracks.map((track) => (
+              <BeltList key={track.id} title={track.title} items={track.items} />
+            ))}
           </div>
         </div>
       </section>
