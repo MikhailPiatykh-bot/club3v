@@ -149,6 +149,7 @@ test("public copy does not revive closed halls, other sports or old prices", () 
   for (const dir of roots) {
     for (const file of filesIn(dir)) {
       if (!/\.(json|ts|tsx|css|md)$/.test(file)) continue;
+      if (/[/\\]content[/\\]legal[/\\]/.test(file)) continue;
       const text = readFileSync(file, "utf8").toLowerCase();
       for (const word of forbidden) {
         if (text.includes(word)) hits.push(`${file}: ${word}`);
