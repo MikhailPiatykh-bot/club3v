@@ -18,7 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tournaments/wushu",
     "/tournaments/acrobatics",
     "/china-camp",
-    "/camps",
     "/champions",
     "/rent",
     "/contacts",

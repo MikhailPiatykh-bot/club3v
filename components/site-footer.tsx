@@ -19,7 +19,6 @@ const links = [
   { href: "/tournaments/acrobatics", label: "Турниры по акробатике" },
   { href: "/events", label: "Мероприятия клуба" },
   { href: "/china-camp", label: "Сборы в Китае" },
-  { href: "/camps", label: "Лагеря" },
   { href: "/champions", label: "Зал славы" },
   { href: "/contacts", label: "Контакты" },
   { href: "/rent", label: "Аренда зала" },

@@ -25,6 +25,12 @@ export default function CertificationPage() {
           </Link>
         </div>
       </header>
+      <section className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
+        <h2 className="font-display text-3xl font-black">Как это было</h2>
+        <ul className="mt-4 grid gap-2">
+          <li className="rounded-card border-[3px] border-ink bg-cream p-3">Прошедшие аттестации клуб ещё соберёт в этот список.</li>
+        </ul>
+      </section>
     </>
   );
 }

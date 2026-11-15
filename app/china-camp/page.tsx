@@ -16,7 +16,7 @@ export default function ChinaCampPage() {
       <header className="border-b-[3px] border-ink bg-white">
         <div className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
           <Breadcrumbs items={[{ name: "Главная", path: "/" }, { name: "Сборы в Китае", path: "/china-camp" }]} />
-          <h1 className="mt-4 font-display text-h1 font-black">{chinaCamp.liveTitle}</h1>
+          <h1 className="mt-4 font-display text-h1 font-black">{chinaCamp.title}</h1>
           <p className="mt-4 max-w-2xl">{chinaCamp.liveText}</p>
           <SignupButton kind="china" placement="china" className="mt-6 inline-flex h-14 items-center rounded-btn border-[2.5px] border-ink bg-orange px-5 font-black text-ink shadow-btn-main">
             Записаться на сборы
@@ -24,15 +24,13 @@ export default function ChinaCampPage() {
         </div>
       </header>
       <section className="mx-auto max-w-wrap px-10 py-12 max-md:px-[18px]">
-        <h2 className="font-display text-3xl font-black">Как это было описано на старом сайте</h2>
-        <p className="mt-3">
-          <span className="ph">
-            Даты {chinaCamp.archive.dateText} на странице и {chinaCamp.archive.calendarDateText} в календаре. {chinaCamp.archive.priceNote}
-          </span>
+        <h2 className="font-display text-3xl font-black">Как это было</h2>
+        <p className="mt-3 max-w-3xl">
+          Даты {chinaCamp.archive.dateText} на странице и {chinaCamp.archive.calendarDateText} в календаре. {chinaCamp.archive.priceNote}
         </p>
         <ul className="mt-4 grid gap-2">
           {chinaCamp.archive.points.map((point) => (
-            <li key={point} className="rounded-card border-[3px] border-ink bg-white p-3">
+            <li key={point} className="rounded-card border-[3px] border-ink bg-cream p-3">
               {point}
             </li>
           ))}

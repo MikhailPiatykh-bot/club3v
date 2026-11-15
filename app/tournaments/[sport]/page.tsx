@@ -36,8 +36,9 @@ export default async function TournamentPage({ params }: { params: Promise<{ spo
   if (!page) notFound();
 
   const items = events.filter((item) => item.type === "tournament" && item.direction === sport && !item.stale);
-  const past =
-    sport === "acrobatics" ? eventsDoc.competitionCaptions.filter((caption) => /акробат/i.test(caption)) : [];
+  const past = eventsDoc.competitionCaptions.filter((caption) =>
+    sport === "acrobatics" ? /акробат|acro|акро-/i.test(caption) : /ушу|беларус/i.test(caption),
+  );
 
   return (
     <>

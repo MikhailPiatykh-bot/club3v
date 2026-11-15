@@ -100,7 +100,8 @@
       { "href": "/certification", "label": "Клубная аттестация" },
       { "href": "/tournaments/wushu", "label": "Турниры по ушу" },
       { "href": "/tournaments/acrobatics", "label": "Турниры по акробатике" },
-      { "href": "/events", "label": "Мероприятия клуба" }
+      { "href": "/events", "label": "Мероприятия клуба" },
+      { "href": "/china-camp", "label": "Сборы в Китае" }
     ]
   },
   "thankYou": "Спасибо, перезвоним в течение часа",

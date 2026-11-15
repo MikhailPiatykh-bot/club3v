@@ -96,12 +96,12 @@ export function EventsBoard({
         ))}
       </ul>
       <section id="competitions" className="mt-12">
-        <h2 className="font-display text-3xl font-black">Соревнования</h2>
+        <h2 className="font-display text-3xl font-black">Как это было</h2>
         <p className="mt-3 max-w-3xl">{lead}</p>
         <ul className="mt-4 grid gap-2">
           {captions.map((caption) => (
             <li key={caption} className="rounded-card border-[3px] border-ink bg-cream p-3">
-              {caption} <span className="ph">фото после согласия</span>
+              {caption}
             </li>
           ))}
         </ul>
