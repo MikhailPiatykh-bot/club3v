@@ -27,7 +27,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ушу и акробатика для детей с 3 лет в СЗАО — Veni Vidi Vici",
+    default: `${site.hero.h1} — Veni Vidi Vici`,
     template: "%s — Veni Vidi Vici",
   },
   description:

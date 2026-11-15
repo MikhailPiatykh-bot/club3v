@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChampionCards } from "@/components/champion-cards";
@@ -54,37 +55,42 @@ export function HomeView() {
         <div className="relative mx-auto grid max-w-wrap items-center gap-8 px-6 py-16 max-md:px-[18px] max-md:py-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:items-start xl:px-10">
           <div className="min-w-0">
             <p className="inline-flex rounded-pill bg-pink px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white">{site.hero.kicker}</p>
-            <h1 className="mt-4 max-w-full font-display text-h1 font-black text-ink">
-              Ушу и акробатика для детей <span className="marker text-pink">с 3 лет в СЗАО</span>
+            <h1 className="mt-4 max-w-[12em] font-display text-[clamp(2rem,1.15rem+2vw,2.85rem)] font-black leading-[1.05] tracking-[-0.015em] text-ink">
+              {site.hero.h1.endsWith(site.hero.h1Accent) ? (
+                <>
+                  {site.hero.h1.slice(0, -site.hero.h1Accent.length).trim()}{" "}
+                  <span className="marker whitespace-nowrap text-pink">{site.hero.h1Accent}</span>
+                </>
+              ) : (
+                site.hero.h1
+              )}
             </h1>
             <p className="mt-4 max-w-xl text-[19px] font-bold max-md:text-base">{site.hero.subtitle}</p>
-            <Link href="/adults" className="mt-3 inline-flex min-h-11 items-center font-extrabold text-blue underline">
-              {site.hero.adults}
-              {"\u00A0→"}
-            </Link>
-            <div className="mt-5 flex w-fit max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
-              <span>
-                <b>
-                  <span className="text-[#FFB400]" aria-hidden="true">★ </span>
-                  {reviewsDoc.yandex.scoreLabel} · {reviewsDoc.yandex.countLabel} оценок
-                </b>
-                <span className="mt-1 block text-sm">{prices.seatsNote}</span>
-              </span>
-            </div>
-            {site.hero.cornerPhoto ? (
-              <Link href="/sbory" className="relative z-0 mt-6 hidden max-w-xl -rotate-2 xl:block">
-                <span className="relative block aspect-[3/1] overflow-hidden rounded-[28px] border-4 border-ink shadow-card">
-                  <Image
-                    src={site.hero.cornerPhoto}
-                    alt={site.hero.cornerAlt}
-                    fill
-                    sizes="520px"
-                    className="object-cover object-[center_58%]"
-                  />
+            <OpeningsList className="mt-4 max-w-xl" />
+            <div className="mt-5 flex items-start gap-12 xl:gap-14">
+              <div className="flex w-fit max-w-xl flex-wrap items-center gap-3 rounded-rate border-[3px] border-ink bg-white p-3 shadow-rate">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#FC3F1D] font-black text-white">Я</span>
+                <span>
+                  <b>
+                    <span className="text-[#FFB400]" aria-hidden="true">★ </span>
+                    {reviewsDoc.yandex.scoreLabel} · {reviewsDoc.yandex.countLabel} оценок
+                  </b>
                 </span>
-              </Link>
-            ) : null}
+              </div>
+              {site.hero.cornerPhoto ? (
+                <Link href="/wushu" className="relative z-0 mt-5 hidden w-[210px] shrink-0 -rotate-1 xl:block">
+                  <span className="relative block aspect-[2/3] overflow-hidden rounded-[28px] border-4 border-ink shadow-card">
+                    <Image
+                      src={site.hero.cornerPhoto}
+                      alt={site.hero.cornerAlt}
+                      fill
+                      sizes="210px"
+                      className="object-cover"
+                    />
+                  </span>
+                </Link>
+              ) : null}
+            </div>
           </div>
           <div className="relative">
             {site.hero.photo ? (
@@ -108,6 +114,7 @@ export function HomeView() {
               <p className="text-[11.5px] font-extrabold uppercase tracking-[0.14em] text-pink">{offer.eyebrow}</p>
               <h2 className="mt-2 font-display text-[38px] font-black leading-none max-md:text-[30px]">{offer.title}</h2>
               <p className="mt-3 text-base text-ink-2">{offer.text}</p>
+              <p className="mt-2 text-[15px] font-extrabold">{offer.mainCondition}</p>
               <ul className="mt-4 grid gap-2 text-[15px] font-bold">
                 {offer.bullets.map((item) => (
                   <li key={item} className="flex gap-2">
@@ -122,9 +129,7 @@ export function HomeView() {
               <Link href={offer.guaranteeHref} className="mt-3 inline-flex min-h-11 items-center font-extrabold text-blue underline">
                 {offer.guaranteeLabel}
               </Link>
-              <p className="mt-2 text-sm">
-                <span className="ph">{offer.conditionsNote}</span>
-              </p>
+              <p className="mt-1 text-sm leading-snug text-ink-2">{offer.conditionsNote}</p>
             </article>
           </div>
         </div>
@@ -197,9 +202,6 @@ export function HomeView() {
             <br />
             <span className="text-pink">для каждого возраста.</span>
           </h2>
-          <p className="mt-3 max-w-2xl text-sm">
-            <span className="ph">{ageGroups.note}</span>
-          </p>
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {ageGroups.items.map((card) => (
               <article key={card.id} className={`flex min-h-[420px] flex-col rounded-card border-[3px] border-ink p-6 shadow-card max-md:shadow-card-sm ${tint[card.tint]}`}>
@@ -243,7 +245,7 @@ export function HomeView() {
           <p className="inline-flex rounded-pill bg-ink px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.16em] text-white">{sectionLabel("progress")}</p>
           <h2 className="mt-4 font-display text-h2 font-black">Видимый прогресс</h2>
           <div className="mx-auto mt-6 max-w-3xl">
-            <BeltList title="Ушу Акробатика" items={belts.items} />
+            <BeltList title={belts.title} items={belts.items} />
           </div>
         </div>
       </section>
@@ -348,7 +350,6 @@ export function HomeView() {
               <p className="mt-2 font-extrabold">
                 На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}
               </p>
-              <p className="mt-2 text-sm">{prices.seatsNote}</p>
             </article>
             <article className="rounded-card border-[3px] border-ink bg-white p-6 shadow-card">
               <h3 className="font-display text-2xl font-black">Взрослым</h3>
@@ -379,13 +380,21 @@ export function HomeView() {
         <h2 className="mt-4 font-display text-h2 font-black">Соревнования, фестивали, мероприятия и сборы</h2>
         <h3 className="mt-8 font-display text-3xl font-black">Афиша мероприятий</h3>
         <ul className="mt-4 flex flex-wrap items-start gap-4">
-          {eventHub.afisha.map((poster) => (
-            <li key={poster.src} className="w-[calc((100%-1rem)/3)] md:w-[calc((100%-1rem)/6)]">
-              <Link href={poster.href} className="block overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
-                <Image src={poster.src} alt={poster.alt} width={poster.width} height={poster.height} className="h-auto w-full" />
-              </Link>
-            </li>
-          ))}
+          {eventHub.afisha.map((poster) => {
+            const tallest = Math.max(...eventHub.afisha.map((item) => item.height / item.width));
+            const scale = (poster.width / poster.height) * tallest;
+            return (
+              <li
+                key={poster.src}
+                className="w-[calc((100%-1rem)/3*var(--poster-scale)+6px*(1-var(--poster-scale)))] md:w-[calc((100%-1rem)/6*var(--poster-scale)+6px*(1-var(--poster-scale)))]"
+                style={{ "--poster-scale": scale } as CSSProperties}
+              >
+                <Link href={poster.href} className="block overflow-hidden rounded-card border-[3px] border-ink bg-white shadow-card">
+                  <Image src={poster.src} alt={poster.alt} width={poster.width} height={poster.height} className="h-auto w-full" />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {eventHub.blocks.map((block, index) => (
@@ -492,6 +501,30 @@ export function HomeView() {
         </div>
         <MapEmbed widgetUrl={site.mapWidgetUrl} mapsUrl={site.mapsUrl} />
       </section>
+
+      <section aria-label="Идёт набор" className="mx-auto max-w-wrap px-10 pb-16 pt-4 max-md:px-[18px]">
+        <OpeningsList className="max-w-xl" />
+      </section>
+    </div>
+  );
+}
+
+function OpeningsList({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <p className="recruit-blink inline-flex rounded-pill border-[3px] border-ink bg-sun px-4 py-1.5 font-display text-lg font-black text-ink shadow-card-sm">
+        {site.hero.openingsLabel}
+      </p>
+      <ul className="mt-3 grid gap-2">
+        {site.hero.openings.map((item) => (
+          <li key={item.href}>
+            <Link href={item.href} className="flex min-h-11 items-center justify-between gap-3 rounded-2xl border-[3px] border-ink bg-white px-3 py-1.5 shadow-card-sm">
+              <span className="font-extrabold">{item.name}</span>
+              <span className="shrink-0 rounded-pill bg-mint px-2.5 py-0.5 text-sm font-black text-ink">{item.places}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

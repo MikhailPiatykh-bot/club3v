@@ -46,7 +46,7 @@ export function ChampionCards({ items }: { items: ChampionCard[] }) {
               {sport[item.direction] ?? item.direction}
             </span>
           </div>
-          <div className="p-3">
+          <div className="p-3 text-ink">
             <h3 className="font-display text-[19px] font-extrabold leading-tight">{item.name}</h3>
             <p className="mt-1 text-[15px] font-bold">{item.rank}</p>
             {item.detail ? <p className="mt-1 text-sm">{item.detail}</p> : null}

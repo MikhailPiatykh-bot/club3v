@@ -24,12 +24,22 @@ test("age columns and schedule groups stay explicit", () => {
     columns.items.map((item: { ages: string }) => item.ages),
     ["3+", "6–10", "10–14", "15+"],
   );
+  assert.equal(columns.note, "");
   const groups = readJson("../content/groups.json");
   const ages = (direction: string) =>
     groups.items.filter((item: { direction: string }) => item.direction === direction).map((item: { ages: string }) => item.ages);
   assert.deepEqual(ages("wushu"), ["6–10", "10–14", "15+"]);
   assert.deepEqual(ages("acrobatics"), ["6–9", "10–13", "14–16"]);
   assert.deepEqual(ages("group-3plus"), ["3+"]);
+});
+
+test("visible progress lists wushu, acrobatics and breakdance once", () => {
+  const belts = readJson("../content/belts.json");
+  assert.equal(belts.title, "Ушу Акробатика Брейкданс");
+  assert.deepEqual(
+    belts.items.map((item: { name: string }) => item.name),
+    ["Старт", "База", "Техника", "Дальше"],
+  );
 });
 
 test("schedule and coaches point at real groups", () => {
@@ -45,17 +55,50 @@ test("schedule and coaches point at real groups", () => {
 
 test("prices, contacts and required blocks match the brief", () => {
   const prices = readJson("../content/prices.json");
+  const offer = readJson("../content/offer.json");
   const site = readJson("../content/site.json");
   const faq = readJson("../content/faq.json");
   const videos = readJson("../content/videos.json");
   const reviews = readJson("../content/reviews.json");
   const districts = readJson("../content/districts.json");
   assert.equal(prices.subscription, 9000);
+  assert.equal(offer.mainCondition, "При посещении 8 занятий в первый месяц, для новых учеников.");
+  assert.equal(offer.bullets[2], "Вернём деньги за первый месяц, если не подойдёт (по условиям гарантии)");
+  assert.equal(
+    offer.conditionsNote,
+    "Гарантия действует для новых учеников при посещении 8 занятий в первый месяц. Если ребёнок заболел, первый месяц продлевается по справке. Заявление на возврат подаётся в течение 7 дней после окончания первого месяца, деньги возвращаем в течение 10 дней.",
+  );
+  assert.equal(offer.guaranteeHref, "/oferta#guarantee");
+  assert.equal(offer.conditionsNote.includes("ещё утверждает"), false);
+  const oferta = readJson("../content/oferta.json");
+  const guarantee = oferta.blocks.find((block: { id?: string }) => block.id === "guarantee");
+  assert.equal(oferta.blocks[oferta.blocks.indexOf(guarantee) + 1].text, offer.conditionsNote);
+  assert.match(prices.subscriptionCard.note, /8 занятий в первый месяц/);
+  assert.match(offer.finalText, /8 занятий в первый месяц/);
   assert.equal(prices.largeFamilyDiscountPercent, 11);
   assert.equal(prices.secondChildDiscountPercent, 5);
   assert.equal(site.phoneDisplay, "+7 (977) 880-25-71");
   assert.match(site.address.full, /Маршала Жукова, 51/);
-  assert.equal(site.hero.h1, "Ушу и акробатика для детей с 3 лет в СЗАО");
+  assert.equal(site.hero.h1, "Ушу, акробатика, брейкданс и айкидо для детей и взрослых с 3 лет в СЗАО");
+  assert.equal(site.hero.h1.endsWith(site.hero.h1Accent), true);
+  assert.match(site.hero.subtitle, /брейкданс/);
+  assert.match(site.hero.subtitle, /айкидо/);
+  assert.match(site.hero.subtitle, /взрослых/);
+  assert.deepEqual(
+    site.why.cards.map((card: { problem: string; help: string }) => [card.problem, card.help]),
+    [
+      ["Физическое развитие", "Родители понимают необходимость физически развивать тело своего ребёнка."],
+      [
+        "Чтобы сформировать характер и дисциплину",
+        "Регулярные посещения занятий вырабатывают у ребёнка привычку к труду, которая очень пригодится в жизни.",
+      ],
+      [
+        "Энергия через край",
+        "На занятии энергия уходит в дело: разминка, короткое задание, повтор. В младших группах темп частый.",
+      ],
+      ["Не вытащить из телефона", "В зале телефон не нужен. Ребёнок занят вместе с группой своего возраста."],
+    ],
+  );
   assert.ok(faq.items.length >= 8);
   assert.ok(videos.items.length >= 4 && videos.items.length <= 6);
   assert.equal(reviews.yandex.score, 5);
@@ -63,7 +106,16 @@ test("prices, contacts and required blocks match the brief", () => {
   assert.equal(reviews.yandex.ratingCount, 70);
   assert.equal(reviews.yandex.reviewCount, 60);
   assert.equal(reviews.yandex.countLabel, "70");
-  assert.equal(prices.seatsNote, "Мест в группах: 5");
+  assert.deepEqual(
+    site.hero.openings.map((item: { name: string; places: string }) => `${item.name}: ${item.places}`),
+    [
+      "Ушу для взрослых: 5 мест",
+      "Айкидо для взрослых: 2 места",
+      "Раннее развитие 3+: 4 места",
+      "Ушу младшая группа: 2 места",
+      "Акробатика младшая группа: 2 места",
+    ],
+  );
   assert.equal(reviews.yandex.items.length, reviews.yandex.reviewCount);
   assert.ok(reviews.yandex.items.every((item: { name: string; date: string; url: string; visible: boolean }) => item.visible && item.name && item.date && item.url));
   assert.equal(districts.items.filter((item: { published: boolean }) => item.published).length, 0);
