@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { LeadForm } from "@/components/lead-form";
 import { MapEmbed } from "@/components/map-embed";
@@ -50,7 +51,17 @@ export default function ContactsPage() {
             <TrackLink href={site.telegram} goal="telegram_click" target="_blank" rel="noopener noreferrer" className={buttonClass("ghost")}>
               Telegram
             </TrackLink>
+            {site.max ? (
+              <TrackLink href={site.max} goal="max_click" target="_blank" rel="noopener noreferrer" className={buttonClass("ghost")}>
+                MAX
+              </TrackLink>
+            ) : null}
           </div>
+          <p className="mt-4">
+            <Link href="/rent" className="font-black text-blue underline">
+              Аренда зала
+            </Link>
+          </p>
           <div className="mt-6">
             <PhotoSlot
               src={site.entrance.src}

@@ -36,7 +36,7 @@ export function VideoGrid({ items }: { items: VideoItem[] }) {
                   <iframe title={item.title} src={item.src} className="h-full w-full" loading="lazy" />
                 )}
                 {opened && !item.src && (
-                  <p className="grid h-full place-items-center px-4 text-center text-sm">Ролик добавит клуб. На пробном можно посмотреть зал.</p>
+                  <p className="grid h-full place-items-center px-4 text-center text-sm">Ролик добавит клуб.</p>
                 )}
                 {!opened && (
                   <button type="button" className="absolute inset-0 grid place-items-center" onClick={() => setActive(item.id)} aria-label={`Смотреть: ${item.title}`}>

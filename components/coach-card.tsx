@@ -15,7 +15,7 @@ export function CoachCard({ coach }: { coach: Coach }) {
       <div className="flex flex-1 flex-col p-4">
         {coach.placeholder && <DraftMark>Данные клуба</DraftMark>}
         <h3 className="mt-2 font-display text-2xl">{coach.name}</h3>
-        <p className="mt-1 text-sm text-ink-soft">{coach.title}</p>
+        {coach.title ? <p className="mt-1 text-sm text-ink-soft">{coach.title}</p> : null}
         <ul className="mt-3 space-y-1 text-sm">
           {groups.map((group) => (
             <li key={group.id}>

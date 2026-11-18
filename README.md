@@ -29,7 +29,8 @@ npm run build
 | `content/events.json` | Соревнования, аттестации, лагерь, Китай |
 | `content/videos.json` | Ролики: `src`, постер, длительность |
 | `content/directions.json` | Тексты страниц ушу и акробатики |
-| `content/privacy.json`, `content/consent.json`, `content/oferta.json` | Юридические тексты |
+| `content/privacy.json`, `content/consent.json`, `content/oferta.json` | Юридические тексты на страницах |
+| `content/legal/` | Чистовик оферты от 01.12.2026 и проекты политики и согласий |
 | `content/districts.json` | Районные страницы. Пока `published` не `true`, страница не собирается |
 
 Фото кладите в `public/` и указывайте путь в JSON, например `/photos/coach.webp`. Пока путь пустой, на месте фото стоит подпись.
@@ -52,4 +53,4 @@ npm run build
 
 Счётчик Яндекс Метрики `105597568`. Цели: `lead_submit`, `quiz_submit`, `phone_click`, `whatsapp_click`, `telegram_click`, `coach_signup`. Код Вебмастера кладётся в `NEXT_PUBLIC_YANDEX_VERIFICATION`. Связку с карточкой Яндекс Бизнеса делает клуб в кабинете Яндекса.
 
-Оферта помечена черновиком и закрыта от индекса, пока юрист не заменит текст и не поставит в `content/oferta.json` поле `"draft": false`.
+Оферта помечена черновиком и закрыта от индекса, пока юрист не заменит текст и не поставит в `content/oferta.json` поле `"draft": false`. Чистовик договора лежит в `content/legal/oferta.md` и на страницу ещё не выведен.

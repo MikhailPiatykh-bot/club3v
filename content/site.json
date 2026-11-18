@@ -1,5 +1,4 @@
 {
-  "_comment": "Факты клуба, шапка, первый экран, блок задач и путь от метро. Не добавлять другие адреса.",
   "name": "Veni Vidi Vici",
   "legalName": "ИП Пятых",
   "inn": "",
@@ -9,6 +8,15 @@
   "phoneTel": "+79778802571",
   "whatsapp": "https://wa.me/79778802571",
   "telegram": "https://t.me/Club_3_V",
+  "max": "https://max.ru/u/f9LHodD0cOIrrSe1pvDLQ9XrdSx47SYwIL2XQhJBlgNxXq_HU9xauWNyfjo",
+  "channels": {
+    "telegram": "",
+    "max": "",
+    "vk": "https://vk.com/venividiviciclub",
+    "vkConfirmed": false
+  },
+  "showAccount": false,
+  "accountUrl": "",
   "address": {
     "city": "Москва",
     "area": "СЗАО",
@@ -18,39 +26,40 @@
   },
   "mapsUrl": "https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B0%20%D0%96%D1%83%D0%BA%D0%BE%D0%B2%D0%B0%2C%2051",
   "mapWidgetUrl": "https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B0%20%D0%96%D1%83%D0%BA%D0%BE%D0%B2%D0%B0%2C%2051&z=16",
-  "reviewsCountLabel": "около 70",
+  "reviewsCountLabel": "70",
   "hero": {
-    "h1": "Ушу и акробатика для детей с 3 лет в СЗАО",
-    "subtitle": "Традиционное и оздоровительное ушу и спортивная акробатика в одном зале.",
-    "trialResult": "Тренер оценит физподготовку и подскажет группу.",
-    "advantages": [
-      "Младшие группы с 3 лет",
-      "Один зал в Хорошёво-Мнёвниках",
-      "Абонемент 9 000 ₽, многодетным −11%"
+    "kicker": "Veni Vidi Vici • детский клуб • Москва · СЗАО",
+    "h1": "Ушу, акробатика, брейкданс и айкидо для детей и взрослых с 3 лет в СЗАО",
+    "h1Accent": "с 3 лет в СЗАО",
+    "subtitle": "Ушу, акробатика и брейкданс для детей, айкидо и ушу для взрослых. Группы с 3 лет. пр-т Маршала Жукова, 51.",
+    "adults": "Для взрослых: айкидо и ушу — идёт набор",
+    "openingsLabel": "Идёт набор",
+    "openings": [
+      { "name": "Ушу для взрослых", "places": "5 мест", "href": "/adults#wushu" },
+      { "name": "Айкидо для взрослых", "places": "2 места", "href": "/adults#aikido" },
+      { "name": "Раннее развитие 3+", "places": "4 места", "href": "/group-3plus" },
+      { "name": "Ушу младшая группа", "places": "2 места", "href": "/wushu" },
+      { "name": "Акробатика младшая группа", "places": "2 места", "href": "/acrobatics" }
     ],
-    "media": {
-      "image": null,
-      "imageAlt": "Тренировка детей в зале на пр-те Маршала Жукова, 51",
-      "width": 1600,
-      "height": 1200,
-      "video": null,
-      "poster": null
-    }
+    "photo": "/photos/club-team.jpg",
+    "mediaAlt": "Команда клуба Veni Vidi Vici",
+    "cornerPhoto": "/photos/hero-swords.jpg",
+    "cornerAlt": "Спортсмен в красной форме ушу с двумя мечами"
   },
   "why": {
     "title": "С какими задачами приходят родители",
     "summary": "Ребёнок занимается в своей группе, нагрузка по силам, а шаг вперёд видно на аттестации.",
     "cards": [
       {
-        "problem": "Сутулится, слабая спина",
-        "help": "В занятии есть работа над осанкой и корпусом. Это не лечение: тренер соотносит нагрузку с возрастом."
+        "problem": "Физическое развитие",
+        "help": "Родители понимают необходимость физически развивать тело своего ребёнка."
       },
       {
-        "problem": "Боится, что не получится",
-        "help": "Пробное без отбора. Тренер смотрит подготовку и предлагает группу, где ребёнку по силам."
+        "problem": "Чтобы сформировать характер и дисциплину",
+        "help": "Регулярные посещения занятий вырабатывают у ребёнка привычку к труду, которая очень пригодится в жизни."
       },
       {
-        "problem": "Энергия через край, трудно слушать",
+        "problem": "Энергия через край",
         "help": "На занятии энергия уходит в дело: разминка, короткое задание, повтор. В младших группах темп частый."
       },
       {
@@ -61,11 +70,11 @@
   },
   "founder": {
     "name": "Михаил Александрович",
-    "role": "Основатель клуба",
-    "photo": null,
+    "role": "Основатель и тренер старшей группы",
+    "photo": "/photos/coach-pyatykh.jpg",
     "photoAlt": "Михаил Александрович, основатель клуба Veni Vidi Vici",
-    "width": 800,
-    "height": 1000,
+    "width": 1400,
+    "height": 2100,
     "regalia": [],
     "quote": null
   },
@@ -83,14 +92,29 @@
       "Маршрут от вашей станции построит Яндекс Карты по кнопке ниже."
     ]
   },
-  "nav": [
-    { "href": "/wushu", "label": "Ушу" },
-    { "href": "/acrobatics", "label": "Акробатика" },
-    { "href": "/schedule", "label": "Расписание" },
-    { "href": "/prices", "label": "Цены" },
-    { "href": "/coaches", "label": "Тренеры" },
-    { "href": "/events", "label": "События" },
-    { "href": "/contacts", "label": "Контакты" }
-  ],
-  "thankYou": "Спасибо, перезвоним в течение часа"
+  "menu": {
+    "directionsChild": [
+      { "href": "/wushu", "label": "Ушу" },
+      { "href": "/acrobatics", "label": "Акробатика" },
+      { "href": "/breakdance", "label": "Брейкданс" },
+      { "href": "/group-3plus", "label": "Группа 3+" }
+    ],
+    "directionsAdult": [
+      { "href": "/adults#aikido", "label": "Айкидо", "recruiting": true },
+      { "href": "/adults#wushu", "label": "Ушу", "recruiting": true }
+    ],
+    "events": [
+      { "href": "/sbory", "label": "Сборы" },
+      { "href": "/certification", "label": "Клубная аттестация" },
+      { "href": "/tournaments/wushu", "label": "Турниры по ушу" },
+      { "href": "/tournaments/acrobatics", "label": "Турниры по акробатике" },
+      { "href": "/events", "label": "Мероприятия клуба" },
+      { "href": "/china-camp", "label": "Сборы в Китае" }
+    ]
+  },
+  "thankYou": "Спасибо, перезвоним в течение часа",
+  "thanks": {
+    "waitlist": "Вы в списке предварительной записи, свяжемся по выбранному способу.",
+    "rent": "Спасибо. Напишем, когда сверим свободное время зала."
+  }
 }

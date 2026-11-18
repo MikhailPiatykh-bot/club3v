@@ -8,12 +8,13 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Цены и скидки",
-  description: "Цены детского клуба Veni Vidi Vici: абонемент 9 000 ₽ в месяц, скидка многодетным 11%. Пробное и разовое — у администратора.",
+  description: "Цены клуба Veni Vidi Vici: абонемент 9 000 ₽ в месяц, приведи друга −50%, айкидо, ушу для взрослых и брейкданс 8 000 ₽ в месяц.",
   path: "/prices",
 });
 
 export default function PricesPage() {
   const family = largeFamilyPrice(prices.subscription, prices.largeFamilyDiscountPercent);
+  const secondChild = largeFamilyPrice(prices.subscription, prices.secondChildDiscountPercent);
 
   return (
     <>
@@ -22,7 +23,7 @@ export default function PricesPage() {
           <Breadcrumbs items={[{ name: "Главная", path: "/" }, { name: "Цены", path: "/prices" }]} />
           <h1 className="mt-4 font-display text-4xl leading-tight">Цены и скидки</h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-soft">
-            Абонемент {formatRub(prices.subscription)} в месяц. Многодетным −{prices.largeFamilyDiscountPercent}%: {formatRub(family)}.
+            Абонемент {formatRub(prices.subscription)} в месяц. Многодетным −{prices.largeFamilyDiscountPercent}%: {formatRub(family)}. На второго ребёнка −{prices.secondChildDiscountPercent}%: {formatRub(secondChild)}. {prices.friend.title}: −{prices.friend.percent}% на месячный абонемент. Айкидо, ушу для взрослых и брейкданс: {formatRub(prices.adults)} в месяц.
           </p>
         </div>
       </header>
@@ -30,7 +31,7 @@ export default function PricesPage() {
         <PriceCards />
         <div className="mt-8 max-w-2xl space-y-3 text-sm leading-relaxed text-ink-soft">
           <p>Число занятий в неделю смотрите в расписании группы. Пока дни уточняются, администратор называет их при записи.</p>
-          <p>Пробное и разовое без опубликованной цены: сумму скажет администратор. Скидку за друга тоже.</p>
+          <p>Разовое занятие клуб подтвердит отдельно. Сумму до этого на сайте не пишем.</p>
         </div>
       </section>
       <CtaBand placement="prices" />

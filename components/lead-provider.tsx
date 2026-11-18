@@ -8,6 +8,8 @@ type LeadRequest = {
   coachId?: string;
   coachName?: string;
   placement: string;
+  kind?: "enroll" | "waitlist" | "camp" | "china" | "rent" | "coach";
+  audience?: "child" | "adult";
 };
 
 type Contacts = {
@@ -54,13 +56,15 @@ export function LeadProvider({
         <div className="h-full max-h-[100dvh] overflow-y-auto bg-card p-5 text-ink sm:max-h-[calc(100dvh-1.5rem)] sm:rounded-3xl sm:p-6">
           {request && (
             <LeadForm
-              key={`${request.placement}-${request.coachId ?? ""}-${request.direction ?? ""}`}
+              key={`${request.placement}-${request.kind ?? ""}-${request.audience ?? ""}-${request.coachId ?? ""}-${request.direction ?? ""}`}
               contacts={contacts}
               thankYou={thankYou}
               placement={request.placement}
               direction={request.direction}
               coachId={request.coachId}
               coachName={request.coachName}
+              kind={request.kind}
+              audience={request.audience}
               titleId={titleId}
               onClose={() => setRequest(null)}
             />

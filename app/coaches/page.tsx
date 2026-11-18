@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CoachCard } from "@/components/coach-card";
 import { CtaBand } from "@/components/cta-band";
-import { DraftMark } from "@/components/draft-mark";
 import { JsonLd } from "@/components/json-ld";
 import { PhotoSlot } from "@/components/photo-slot";
-import { coaches, coachesDoc, site } from "@/lib/content";
+import { coaches, site } from "@/lib/content";
 import { founderJsonLd } from "@/lib/schema";
 import { pageMeta } from "@/lib/seo";
 
@@ -24,7 +23,7 @@ export default function CoachesPage() {
           <Breadcrumbs items={[{ name: "Главная", path: "/" }, { name: "Тренеры", path: "/coaches" }]} />
           <h1 className="mt-4 font-display text-4xl leading-tight">Тренеры</h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-soft">
-            Запись к тренеру подставляет его имя в заявку. Фото и регалии клуб добавит в карточки.
+            Запись к тренеру подставляет его имя в заявку.
           </p>
         </div>
       </header>
@@ -40,17 +39,12 @@ export default function CoachesPage() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cinnabar">{site.founder.role}</p>
           <h2 className="mt-2 font-display text-3xl">{site.founder.name}</h2>
-          <p className="mt-3 text-ink-soft">{site.founder.quote ?? "Цитату и регалии добавит клуб."}</p>
+          {site.founder.quote ? <p className="mt-3 text-ink-soft">{site.founder.quote}</p> : null}
         </div>
       </section>
       <section className="mx-auto w-full max-w-6xl px-4 pb-12">
-        {coachesDoc.draft && (
-          <p className="mb-4">
-            <DraftMark />
-          </p>
-        )}
         <div className="grid gap-3 md:grid-cols-2">
-          {coaches.map((coach) => (
+          {coaches.filter((coach) => coach.id !== "founder").map((coach) => (
             <CoachCard key={coach.id} coach={coach} />
           ))}
         </div>
